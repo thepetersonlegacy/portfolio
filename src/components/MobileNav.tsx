@@ -59,16 +59,16 @@ export const MobileNav = ({ activeSection, setActiveSection }: MobileNavProps) =
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/50 z-50 md:hidden backdrop-blur-sm"
+              className="fixed inset-0 bg-black/30 z-50 md:hidden backdrop-blur-glass"
             />
-            
+
             {/* Menu */}
             <motion.div
               variants={menuVariants}
               initial="closed"
               animate="open"
               exit="closed"
-              className="fixed top-0 right-0 bottom-0 w-80 bg-white z-50 p-8 shadow-2xl overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-80 bg-white/90 backdrop-blur-glass-lg border-l border-glass-white z-50 p-8 shadow-2xl overflow-y-auto"
             >
               <motion.button 
                 whileHover={{ scale: 1.1, rotate: 90 }}

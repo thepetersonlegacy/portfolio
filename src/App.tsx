@@ -746,7 +746,7 @@ function App() {
       </a>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm" role="navigation" aria-label="Main navigation">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-glass border-b border-glass-white shadow-lg shadow-black/5" role="navigation" aria-label="Main navigation">
         <div className="max-w-6xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
             <motion.div
@@ -850,7 +850,12 @@ function App() {
               { icon: Star, title: "Conversion Focused", desc: "Designed to turn visitors into paying clients" },
               { icon: Sparkles, title: "White-Glove Service", desc: "Direct access to me, not a project manager" }
             ].map((usp, i) => (
-              <motion.div key={i} variants={staggerItem} className="text-center">
+              <motion.div
+                key={i}
+                variants={staggerItem}
+                whileHover={{ y: -4 }}
+                className="text-center bg-white/60 backdrop-blur-glass border border-glass-white rounded-xl p-6 shadow-lg transition-all duration-300"
+              >
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
@@ -1099,7 +1104,7 @@ function App() {
             <motion.div
               variants={staggerItem}
               whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-              className="bg-white border-2 border-green-500 rounded-lg p-8 shadow-md transition-all duration-300 relative"
+              className="bg-white/85 backdrop-blur-glass border-2 border-green-500 rounded-xl p-8 shadow-lg transition-all duration-300 relative"
             >
               <div className="absolute top-0 right-0 bg-green-500 text-white px-3 py-1 text-xs font-medium uppercase tracking-wider rounded-bl-lg rounded-tr-lg">
                 Non-Profit
@@ -1158,7 +1163,7 @@ function App() {
             <motion.div
               variants={staggerItem}
               whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-              className="bg-white border border-gray-200 rounded-lg p-8 shadow-md transition-all duration-300"
+              className="bg-white/85 backdrop-blur-glass border border-glass-white rounded-xl p-8 shadow-lg transition-all duration-300"
             >
               <h3 className="text-2xl font-light text-gray-900 mb-2">Essential</h3>
               <div className="mb-6">
@@ -1207,7 +1212,7 @@ function App() {
             <motion.div
               variants={staggerItem}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-gray-900 text-white rounded-lg p-8 relative shadow-xl"
+              className="bg-gray-900/95 backdrop-blur-glass-lg text-white rounded-xl p-8 relative shadow-2xl border border-white/10"
             >
               <div className="absolute top-0 right-0 bg-white text-gray-900 px-4 py-1 text-xs font-medium uppercase tracking-wider rounded-bl-lg rounded-tr-lg">
                 Most Popular
@@ -1263,7 +1268,7 @@ function App() {
             <motion.div
               variants={staggerItem}
               whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-              className="bg-white border border-gray-200 rounded-lg p-8 shadow-md transition-all duration-300"
+              className="bg-white/85 backdrop-blur-glass border border-glass-white rounded-xl p-8 shadow-lg transition-all duration-300"
             >
               <h3 className="text-2xl font-light text-gray-900 mb-2">Enterprise</h3>
               <div className="mb-6">
@@ -1387,7 +1392,7 @@ function App() {
                   </div>
 
                   {/* Content Overlay */}
-                  <div className="absolute inset-0 p-6 flex flex-col justify-between text-white">
+                  <div className="absolute inset-0 p-6 flex flex-col justify-between text-white bg-gradient-to-t from-black/60 via-transparent to-transparent backdrop-blur-[2px] group-hover:backdrop-blur-sm transition-all duration-500">
                     {/* Top: Project Number */}
                     <div className="flex justify-between items-start">
                       <div className="text-xs font-medium uppercase tracking-wider opacity-70">
@@ -1513,7 +1518,7 @@ function App() {
                 key={caseStudy.id}
                 variants={staggerItem}
                 whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-                className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md transition-all duration-300 cursor-pointer"
+                className="group bg-white/85 backdrop-blur-glass border border-glass-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 cursor-pointer"
                 onClick={() => handleCaseStudyView(caseStudy)}
               >
                 <div className="aspect-video overflow-hidden">
@@ -1611,7 +1616,7 @@ function App() {
                 key={testimonial.id}
                 variants={staggerItem}
                 whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-                className="bg-white p-8 rounded-lg shadow-md transition-all duration-300"
+                className="bg-white/80 backdrop-blur-glass border border-glass-white p-8 rounded-xl shadow-lg transition-all duration-300"
               >
                 {showVideoTestimonials && testimonial.videoUrl ? (
                   <div className="mb-6">
@@ -2019,8 +2024,8 @@ function App() {
 
       {/* Lead Magnet Modal */}
       {showLeadMagnet && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={() => setShowLeadMagnet(false)}>
-          <div className="bg-white rounded-lg max-w-2xl w-full p-8 relative" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 backdrop-blur-glass-lg" onClick={() => setShowLeadMagnet(false)}>
+          <div className="bg-white/95 backdrop-blur-glass-xl rounded-2xl max-w-2xl w-full p-8 relative border border-glass-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowLeadMagnet(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 transition-colors"
@@ -2149,7 +2154,7 @@ function App() {
 
       {/* Sticky Mobile CTA */}
       <div
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-gray-900 text-white p-4 md:hidden transition-transform duration-300 ${
+        className={`fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-glass-lg border-t border-white/10 text-white p-4 md:hidden transition-transform duration-300 ${
           showMobileCTA ? 'translate-y-0' : 'translate-y-full'
         }`}
       >

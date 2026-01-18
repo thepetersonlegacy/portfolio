@@ -54,7 +54,7 @@ export const SocialProofNotification = () => {
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -400, opacity: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
-          className="fixed bottom-24 left-4 bg-white shadow-2xl rounded-lg p-4 max-w-sm z-40 border border-gray-100"
+          className="fixed bottom-24 left-4 bg-white/90 backdrop-blur-glass-lg shadow-2xl rounded-xl p-4 max-w-sm z-40 border border-glass-white"
         >
           <div className="flex items-center gap-3">
             <motion.div

@@ -42,7 +42,7 @@ export const ExitIntentPopup = ({ onDownloadClick }: ExitIntentPopupProps) => {
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl relative"
+            className="bg-white/95 backdrop-blur-glass-lg rounded-2xl p-8 max-w-md w-full shadow-2xl border border-glass-white relative"
           >
             <motion.button
               whileHover={{ scale: 1.1, rotate: 90 }}
