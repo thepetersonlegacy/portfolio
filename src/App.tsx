@@ -389,9 +389,9 @@ function App() {
 
   const skills = [
     { name: "Web Design", level: 95, icon: Code },
-    { name: "Graphic Design", level: 90, icon: Palette },
-    { name: "UI/UX Design", level: 88, icon: Sparkles },
-    { name: "Brand Strategy", level: 85, icon: Star }
+    { name: "Graphic Design", level: 98, icon: Palette },
+    { name: "UI/UX Design", level: 96, icon: Sparkles },
+    { name: "Brand Strategy", level: 99, icon: Star }
   ];
 
   const handleProjectView = (project) => {
