@@ -1,10 +1,45 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar, BookOpen } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { MobileNav } from './components/MobileNav';
+import { ExitIntentPopup } from './components/ExitIntentPopup';
+import { SocialProofNotification } from './components/SocialProofNotification';
+import { trackEvent, trackCTAClick, trackFormSubmit, trackDownload } from './utils/analytics';
 
 // Lazy load heavy components for better performance
 const ProjectPages = lazy(() => import('./components/ProjectPages').then(module => ({ default: module.ProjectPages })));
 const CaseStudies = lazy(() => import('./components/CaseStudies').then(module => ({ default: module.CaseStudies })));
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+};
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -12,6 +47,11 @@ function App() {
   const [showProjectPage, setShowProjectPage] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [hoveredProject, setHoveredProject] = useState(null);
+
+  // Parallax scroll for hero
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
@@ -535,7 +575,6 @@ function App() {
       name: "Sarah Mitchell",
       title: "Managing Partner",
       company: "The Money Team Law Firm",
-      avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
       rating: 5,
       videoUrl: null // Example: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
@@ -545,7 +584,6 @@ function App() {
       name: "Maria Atikis",
       title: "Owner",
       company: "Atikis Aviation Catering",
-      avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
       rating: 5,
       videoUrl: null
     },
@@ -555,7 +593,6 @@ function App() {
       name: "Noval Noir",
       title: "Multidisciplinary Artist",
       company: "Noval Noir Studio",
-      avatar: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
       rating: 5,
       videoUrl: null
     },
@@ -565,7 +602,6 @@ function App() {
       name: "James Rodriguez",
       title: "CEO",
       company: "Flight Ready Consulting",
-      avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
       rating: 5,
       videoUrl: null
     },
@@ -575,7 +611,6 @@ function App() {
       name: "David Chen",
       title: "Director of Marketing",
       company: "TechVenture Solutions",
-      avatar: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
       rating: 5,
       videoUrl: null
     },
@@ -585,7 +620,6 @@ function App() {
       name: "Emily Thompson",
       title: "Founder",
       company: "Luxe Fashion Boutique",
-      avatar: "https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
       rating: 5,
       videoUrl: null
     }
@@ -627,6 +661,9 @@ function App() {
   const handleContactFormSubmit = (e) => {
     e.preventDefault();
 
+    // Track form submission
+    trackFormSubmit('contact_form');
+
     // Netlify Forms handles the submission automatically
     // We just need to show a success message
     setFormSubmitted(true);
@@ -640,6 +677,10 @@ function App() {
 
   const handleLeadMagnetSubmit = (e) => {
     e.preventDefault();
+
+    // Track form submission and download
+    trackFormSubmit('lead_magnet_form');
+    trackDownload('10-website-mistakes-guide.pdf');
 
     // Netlify Forms handles the submission automatically
     setLeadMagnetSubmitted(true);
@@ -708,9 +749,14 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm" role="navigation" aria-label="Main navigation">
         <div className="max-w-6xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
-            <div className="text-lg font-medium text-gray-900">
-              Eldon Peterson
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-lg font-medium text-gray-900"
+            >
+              Eldon Peterson | Peterson Pro Services
+            </motion.div>
             <div className="hidden md:flex space-x-12">
               {['Home', 'About', 'Projects', 'Contact'].map((item) => (
                 <a
@@ -725,14 +771,22 @@ function App() {
                   {item}
                 </a>
               ))}
-              <button
-                onClick={() => document.getElementById('case-studies').scrollIntoView({ behavior: 'smooth' })}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  trackCTAClick('navigation', 'Case Studies');
+                  document.getElementById('case-studies').scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-all duration-300 flex items-center gap-1"
               >
                 <BookOpen className="w-4 h-4" />
                 Case Studies
-              </button>
+              </motion.button>
             </div>
+
+            {/* Mobile Navigation */}
+            <MobileNav activeSection={activeSection} setActiveSection={setActiveSection} />
           </div>
         </div>
       </nav>
@@ -740,76 +794,134 @@ function App() {
       {/* Hero Section */}
       <main id="main-content">
       <section id="home" className="relative min-h-screen flex items-center justify-center px-8" aria-label="Hero section">
-        <div className="text-center max-w-5xl mx-auto">
-          <div className="mb-12">
-            <div className="inline-block mb-6 px-4 py-2 bg-gray-100 rounded-full">
+        <motion.div
+          style={{ y: heroY, opacity: heroOpacity }}
+          className="text-center max-w-5xl mx-auto"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-12"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="inline-block mb-6 px-4 py-2 bg-gray-100 rounded-full"
+            >
               <p className="text-xs font-medium text-gray-700 uppercase tracking-wider">
-                8+ Years Experience • 50+ Happy Clients • 4.9/5 Rating
+                8+ Years Experience • 100+ Happy Clients • 4.9/5 Rating
               </p>
-            </div>
+            </motion.div>
             <h1 className="text-6xl md:text-8xl font-light mb-8 leading-none tracking-tight">
-              <span className="text-gray-900">I Build Websites That</span>
-              <br />
-              <span className="text-gray-600">Convert Visitors</span>
-              <br />
-              <span className="text-gray-600">Into Customers</span>
+              {["I Build Websites That", "Convert Visitors", "Into Customers"].map((line, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.2 + 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className={`block ${i === 0 ? 'text-gray-900' : 'text-gray-600'}`}
+                >
+                  {line}
+                </motion.span>
+              ))}
             </h1>
-          </div>
+          </motion.div>
 
-          <p className="text-lg md:text-xl text-gray-600 mb-12 leading-relaxed font-light max-w-3xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+            className="text-lg md:text-xl text-gray-600 mb-12 leading-relaxed font-light max-w-3xl mx-auto"
+          >
             Specializing in high-converting websites for <strong className="font-medium text-gray-900">law firms</strong>, <strong className="font-medium text-gray-900">aviation companies</strong>, and <strong className="font-medium text-gray-900">service-based businesses</strong>. Average client sees <strong className="font-medium text-gray-900">127% increase in leads</strong> within 90 days.
-          </p>
+          </motion.p>
 
           {/* USPs */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
-            <div className="text-center">
-              <Zap className="w-8 h-8 mx-auto mb-3 text-gray-900" />
-              <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">Lightning Fast</h3>
-              <p className="text-sm text-gray-600 font-light">Sub-2 second load times guaranteed</p>
-            </div>
-            <div className="text-center">
-              <Star className="w-8 h-8 mx-auto mb-3 text-gray-900" />
-              <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">Conversion Focused</h3>
-              <p className="text-sm text-gray-600 font-light">Designed to turn visitors into paying clients</p>
-            </div>
-            <div className="text-center">
-              <Sparkles className="w-8 h-8 mx-auto mb-3 text-gray-900" />
-              <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">White-Glove Service</h3>
-              <p className="text-sm text-gray-600 font-light">Direct access to me, not a project manager</p>
-            </div>
-          </div>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="grid md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto"
+          >
+            {[
+              { icon: Zap, title: "Lightning Fast", desc: "Sub-2 second load times guaranteed" },
+              { icon: Star, title: "Conversion Focused", desc: "Designed to turn visitors into paying clients" },
+              { icon: Sparkles, title: "White-Glove Service", desc: "Direct access to me, not a project manager" }
+            ].map((usp, i) => (
+              <motion.div key={i} variants={staggerItem} className="text-center">
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <usp.icon className="w-8 h-8 mx-auto mb-3 text-gray-900" />
+                </motion.div>
+                <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">{usp.title}</h3>
+                <p className="text-sm text-gray-600 font-light">{usp.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={() => setShowCalendly(true)}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                trackCTAClick('hero', 'Schedule Free Consultation');
+                setShowCalendly(true);
+              }}
               className="group px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 flex items-center gap-2 rounded-lg font-medium"
             >
               Schedule Free Consultation
               <Calendar className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setShowLeadMagnet(true)}
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                trackCTAClick('hero', 'Get Free Guide');
+                setShowLeadMagnet(true);
+              }}
               className="px-8 py-4 border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 flex items-center gap-2 rounded-lg font-medium"
             >
               Get Free Guide
               <Sparkles className="w-4 h-4" />
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
           <p className="text-sm text-gray-500 mt-6">
             🎯 Free 30-min consultation • No obligation • Response within 24 hours
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-32 px-8">
+      <motion.section
+        id="about"
+        className="py-32 px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-4">
+            <motion.div
+              className="lg:col-span-4"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="text-4xl font-light mb-8 text-gray-900">
                 About
               </h2>
-            </div>
+            </motion.div>
 
             <div className="lg:col-span-8">
               <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -854,7 +966,7 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Lead Magnet CTA Section */}
       <section className="py-20 px-8 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
@@ -952,20 +1064,43 @@ function App() {
       </section>
 
       {/* Services & Pricing Section */}
-      <section id="services" className="py-32 px-8">
+      <motion.section
+        id="services"
+        className="py-32 px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
+          <motion.div
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-4xl font-light mb-6 text-gray-900">
               Services & Investment
             </h2>
             <p className="text-gray-600 font-light max-w-2xl mx-auto">
               Transparent pricing for exceptional value. Choose the package that fits your needs.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {/* Non-Profit Tier */}
-            <div className="bg-white border-2 border-green-500 rounded-lg p-8 hover:shadow-lg transition-shadow duration-300 relative">
+            <motion.div
+              variants={staggerItem}
+              whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+              className="bg-white border-2 border-green-500 rounded-lg p-8 shadow-md transition-all duration-300 relative"
+            >
               <div className="absolute top-0 right-0 bg-green-500 text-white px-3 py-1 text-xs font-medium uppercase tracking-wider rounded-bl-lg rounded-tr-lg">
                 Non-Profit
               </div>
@@ -1006,16 +1141,25 @@ function App() {
               <p className="text-xs text-gray-500 italic mb-4">
                 * Requires proof of 501(c)(3) status
               </p>
-              <button
-                onClick={() => setShowCalendly(true)}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  trackCTAClick('pricing_community', 'Schedule Consultation');
+                  setShowCalendly(true);
+                }}
                 className="w-full py-3 border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white transition-colors rounded-lg font-medium"
               >
                 Schedule Consultation
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Essential Tier */}
-            <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow duration-300">
+            <motion.div
+              variants={staggerItem}
+              whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+              className="bg-white border border-gray-200 rounded-lg p-8 shadow-md transition-all duration-300"
+            >
               <h3 className="text-2xl font-light text-gray-900 mb-2">Essential</h3>
               <div className="mb-6">
                 <span className="text-4xl font-light text-gray-900">$5,000</span>
@@ -1046,16 +1190,25 @@ function App() {
                   <span>2 rounds of revisions</span>
                 </li>
               </ul>
-              <button
-                onClick={() => setShowCalendly(true)}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  trackCTAClick('pricing_essential', 'Schedule Consultation');
+                  setShowCalendly(true);
+                }}
                 className="w-full py-3 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors rounded-lg font-medium"
               >
                 Schedule Consultation
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Professional Tier - Featured */}
-            <div className="bg-gray-900 text-white rounded-lg p-8 relative shadow-xl">
+            <motion.div
+              variants={staggerItem}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="bg-gray-900 text-white rounded-lg p-8 relative shadow-xl"
+            >
               <div className="absolute top-0 right-0 bg-white text-gray-900 px-4 py-1 text-xs font-medium uppercase tracking-wider rounded-bl-lg rounded-tr-lg">
                 Most Popular
               </div>
@@ -1093,16 +1246,25 @@ function App() {
                   <span>Unlimited revisions</span>
                 </li>
               </ul>
-              <button
-                onClick={() => setShowCalendly(true)}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  trackCTAClick('pricing_professional', 'Schedule Consultation');
+                  setShowCalendly(true);
+                }}
                 className="w-full py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium"
               >
                 Schedule Consultation
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Enterprise Tier */}
-            <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow duration-300">
+            <motion.div
+              variants={staggerItem}
+              whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+              className="bg-white border border-gray-200 rounded-lg p-8 shadow-md transition-all duration-300"
+            >
               <h3 className="text-2xl font-light text-gray-900 mb-2">Enterprise</h3>
               <div className="mb-6">
                 <span className="text-4xl font-light text-gray-900">Custom</span>
@@ -1136,19 +1298,31 @@ function App() {
                   <span>White-glove service</span>
                 </li>
               </ul>
-              <button
-                onClick={() => setShowCalendly(true)}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  trackCTAClick('pricing_enterprise', 'Schedule Consultation');
+                  setShowCalendly(true);
+                }}
                 className="w-full py-3 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors rounded-lg font-medium"
               >
                 Schedule Consultation
-              </button>
-            </div>
-          </div>
+              </motion.button>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Projects Section - Creative Masonry Layout */}
-      <section id="projects" className="py-32 px-8">
+      <motion.section
+        id="projects"
+        className="py-32 px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-16 mb-20">
             <div className="lg:col-span-4">
@@ -1169,7 +1343,13 @@ function App() {
           </div>
 
           {/* Creative Masonry Grid */}
-          <div className="grid grid-cols-12 gap-4 auto-rows-[200px]">
+          <motion.div
+            className="grid grid-cols-12 gap-4 auto-rows-[200px]"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {projects.map((project, index) => {
               // Define dynamic grid spans and row spans for creative layout
               const getGridClass = () => {
@@ -1186,8 +1366,10 @@ function App() {
               };
 
               return (
-                <div 
+                <motion.div
                   key={project.id}
+                  variants={staggerItem}
+                  whileHover={{ scale: 1.02, zIndex: 10 }}
                   className={`group cursor-pointer relative overflow-hidden bg-gray-100 ${getGridClass()}`}
                   onClick={() => handleProjectView(project)}
                   onMouseEnter={() => setHoveredProject(project.id)}
@@ -1255,10 +1437,10 @@ function App() {
 
                   {/* Interactive Border */}
                   <div className="absolute inset-0 border-2 border-transparent group-hover:border-white/30 transition-all duration-500"></div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Featured Project Spotlight */}
           <div className="mt-32 pt-16 border-t border-gray-100">
@@ -1292,25 +1474,46 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Case Studies Section */}
-      <section id="case-studies" className="py-32 px-8">
+      <motion.section
+        id="case-studies"
+        className="py-32 px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
+          <motion.div
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-4xl font-light mb-6 text-gray-900">
               Featured Case Studies
             </h2>
             <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
               Deep dives into real projects with measurable results
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {caseStudiesData.map((caseStudy) => (
-              <div
+              <motion.div
                 key={caseStudy.id}
-                className="group bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                variants={staggerItem}
+                whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+                className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md transition-all duration-300 cursor-pointer"
                 onClick={() => handleCaseStudyView(caseStudy)}
               >
                 <div className="aspect-video overflow-hidden">
@@ -1341,16 +1544,29 @@ function App() {
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-32 px-8 bg-gray-50">
+      <motion.section
+        id="testimonials"
+        className="py-32 px-8 bg-gray-50"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
+          <motion.div
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-4xl font-light mb-6 text-gray-900">
               Client Success Stories
             </h2>
@@ -1381,11 +1597,22 @@ function App() {
                 </button>
               </div>
             )}
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="bg-white p-8 rounded-lg hover:shadow-lg transition-shadow duration-300">
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                variants={staggerItem}
+                whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+                className="bg-white p-8 rounded-lg shadow-md transition-all duration-300"
+              >
                 {showVideoTestimonials && testimonial.videoUrl ? (
                   <div className="mb-6">
                     <div className="aspect-video mb-4 rounded-lg overflow-hidden">
@@ -1416,83 +1643,134 @@ function App() {
                     </p>
                   </div>
                 )}
-                <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    loading="lazy"
-                    className="w-12 h-12 rounded-full object-cover grayscale"
-                  />
-                  <div>
-                    <p className="font-medium text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500 font-light">
-                      {testimonial.title}, {testimonial.company}
-                    </p>
-                  </div>
+                <div className="pt-6 border-t border-gray-100">
+                  <p className="font-medium text-gray-900">{testimonial.name}</p>
+                  <p className="text-sm text-gray-500 font-light">
+                    {testimonial.title}, {testimonial.company}
+                  </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Trust Badges */}
-          <div className="mt-20 pt-16 border-t border-gray-200">
+          <motion.div
+            className="mt-20 pt-16 border-t border-gray-200"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
+              <motion.div variants={staggerItem}>
                 <div className="text-4xl font-light text-gray-900 mb-2">8+</div>
                 <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Years Experience</div>
-              </div>
-              <div>
-                <div className="text-4xl font-light text-gray-900 mb-2">50+</div>
+              </motion.div>
+              <motion.div variants={staggerItem}>
+                <div className="text-4xl font-light text-gray-900 mb-2">100+</div>
                 <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Happy Clients</div>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div variants={staggerItem}>
                 <div className="text-4xl font-light text-gray-900 mb-2">100+</div>
                 <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Projects Delivered</div>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div variants={staggerItem}>
                 <div className="text-4xl font-light text-gray-900 mb-2">4.9/5</div>
                 <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Average Rating</div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="py-24 px-8 bg-gray-900 text-white">
+      <motion.section
+        className="py-24 px-8 bg-gray-900 text-white"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-light mb-6">
+          <motion.h2
+            className="text-4xl md:text-5xl font-light mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             Ready to Transform Your Online Presence?
-          </h2>
-          <p className="text-xl text-gray-300 font-light mb-10 max-w-2xl mx-auto">
-            Join 50+ businesses that have increased their leads by an average of 127% with a high-converting website
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => setShowCalendly(true)}
+          </motion.h2>
+          <motion.p
+            className="text-xl text-gray-300 font-light mb-10 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Join 100+ businesses that have increased their leads by an average of 127% with a high-converting website
+          </motion.p>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                trackCTAClick('cta_section', 'Schedule Free Consultation');
+                setShowCalendly(true);
+              }}
               className="px-8 py-4 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium inline-flex items-center gap-2 justify-center"
             >
               <Calendar className="w-5 h-5" />
               Schedule Free Consultation
-            </button>
-            <button
-              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                trackCTAClick('cta_section', 'Send Message');
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+              }}
               className="px-8 py-4 border border-white hover:bg-white hover:text-gray-900 transition-colors rounded-lg font-medium"
             >
               Send Message
-            </button>
-          </div>
-          <p className="text-sm text-gray-400 mt-6">
+            </motion.button>
+          </motion.div>
+          <motion.p
+            className="text-sm text-gray-400 mt-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
             🎯 Free 30-min consultation • No obligation • Book instantly
-          </p>
+          </motion.p>
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 px-8">
+      <motion.section
+        id="contact"
+        className="py-32 px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-4">
+            <motion.div
+              className="lg:col-span-4"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="text-4xl font-light mb-8 text-gray-900">
                 Let's Connect
               </h2>
@@ -1532,7 +1810,7 @@ function App() {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             <div className="lg:col-span-8">
               {formSubmitted ? (
@@ -1644,7 +1922,7 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
       <footer className="py-16 px-8 border-t border-gray-100">
@@ -1876,20 +2154,36 @@ function App() {
         }`}
       >
         <div className="flex gap-3">
-          <button
-            onClick={() => setShowCalendly(true)}
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => {
+              trackCTAClick('mobile_sticky', 'Book Free Call');
+              setShowCalendly(true);
+            }}
             className="flex-1 py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium text-sm"
           >
             Book Free Call
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleEmailClick}
             className="py-3 px-4 border border-white hover:bg-white hover:text-gray-900 transition-colors rounded-lg"
           >
             <Mail className="w-5 h-5" />
-          </button>
+          </motion.button>
         </div>
       </div>
+
+      {/* Exit Intent Popup */}
+      <ExitIntentPopup onDownloadClick={() => {
+        trackDownload('10-website-mistakes-guide.pdf');
+        setShowLeadMagnet(true);
+      }} />
+
+      {/* Social Proof Notifications */}
+      <SocialProofNotification />
     </div>
   );
 }
