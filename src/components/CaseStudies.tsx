@@ -86,6 +86,7 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ caseStudy, onClose }) 
             <img
               src={caseStudy.image}
               alt={caseStudy.title}
+              loading="lazy"
               className="w-full h-full object-cover"
             />
           </div>

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar, BookOpen } from 'lucide-react';
-import { ProjectPages } from './components/ProjectPages';
-import { CaseStudies } from './components/CaseStudies';
 import { PopupModal } from 'react-calendly';
+
+// Lazy load heavy components for better performance
+const ProjectPages = lazy(() => import('./components/ProjectPages').then(module => ({ default: module.ProjectPages })));
+const CaseStudies = lazy(() => import('./components/CaseStudies').then(module => ({ default: module.CaseStudies })));
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -648,8 +650,22 @@ function App() {
     }, 3000);
   };
 
+  // Loading component for Suspense fallback
+  const LoadingFallback = () => (
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="text-center">
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900 mb-4"></div>
+        <p className="text-gray-900 text-sm font-light tracking-wider animate-pulse">Loading...</p>
+      </div>
+    </div>
+  );
+
   if (showProjectPage && selectedProject) {
-    return <ProjectPages project={selectedProject} onClose={handleCloseProjectPage} />;
+    return (
+      <Suspense fallback={<LoadingFallback />}>
+        <ProjectPages project={selectedProject} onClose={handleCloseProjectPage} />
+      </Suspense>
+    );
   }
 
   if (isLoading) {
@@ -664,7 +680,11 @@ function App() {
   }
 
   if (showCaseStudy && selectedCaseStudy) {
-    return <CaseStudies caseStudy={selectedCaseStudy} onClose={handleCloseCaseStudy} />;
+    return (
+      <Suspense fallback={<LoadingFallback />}>
+        <CaseStudies caseStudy={selectedCaseStudy} onClose={handleCloseCaseStudy} />
+      </Suspense>
+    );
   }
 
   return (
@@ -789,9 +809,10 @@ function App() {
                 {/* Photo - Optimized size and placement */}
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/5] overflow-hidden bg-gray-100 mb-8 lg:mb-0">
-                    <img 
-                      src="/5FB296E5-FBE0-4CC5-9EE4-13DDC1B0675F_1_105_c.jpeg" 
+                    <img
+                      src="/5FB296E5-FBE0-4CC5-9EE4-13DDC1B0675F_1_105_c.jpeg"
                       alt="Eldon Peterson"
+                      loading="lazy"
                       className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-100"
                     />
                   </div>
@@ -1117,9 +1138,10 @@ function App() {
                 >
                   {/* Background Image */}
                   <div className="absolute inset-0">
-                    <img 
-                      src={project.image} 
+                    <img
+                      src={project.image}
                       alt={project.title}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                     />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
@@ -1203,9 +1225,10 @@ function App() {
                 </button>
               </div>
               <div className="aspect-[4/3] overflow-hidden bg-gray-100">
-                <img 
-                  src={projects[0].image} 
+                <img
+                  src={projects[0].image}
                   alt={projects[0].title}
+                  loading="lazy"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0"
                 />
               </div>
@@ -1237,6 +1260,7 @@ function App() {
                   <img
                     src={caseStudy.image}
                     alt={caseStudy.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
@@ -1295,6 +1319,7 @@ function App() {
                   <img
                     src={testimonial.avatar}
                     alt={testimonial.name}
+                    loading="lazy"
                     className="w-12 h-12 rounded-full object-cover grayscale"
                   />
                   <div>
@@ -1534,9 +1559,10 @@ function App() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-8 bg-white/95 backdrop-blur-sm">
           <div className="max-w-4xl w-full max-h-[90vh] bg-white overflow-y-auto">
             <div className="relative mb-8">
-              <img 
-                src={selectedProject.image} 
+              <img
+                src={selectedProject.image}
                 alt={selectedProject.title}
+                loading="lazy"
                 className="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
               <button 
