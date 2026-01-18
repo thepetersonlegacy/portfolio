@@ -457,7 +457,7 @@ function App() {
         quote: "Eldon transformed our online presence completely. We've seen a 156% increase in consultation requests, and clients consistently compliment our professional website. Best investment we've made in our practice.",
         author: "Michael Thompson, Managing Partner at Money Team Law Firm"
       },
-      link: "https://moneyteamlawfirm.com",
+      link: "https://money-team-law-firm.netlify.app/",
       duration: "8 weeks",
       year: "2024"
     },
@@ -817,7 +817,7 @@ function App() {
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/5] overflow-hidden bg-gray-100 mb-8 lg:mb-0">
                     <img
-                      src="/5FB296E5-FBE0-4CC5-9EE4-13DDC1B0675F_1_105_c.jpeg"
+                      src="/eldon-peterson-profile.jpg"
                       alt="Eldon Peterson"
                       loading="lazy"
                       className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-100"
@@ -963,7 +963,57 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Non-Profit Tier */}
+            <div className="bg-white border-2 border-green-500 rounded-lg p-8 hover:shadow-lg transition-shadow duration-300 relative">
+              <div className="absolute top-0 right-0 bg-green-500 text-white px-3 py-1 text-xs font-medium uppercase tracking-wider rounded-bl-lg rounded-tr-lg">
+                Non-Profit
+              </div>
+              <h3 className="text-2xl font-light text-gray-900 mb-2">Community</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-light text-gray-900">$3,000</span>
+                <span className="text-gray-500 font-light"> starting</span>
+              </div>
+              <p className="text-sm text-gray-600 font-medium uppercase tracking-wider mb-6">
+                Special rates for 501(c)(3) organizations
+              </p>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-green-600 mt-1">✓</span>
+                  <span>5-page custom website</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-green-600 mt-1">✓</span>
+                  <span>Mobile responsive design</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-green-600 mt-1">✓</span>
+                  <span>Donation form integration</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-green-600 mt-1">✓</span>
+                  <span>Volunteer signup forms</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-green-600 mt-1">✓</span>
+                  <span>Basic SEO optimization</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-green-600 mt-1">✓</span>
+                  <span>2 rounds of revisions</span>
+                </li>
+              </ul>
+              <p className="text-xs text-gray-500 italic mb-4">
+                * Requires proof of 501(c)(3) status
+              </p>
+              <button
+                onClick={() => setShowCalendly(true)}
+                className="w-full py-3 border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white transition-colors rounded-lg font-medium"
+              >
+                Schedule Consultation
+              </button>
+            </div>
+
             {/* Essential Tier */}
             <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow duration-300">
               <h3 className="text-2xl font-light text-gray-900 mb-2">Essential</h3>
@@ -1005,7 +1055,7 @@ function App() {
             </div>
 
             {/* Professional Tier - Featured */}
-            <div className="bg-gray-900 text-white rounded-lg p-8 relative transform md:scale-105 shadow-xl">
+            <div className="bg-gray-900 text-white rounded-lg p-8 relative shadow-xl">
               <div className="absolute top-0 right-0 bg-white text-gray-900 px-4 py-1 text-xs font-medium uppercase tracking-wider rounded-bl-lg rounded-tr-lg">
                 Most Popular
               </div>
