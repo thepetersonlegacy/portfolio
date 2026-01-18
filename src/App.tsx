@@ -536,7 +536,8 @@ function App() {
       title: "Managing Partner",
       company: "The Money Team Law Firm",
       avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
-      rating: 5
+      rating: 5,
+      videoUrl: null // Example: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
       id: 2,
@@ -545,7 +546,8 @@ function App() {
       title: "Owner",
       company: "Atikis Aviation Catering",
       avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
-      rating: 5
+      rating: 5,
+      videoUrl: null
     },
     {
       id: 3,
@@ -554,7 +556,8 @@ function App() {
       title: "Multidisciplinary Artist",
       company: "Noval Noir Studio",
       avatar: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
-      rating: 5
+      rating: 5,
+      videoUrl: null
     },
     {
       id: 4,
@@ -563,7 +566,8 @@ function App() {
       title: "CEO",
       company: "Flight Ready Consulting",
       avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
-      rating: 5
+      rating: 5,
+      videoUrl: null
     },
     {
       id: 5,
@@ -572,7 +576,8 @@ function App() {
       title: "Director of Marketing",
       company: "TechVenture Solutions",
       avatar: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
-      rating: 5
+      rating: 5,
+      videoUrl: null
     },
     {
       id: 6,
@@ -581,7 +586,8 @@ function App() {
       title: "Founder",
       company: "Luxe Fashion Boutique",
       avatar: "https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
-      rating: 5
+      rating: 5,
+      videoUrl: null
     }
   ];
 
@@ -616,6 +622,7 @@ function App() {
   const [showCalendly, setShowCalendly] = useState(false);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
   const [showCaseStudy, setShowCaseStudy] = useState(false);
+  const [showVideoTestimonials, setShowVideoTestimonials] = useState(false);
 
   const handleContactFormSubmit = (e) => {
     e.preventDefault();
@@ -1297,24 +1304,68 @@ function App() {
             <h2 className="text-4xl font-light mb-6 text-gray-900">
               Client Success Stories
             </h2>
-            <p className="text-gray-600 font-light max-w-2xl mx-auto">
+            <p className="text-gray-600 font-light max-w-2xl mx-auto mb-6">
               Don't just take my word for it—hear from the businesses I've helped transform
             </p>
+            {testimonials.some(t => t.videoUrl) && (
+              <div className="flex justify-center gap-4 mt-8">
+                <button
+                  onClick={() => setShowVideoTestimonials(false)}
+                  className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+                    !showVideoTestimonials
+                      ? 'bg-gray-900 text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  Text Testimonials
+                </button>
+                <button
+                  onClick={() => setShowVideoTestimonials(true)}
+                  className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+                    showVideoTestimonials
+                      ? 'bg-gray-900 text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  Video Testimonials
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="bg-white p-8 rounded-lg hover:shadow-lg transition-shadow duration-300">
-                <div className="mb-6">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-gray-900 text-gray-900" />
-                    ))}
+                {showVideoTestimonials && testimonial.videoUrl ? (
+                  <div className="mb-6">
+                    <div className="aspect-video mb-4 rounded-lg overflow-hidden">
+                      <iframe
+                        src={testimonial.videoUrl}
+                        title={`${testimonial.name} testimonial`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        loading="lazy"
+                        className="w-full h-full"
+                      />
+                    </div>
+                    <div className="flex gap-1 mb-2">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-gray-900 text-gray-900" />
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-gray-700 font-light leading-relaxed italic">
-                    "{testimonial.quote}"
-                  </p>
-                </div>
+                ) : (
+                  <div className="mb-6">
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-gray-900 text-gray-900" />
+                      ))}
+                    </div>
+                    <p className="text-gray-700 font-light leading-relaxed italic">
+                      "{testimonial.quote}"
+                    </p>
+                  </div>
+                )}
                 <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
                   <img
                     src={testimonial.avatar}
