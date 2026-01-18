@@ -2162,7 +2162,7 @@ function App() {
 
       {/* Calendly Popup Modal */}
       <PopupModal
-        url="https://calendly.com/eldonpeterson/30min"
+        url="https://calendly.com/petersonproservices/1st-meeting-fact-gathering-goals"
         onModalClose={() => setShowCalendly(false)}
         open={showCalendly}
         rootElement={document.getElementById('root') as HTMLElement}
