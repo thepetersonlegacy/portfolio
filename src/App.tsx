@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { MobileNav } from './components/MobileNav';
 import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { SocialProofNotification } from './components/SocialProofNotification';
+import { IntakeForm } from './components/IntakeForm';
 import { trackEvent, trackCTAClick, trackFormSubmit, trackDownload } from './utils/analytics';
 
 // Lazy load heavy components for better performance
@@ -653,6 +654,7 @@ function App() {
   const [showMobileCTA, setShowMobileCTA] = useState(false);
   const [showLeadMagnet, setShowLeadMagnet] = useState(false);
   const [leadMagnetSubmitted, setLeadMagnetSubmitted] = useState(false);
+  const [showIntakeForm, setShowIntakeForm] = useState(false);
   const [showCalendly, setShowCalendly] = useState(false);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
   const [showCaseStudy, setShowCaseStudy] = useState(false);
@@ -696,6 +698,13 @@ function App() {
       setShowLeadMagnet(false);
       setLeadMagnetSubmitted(false);
     }, 3000);
+  };
+
+  const handleIntakeFormSuccess = () => {
+    // After successful intake form submission, open Calendly
+    trackEvent('intake_form_completed', { category: 'Lead Qualification' });
+    setShowIntakeForm(false);
+    setShowCalendly(true);
   };
 
   // Loading component for Suspense fallback
@@ -879,7 +888,7 @@ function App() {
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 trackCTAClick('hero', 'Schedule Free Consultation');
-                setShowCalendly(true);
+                setShowIntakeForm(true);
               }}
               className="group px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 flex items-center gap-2 rounded-lg font-medium"
             >
@@ -1151,7 +1160,7 @@ function App() {
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   trackCTAClick('pricing_community', 'Schedule Consultation');
-                  setShowCalendly(true);
+                  setShowIntakeForm(true);
                 }}
                 className="w-full py-3 border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white transition-colors rounded-lg font-medium"
               >
@@ -1200,7 +1209,7 @@ function App() {
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   trackCTAClick('pricing_essential', 'Schedule Consultation');
-                  setShowCalendly(true);
+                  setShowIntakeForm(true);
                 }}
                 className="w-full py-3 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors rounded-lg font-medium"
               >
@@ -1256,7 +1265,7 @@ function App() {
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   trackCTAClick('pricing_professional', 'Schedule Consultation');
-                  setShowCalendly(true);
+                  setShowIntakeForm(true);
                 }}
                 className="w-full py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium"
               >
@@ -1308,7 +1317,7 @@ function App() {
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   trackCTAClick('pricing_enterprise', 'Schedule Consultation');
-                  setShowCalendly(true);
+                  setShowIntakeForm(true);
                 }}
                 className="w-full py-3 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors rounded-lg font-medium"
               >
@@ -1727,7 +1736,7 @@ function App() {
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 trackCTAClick('cta_section', 'Schedule Free Consultation');
-                setShowCalendly(true);
+                setShowIntakeForm(true);
               }}
               className="px-8 py-4 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium inline-flex items-center gap-2 justify-center"
             >
@@ -2144,6 +2153,13 @@ function App() {
       )}
       </main>
 
+      {/* Intake Form Modal */}
+      <IntakeForm
+        isOpen={showIntakeForm}
+        onClose={() => setShowIntakeForm(false)}
+        onSubmitSuccess={handleIntakeFormSuccess}
+      />
+
       {/* Calendly Popup Modal */}
       <PopupModal
         url="https://calendly.com/eldonpeterson/30min"
@@ -2164,7 +2180,7 @@ function App() {
             whileTap={{ scale: 0.98 }}
             onClick={() => {
               trackCTAClick('mobile_sticky', 'Book Free Call');
-              setShowCalendly(true);
+              setShowIntakeForm(true);
             }}
             className="flex-1 py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium text-sm"
           >
