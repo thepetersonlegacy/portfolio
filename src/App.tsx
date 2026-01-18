@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight } from 'lucide-react';
+import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar } from 'lucide-react';
 import { ProjectPages } from './components/ProjectPages';
+import { PopupModal } from 'react-calendly';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -507,6 +508,9 @@ function App() {
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [showMobileCTA, setShowMobileCTA] = useState(false);
+  const [showLeadMagnet, setShowLeadMagnet] = useState(false);
+  const [leadMagnetSubmitted, setLeadMagnetSubmitted] = useState(false);
+  const [showCalendly, setShowCalendly] = useState(false);
 
   const handleContactFormSubmit = (e) => {
     e.preventDefault();
@@ -520,6 +524,25 @@ function App() {
       setFormSubmitted(false);
       e.target.reset();
     }, 5000);
+  };
+
+  const handleLeadMagnetSubmit = (e) => {
+    e.preventDefault();
+
+    // Netlify Forms handles the submission automatically
+    setLeadMagnetSubmitted(true);
+
+    // Trigger PDF download
+    const link = document.createElement('a');
+    link.href = '/10-website-mistakes-guide.pdf';
+    link.download = '10-Website-Mistakes-Costing-You-Clients.pdf';
+    link.click();
+
+    // Close modal after 3 seconds
+    setTimeout(() => {
+      setShowLeadMagnet(false);
+      setLeadMagnetSubmitted(false);
+    }, 3000);
   };
 
   if (showProjectPage && selectedProject) {
@@ -615,22 +638,25 @@ function App() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
-              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => setShowCalendly(true)}
               className="group px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 flex items-center gap-2 rounded-lg font-medium"
             >
-              Start Your Project
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              Schedule Free Consultation
+              <Calendar className="w-4 h-4" />
             </button>
             <button
-              onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-all duration-300 flex items-center gap-2"
+              onClick={() => setShowLeadMagnet(true)}
+              className="px-8 py-4 border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 flex items-center gap-2 rounded-lg font-medium"
             >
-              View My Work
-              <Eye className="w-4 h-4" />
+              Get Free Guide
+              <Sparkles className="w-4 h-4" />
             </button>
           </div>
+          <p className="text-sm text-gray-500 mt-6">
+            🎯 Free 30-min consultation • No obligation • Response within 24 hours
+          </p>
         </div>
       </section>
 
@@ -685,6 +711,33 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Lead Magnet CTA Section */}
+      <section className="py-20 px-8 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-block px-4 py-2 bg-white/10 rounded-full mb-6">
+            <p className="text-xs font-medium uppercase tracking-wider">
+              Free Resource
+            </p>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-light mb-6">
+            Is Your Website Driving Customers Away?
+          </h2>
+          <p className="text-xl text-gray-300 font-light mb-8 max-w-2xl mx-auto">
+            Download our free guide and discover the 10 critical mistakes that are costing you clients—and how to fix them today.
+          </p>
+          <button
+            onClick={() => setShowLeadMagnet(true)}
+            className="px-8 py-4 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium inline-flex items-center gap-2"
+          >
+            Download Free Guide
+            <Sparkles className="w-5 h-5" />
+          </button>
+          <p className="text-sm text-gray-400 mt-4">
+            Join 500+ business owners who've transformed their websites
+          </p>
         </div>
       </section>
 
@@ -802,10 +855,10 @@ function App() {
                 </li>
               </ul>
               <button
-                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => setShowCalendly(true)}
                 className="w-full py-3 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors rounded-lg font-medium"
               >
-                Get Started
+                Schedule Consultation
               </button>
             </div>
 
@@ -849,10 +902,10 @@ function App() {
                 </li>
               </ul>
               <button
-                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => setShowCalendly(true)}
                 className="w-full py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium"
               >
-                Get Started
+                Schedule Consultation
               </button>
             </div>
 
@@ -892,10 +945,10 @@ function App() {
                 </li>
               </ul>
               <button
-                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => setShowCalendly(true)}
                 className="w-full py-3 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors rounded-lg font-medium"
               >
-                Contact for Quote
+                Schedule Consultation
               </button>
             </div>
           </div>
@@ -1124,20 +1177,21 @@ function App() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium"
+              onClick={() => setShowCalendly(true)}
+              className="px-8 py-4 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium inline-flex items-center gap-2 justify-center"
             >
-              Start Your Project Today
+              <Calendar className="w-5 h-5" />
+              Schedule Free Consultation
             </button>
             <button
-              onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 border border-white hover:bg-white hover:text-gray-900 transition-colors rounded-lg font-medium"
             >
-              View Pricing
+              Send Message
             </button>
           </div>
           <p className="text-sm text-gray-400 mt-6">
-            Free consultation • No obligation • Response within 24 hours
+            🎯 Free 30-min consultation • No obligation • Book instantly
           </p>
         </div>
       </section>
@@ -1391,7 +1445,136 @@ function App() {
           </div>
         </div>
       )}
+
+      {/* Lead Magnet Modal */}
+      {showLeadMagnet && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={() => setShowLeadMagnet(false)}>
+          <div className="bg-white rounded-lg max-w-2xl w-full p-8 relative" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setShowLeadMagnet(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 transition-colors"
+              aria-label="Close modal"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {leadMagnetSubmitted ? (
+              <div className="text-center py-8">
+                <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-light mb-4 text-gray-900">Download Starting!</h3>
+                <p className="text-gray-600 font-light">
+                  Your free guide is downloading now. Check your email for more tips!
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="mb-8">
+                  <div className="inline-block px-3 py-1 bg-gray-900 text-white text-xs font-medium uppercase tracking-wider rounded-full mb-4">
+                    Free Download
+                  </div>
+                  <h2 className="text-3xl font-light mb-4 text-gray-900">
+                    10 Website Mistakes Costing You Clients
+                  </h2>
+                  <p className="text-gray-600 font-light leading-relaxed">
+                    Discover the critical errors that are driving potential customers away from your website—and how to fix them. This comprehensive guide reveals:
+                  </p>
+                </div>
+
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-start gap-3 text-gray-700 font-light">
+                    <span className="text-gray-900 mt-1">✓</span>
+                    <span>The #1 mistake that kills conversions (and how to avoid it)</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-700 font-light">
+                    <span className="text-gray-900 mt-1">✓</span>
+                    <span>Why your contact form is losing 80% of potential leads</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-700 font-light">
+                    <span className="text-gray-900 mt-1">✓</span>
+                    <span>Simple design tweaks that increase trust by 200%</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-700 font-light">
+                    <span className="text-gray-900 mt-1">✓</span>
+                    <span>The mobile optimization errors costing you thousands</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-700 font-light">
+                    <span className="text-gray-900 mt-1">✓</span>
+                    <span>How to write copy that actually converts visitors</span>
+                  </li>
+                </ul>
+
+                <form
+                  onSubmit={handleLeadMagnetSubmit}
+                  name="lead-magnet"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                  className="space-y-4"
+                >
+                  <input type="hidden" name="form-name" value="lead-magnet" />
+                  <input type="hidden" name="bot-field" aria-hidden="true" />
+
+                  <div>
+                    <label htmlFor="lead-name" className="block text-sm font-medium text-gray-900 mb-2">
+                      Your Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="lead-name"
+                      name="name"
+                      required
+                      aria-required="true"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
+                      placeholder="John Doe"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="lead-email" className="block text-sm font-medium text-gray-900 mb-2">
+                      Your Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="lead-email"
+                      name="email"
+                      required
+                      aria-required="true"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors rounded-lg font-medium"
+                  >
+                    Download Free Guide Now
+                  </button>
+
+                  <p className="text-xs text-gray-500 text-center font-light">
+                    No spam, ever. Unsubscribe anytime.
+                  </p>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
       </main>
+
+      {/* Calendly Popup Modal */}
+      <PopupModal
+        url="https://calendly.com/eldonpeterson/30min"
+        onModalClose={() => setShowCalendly(false)}
+        open={showCalendly}
+        rootElement={document.getElementById('root') as HTMLElement}
+      />
 
       {/* Sticky Mobile CTA */}
       <div
@@ -1401,10 +1584,10 @@ function App() {
       >
         <div className="flex gap-3">
           <button
-            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => setShowCalendly(true)}
             className="flex-1 py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium text-sm"
           >
-            Start Your Project
+            Book Free Call
           </button>
           <button
             onClick={handleEmailClick}
