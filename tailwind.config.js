@@ -3,6 +3,33 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      colors: {
+        // Primary Blue - Extracted from About section photo (#0a2f85)
+        primary: {
+          50: '#eff4ff',   // Lightest tint - backgrounds, subtle highlights
+          100: '#dbe6fe',  // Very light - hover states, badges
+          200: '#bfd3fe',  // Light - borders, dividers
+          300: '#93b4fd',  // Medium-light - secondary elements
+          400: '#608bfa',  // Medium - interactive elements
+          500: '#3a68f6',  // Base bright - primary CTAs, links
+          600: '#0a2f85',  // EXTRACTED COLOR - main accent, focus states
+          700: '#082566',  // Dark - hover states, pressed buttons
+          800: '#061d4d',  // Darker - text on light backgrounds
+          900: '#041533',  // Darkest - headings, strong emphasis
+          950: '#020b1a',  // Ultra dark - maximum contrast
+        },
+        // Accent Blue - For highlights and special elements
+        accent: {
+          blue: '#0a2f85',      // Main extracted blue
+          'blue-light': '#3a68f6',  // Lighter variant for hover
+          'blue-dark': '#082566',   // Darker variant for active
+          'blue-glow': 'rgba(10, 47, 133, 0.2)',  // Glow effect
+        },
+        // Glass effects with blue tint
+        'glass-blue': 'rgba(10, 47, 133, 0.05)',
+        'glass-blue-md': 'rgba(10, 47, 133, 0.1)',
+        'glass-blue-lg': 'rgba(10, 47, 133, 0.15)',
+      },
       fontSize: {
         'fluid-xs': 'clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem)',
         'fluid-sm': 'clamp(0.875rem, 0.8rem + 0.375vw, 1rem)',
@@ -66,6 +93,17 @@ export default {
         'glass-white': 'rgba(255, 255, 255, 0.2)',
         'glass-white-md': 'rgba(255, 255, 255, 0.3)',
         'glass-dark': 'rgba(0, 0, 0, 0.1)',
+        'glass-blue': 'rgba(10, 47, 133, 0.2)',
+        'glass-blue-md': 'rgba(10, 47, 133, 0.3)',
+      },
+      boxShadow: {
+        'blue-glow': '0 0 20px rgba(10, 47, 133, 0.15)',
+        'blue-glow-lg': '0 0 40px rgba(10, 47, 133, 0.2)',
+        'blue-focus': '0 0 0 3px rgba(10, 47, 133, 0.1)',
+      },
+      ringColor: {
+        'primary': '#0a2f85',
+        'primary-light': '#3a68f6',
       },
     },
   },

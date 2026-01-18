@@ -771,10 +771,10 @@ function App() {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className={`text-sm font-medium transition-all duration-300 hover:text-gray-600 ${
+                  className={`text-sm font-medium transition-all duration-300 relative ${
                     activeSection === item.toLowerCase()
-                      ? 'text-gray-900'
-                      : 'text-gray-500'
+                      ? 'text-primary-600 after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-0.5 after:bg-primary-600'
+                      : 'text-gray-500 hover:text-primary-500'
                   }`}
                 >
                   {item}
@@ -787,7 +787,7 @@ function App() {
                   trackCTAClick('navigation', 'Case Studies');
                   document.getElementById('case-studies').scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-all duration-300 flex items-center gap-1"
+                className="text-sm font-medium text-gray-500 hover:text-primary-500 transition-all duration-300 flex items-center gap-1"
               >
                 <BookOpen className="w-4 h-4" />
                 Case Studies
@@ -884,13 +884,13 @@ function App() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.button
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(10, 47, 133, 0.3)' }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 trackCTAClick('hero', 'Schedule Free Consultation');
                 setShowIntakeForm(true);
               }}
-              className="group px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 flex items-center gap-2 rounded-lg font-medium"
+              className="group px-8 py-4 bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800 transition-all duration-300 flex items-center gap-2 rounded-lg font-medium shadow-blue-glow"
             >
               Schedule Free Consultation
               <Calendar className="w-4 h-4" />
@@ -902,7 +902,7 @@ function App() {
                 trackCTAClick('hero', 'Get Free Guide');
                 setShowLeadMagnet(true);
               }}
-              className="px-8 py-4 border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 flex items-center gap-2 rounded-lg font-medium"
+              className="px-8 py-4 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition-all duration-300 flex items-center gap-2 rounded-lg font-medium"
             >
               Get Free Guide
               <Sparkles className="w-4 h-4" />
@@ -1128,27 +1128,27 @@ function App() {
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-green-600 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>5-page custom website</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-green-600 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>Mobile responsive design</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-green-600 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>Donation form integration</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-green-600 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>Volunteer signup forms</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-green-600 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>Basic SEO optimization</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-green-600 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>2 rounds of revisions</span>
                 </li>
               </ul>
@@ -1162,7 +1162,7 @@ function App() {
                   trackCTAClick('pricing_community', 'Schedule Consultation');
                   setShowIntakeForm(true);
                 }}
-                className="w-full py-3 border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white transition-colors rounded-lg font-medium"
+                className="w-full py-3 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition-colors rounded-lg font-medium"
               >
                 Schedule Consultation
               </motion.button>
@@ -1211,7 +1211,7 @@ function App() {
                   trackCTAClick('pricing_essential', 'Schedule Consultation');
                   setShowIntakeForm(true);
                 }}
-                className="w-full py-3 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors rounded-lg font-medium"
+                className="w-full py-3 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition-colors rounded-lg font-medium"
               >
                 Schedule Consultation
               </motion.button>
@@ -1261,13 +1261,13 @@ function App() {
                 </li>
               </ul>
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)' }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   trackCTAClick('pricing_professional', 'Schedule Consultation');
                   setShowIntakeForm(true);
                 }}
-                className="w-full py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium"
+                className="w-full py-3 bg-white text-primary-600 hover:bg-primary-50 transition-colors rounded-lg font-medium"
               >
                 Schedule Consultation
               </motion.button>
@@ -1319,7 +1319,7 @@ function App() {
                   trackCTAClick('pricing_enterprise', 'Schedule Consultation');
                   setShowIntakeForm(true);
                 }}
-                className="w-full py-3 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors rounded-lg font-medium"
+                className="w-full py-3 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition-colors rounded-lg font-medium"
               >
                 Schedule Consultation
               </motion.button>
@@ -1340,10 +1340,11 @@ function App() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-16 mb-20">
             <div className="lg:col-span-4">
-              <h2 className="text-4xl font-light mb-8 text-gray-900">
+              <h2 className="text-4xl font-light mb-8 text-gray-900 relative inline-block">
                 Selected Work
+                <span className="absolute bottom-0 left-0 w-20 h-1 bg-primary-600 rounded-full"></span>
               </h2>
-              <p className="text-gray-600 font-light leading-relaxed">
+              <p className="text-gray-600 font-light leading-relaxed mt-4">
                 A showcase of my latest work spanning web design, brand identity, and digital experiences
               </p>
             </div>
@@ -1732,13 +1733,13 @@ function App() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <motion.button
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(255, 255, 255, 0.4)' }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 trackCTAClick('cta_section', 'Schedule Free Consultation');
                 setShowIntakeForm(true);
               }}
-              className="px-8 py-4 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium inline-flex items-center gap-2 justify-center"
+              className="px-8 py-4 bg-white text-primary-600 hover:bg-primary-50 transition-colors rounded-lg font-medium inline-flex items-center gap-2 justify-center"
             >
               <Calendar className="w-5 h-5" />
               Schedule Free Consultation
@@ -2170,7 +2171,7 @@ function App() {
 
       {/* Sticky Mobile CTA */}
       <div
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-glass-lg border-t border-white/10 text-white p-4 md:hidden transition-transform duration-300 ${
+        className={`fixed bottom-0 left-0 right-0 z-50 bg-primary-900/95 backdrop-blur-glass-lg border-t border-primary-500/20 text-white p-4 md:hidden transition-transform duration-300 shadow-blue-glow-lg ${
           showMobileCTA ? 'translate-y-0' : 'translate-y-full'
         }`}
       >
@@ -2182,7 +2183,7 @@ function App() {
               trackCTAClick('mobile_sticky', 'Book Free Call');
               setShowIntakeForm(true);
             }}
-            className="flex-1 py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium text-sm"
+            className="flex-1 py-3 bg-white text-primary-600 hover:bg-primary-50 transition-colors rounded-lg font-medium text-sm"
           >
             Book Free Call
           </motion.button>

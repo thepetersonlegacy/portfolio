@@ -141,7 +141,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                           placeholder="John Doe"
                         />
                       </div>
@@ -155,7 +155,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                           placeholder="john@company.com"
                         />
                       </div>
@@ -169,7 +169,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           required
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                           placeholder="(555) 123-4567"
                         />
                       </div>
@@ -183,7 +183,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           required
                           value={formData.company}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                           placeholder="Acme Corporation"
                         />
                       </div>
@@ -197,7 +197,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                         name="website"
                         value={formData.website}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                         placeholder="https://www.yourwebsite.com"
                       />
                     </div>
@@ -211,7 +211,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           required
                           value={formData.industry}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                         >
                           <option value="">Select industry</option>
                           <option value="technology">Technology/Software</option>
@@ -238,7 +238,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           required
                           value={formData.companySize}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                         >
                           <option value="">Select company size</option>
                           <option value="solo">Solo/Freelancer (1)</option>
@@ -267,7 +267,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           required
                           value={formData.projectType}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                         >
                           <option value="">Select a project type</option>
                           <option value="new-website">New Website Design & Development</option>
@@ -291,7 +291,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           value={formData.goals}
                           onChange={handleChange}
                           rows={4}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                           placeholder="e.g., Increase online leads by 50%, modernize brand image, launch e-commerce store..."
                         />
                       </div>
@@ -305,7 +305,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           value={formData.challenges}
                           onChange={handleChange}
                           rows={4}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                           placeholder="e.g., Low conversion rates, outdated design, slow website, not mobile-friendly..."
                         />
                       </div>
@@ -328,7 +328,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           required
                           value={formData.budget}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                         >
                           <option value="">Select budget range</option>
                           <option value="under-3k">Under $3,000</option>
@@ -349,7 +349,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           required
                           value={formData.timeline}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                         >
                           <option value="">Select timeline</option>
                           <option value="asap">ASAP (within 2-4 weeks)</option>
@@ -379,7 +379,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           required
                           value={formData.decisionMaker}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                         >
                           <option value="">Select an option</option>
                           <option value="yes-sole">Yes, I make the final decision</option>
@@ -396,7 +396,7 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                           name="referralSource"
                           value={formData.referralSource}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                         >
                           <option value="">Select a source</option>
                           <option value="google">Google Search</option>
@@ -413,11 +413,11 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                   </div>
 
                   <motion.button
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(10, 47, 133, 0.3)' }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full py-4 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 active:bg-primary-800 transition-all shadow-blue-glow disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>

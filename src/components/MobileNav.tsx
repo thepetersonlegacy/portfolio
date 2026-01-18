@@ -93,8 +93,8 @@ export const MobileNav = ({ activeSection, setActiveSection }: MobileNavProps) =
                     }}
                     className={`block text-2xl font-light transition-colors ${
                       activeSection === item.toLowerCase()
-                        ? 'text-gray-900 font-normal'
-                        : 'text-gray-600 hover:text-gray-900'
+                        ? 'text-primary-600 font-normal'
+                        : 'text-gray-600 hover:text-primary-500'
                     }`}
                   >
                     {item}
