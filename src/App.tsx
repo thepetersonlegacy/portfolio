@@ -486,7 +486,7 @@ function App() {
         quote: "Working with Eldon was a game-changer for our aviation catering business. The website perfectly captures our premium service, and we've seen a 45% increase in online inquiries.",
         author: "Maria Atikis, Owner of Atikis Aviation Catering"
       },
-      link: "https://atikisaviation.com",
+      link: "https://atikiscatering.com",
       duration: "10 weeks",
       year: "2024"
     },
