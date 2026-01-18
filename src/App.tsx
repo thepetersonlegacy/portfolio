@@ -388,7 +388,7 @@ function App() {
           </div>
           
           <p className="text-lg md:text-xl text-gray-600 mb-16 leading-relaxed font-light max-w-2xl mx-auto">
-            Software Engineer and Web Designer dedicated to bringing visions to life through clean, modern, and impactful digital experiences
+            Software Engineer and Graphic, Web, and App Designer dedicated to bringing visions to life through clean, modern, and impactful digital experiences
           </p>
           
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
@@ -437,7 +437,7 @@ function App() {
                 <div className="lg:col-span-7 space-y-8">
                   <div className="space-y-6">
                     <p className="text-lg text-gray-700 leading-relaxed font-light">
-                      I'm Eldon Peterson, a software engineer and web designer dedicated to bringing visions to life through clean, modern, and impactful digital experiences. With a keen eye for design and a passion for functionality, I create websites and graphics that not only look stunning but also drive results for brands and businesses.
+                      I'm Eldon Peterson, a software engineer and graphic, web, and app designer dedicated to bringing visions to life through clean, modern, and impactful digital experiences. With a keen eye for design and a passion for functionality, I create websites and graphics that not only look stunning but also drive results for brands and businesses.
                     </p>
                     <p className="text-lg text-gray-700 leading-relaxed font-light">
                       From custom websites to cohesive branding, I combine creativity with strategy to ensure every project communicates its message clearly and powerfully. Whether you're looking to establish your online presence or elevate your existing brand, I'm here to design solutions that work seamlessly and leave a lasting impression.
