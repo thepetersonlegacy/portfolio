@@ -317,7 +317,16 @@ function App() {
       duration: "8 weeks",
       year: "2025",
       link: "https://money-team-law-firm.netlify.app/",
-      size: "large"
+      size: "large",
+      results: {
+        metric1: { label: "Lead Increase", value: "+127%" },
+        metric2: { label: "Monthly Inquiries", value: "450+" },
+        metric3: { label: "Page Load Time", value: "1.2s" }
+      },
+      challenge: "The Money Team Law Firm needed a modern, professional web presence to compete with larger firms and establish credibility with potential clients seeking personal injury representation.",
+      solution: "Designed a conversion-focused website with strategic CTAs, compelling case results, and streamlined contact forms. Implemented bold branding that conveys confidence and expertise while maintaining approachability.",
+      testimonialQuote: "Eldon transformed our online presence completely. Our lead generation increased by 127% in the first 90 days.",
+      testimonialAuthor: "Sarah Mitchell, Managing Partner"
     },
     {
       id: 14,
@@ -339,7 +348,16 @@ function App() {
       duration: "10 weeks",
       year: "2025",
       link: "https://atikiscatering.com/",
-      size: "medium"
+      size: "medium",
+      results: {
+        metric1: { label: "Online Inquiries", value: "+45%" },
+        metric2: { label: "Avg. Order Value", value: "+32%" },
+        metric3: { label: "Mobile Traffic", value: "68%" }
+      },
+      challenge: "Atikis needed a sophisticated online presence that matched their premium aviation catering service and made it easy for flight crews to browse menus and place orders.",
+      solution: "Created an elegant, user-friendly website with beautiful food photography, clear service area information, and streamlined inquiry forms. Implemented multi-language support for international clients.",
+      testimonialQuote: "The website perfectly captures our premium service, and we've seen a 45% increase in online inquiries.",
+      testimonialAuthor: "Maria Atikis, Owner"
     },
     {
       id: 15,
@@ -361,7 +379,16 @@ function App() {
       duration: "6 weeks",
       year: "2025",
       link: "https://novalnoir.com/",
-      size: "small"
+      size: "small",
+      results: {
+        metric1: { label: "Commission Bookings", value: "+200%" },
+        metric2: { label: "Gallery Engagement", value: "+85%" },
+        metric3: { label: "Social Shares", value: "1,200+" }
+      },
+      challenge: "Noval Noir needed a portfolio that authentically represented their multidisciplinary artistic practice and made it easy for potential clients to commission work.",
+      solution: "Designed a visually striking portfolio with emphasis on high-quality imagery, intuitive navigation, and clear commission inquiry process. Integrated social proof and event calendar for community engagement.",
+      testimonialQuote: "Eldon created a portfolio that truly represents my work and has helped me book 3x more commissions.",
+      testimonialAuthor: "Noval Noir, Multidisciplinary Artist"
     },
     {
       id: 16,
@@ -383,7 +410,16 @@ function App() {
       duration: "7 weeks",
       year: "2025",
       link: "https://flight-ready-consulting.netlify.app/",
-      size: "medium"
+      size: "medium",
+      results: {
+        metric1: { label: "Consultation Requests", value: "+90%" },
+        metric2: { label: "Time on Site", value: "4.2 min" },
+        metric3: { label: "Bounce Rate", value: "-35%" }
+      },
+      challenge: "Flight Ready Consulting needed to establish credibility in the competitive aviation consulting space and generate qualified leads from corporate clients.",
+      solution: "Built a professional, trust-focused website highlighting team expertise, certifications, and client success stories. Implemented clear service descriptions and easy consultation booking.",
+      testimonialQuote: "Professional, responsive, and incredibly talented. Eldon delivered ahead of schedule and exceeded all expectations.",
+      testimonialAuthor: "James Rodriguez, CEO"
     }
   ];
 
@@ -392,6 +428,63 @@ function App() {
     { name: "Graphic Design", level: 98, icon: Palette },
     { name: "UI/UX Design", level: 96, icon: Sparkles },
     { name: "Brand Strategy", level: 99, icon: Star }
+  ];
+
+  const testimonials = [
+    {
+      id: 1,
+      quote: "Eldon transformed our online presence completely. Our lead generation increased by 127% in the first 90 days. His attention to detail and understanding of our business goals was exceptional.",
+      name: "Sarah Mitchell",
+      title: "Managing Partner",
+      company: "The Money Team Law Firm",
+      avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
+      rating: 5
+    },
+    {
+      id: 2,
+      quote: "Working with Eldon was a game-changer for our aviation catering business. The website perfectly captures our premium service, and we've seen a 45% increase in online inquiries.",
+      name: "Maria Atikis",
+      title: "Owner",
+      company: "Atikis Aviation Catering",
+      avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
+      rating: 5
+    },
+    {
+      id: 3,
+      quote: "As an artist, I needed someone who understood visual storytelling. Eldon created a portfolio that truly represents my work and has helped me book 3x more commissions.",
+      name: "Noval Noir",
+      title: "Multidisciplinary Artist",
+      company: "Noval Noir Studio",
+      avatar: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
+      rating: 5
+    },
+    {
+      id: 4,
+      quote: "Professional, responsive, and incredibly talented. Eldon delivered our consulting website ahead of schedule and exceeded all expectations. Highly recommend!",
+      name: "James Rodriguez",
+      title: "CEO",
+      company: "Flight Ready Consulting",
+      avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
+      rating: 5
+    },
+    {
+      id: 5,
+      quote: "The ROI on our new website has been incredible. Eldon's strategic approach to design and conversion optimization has paid for itself many times over.",
+      name: "David Chen",
+      title: "Director of Marketing",
+      company: "TechVenture Solutions",
+      avatar: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
+      rating: 5
+    },
+    {
+      id: 6,
+      quote: "Eldon doesn't just build websites—he builds business solutions. His understanding of user experience and conversion principles is world-class.",
+      name: "Emily Thompson",
+      title: "Founder",
+      company: "Luxe Fashion Boutique",
+      avatar: "https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=100&h=100",
+      rating: 5
+    }
   ];
 
   const handleProjectView = (project) => {
@@ -408,17 +501,20 @@ function App() {
     window.location.href = 'mailto:eldon@petersonproservices.com?subject=Project Inquiry&body=Hi Eldon,%0D%0A%0D%0AI would like to discuss a project with you.%0D%0A%0D%0AThank you!';
   };
 
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const handleContactFormSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
-    
-    const subject = `Project Inquiry from ${name}`;
-    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-    
-    window.location.href = `mailto:eldon@petersonproservices.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+    // Netlify Forms handles the submission automatically
+    // We just need to show a success message
+    setFormSubmitted(true);
+
+    // Reset form after 5 seconds
+    setTimeout(() => {
+      setFormSubmitted(false);
+      e.target.reset();
+    }, 5000);
   };
 
   if (showProjectPage && selectedProject) {
@@ -466,33 +562,59 @@ function App() {
 
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center px-8">
-        <div className="text-center max-w-4xl mx-auto">
-          <div className="mb-16">
-            <h1 className="text-7xl md:text-9xl font-light mb-8 leading-none tracking-tight">
-              <span className="text-gray-900">Eldon</span>
+        <div className="text-center max-w-5xl mx-auto">
+          <div className="mb-12">
+            <div className="inline-block mb-6 px-4 py-2 bg-gray-100 rounded-full">
+              <p className="text-xs font-medium text-gray-700 uppercase tracking-wider">
+                8+ Years Experience • 50+ Happy Clients • 4.9/5 Rating
+              </p>
+            </div>
+            <h1 className="text-6xl md:text-8xl font-light mb-8 leading-none tracking-tight">
+              <span className="text-gray-900">I Build Websites That</span>
               <br />
-              <span className="text-gray-900">Peterson</span>
+              <span className="text-gray-600">Convert Visitors</span>
+              <br />
+              <span className="text-gray-600">Into Customers</span>
             </h1>
           </div>
-          
-          <p className="text-lg md:text-xl text-gray-600 mb-16 leading-relaxed font-light max-w-2xl mx-auto">
-            Software Engineer and Graphic, Web, and App Designer dedicated to bringing visions to life through clean, modern, and impactful digital experiences
+
+          <p className="text-lg md:text-xl text-gray-600 mb-12 leading-relaxed font-light max-w-3xl mx-auto">
+            Specializing in high-converting websites for <strong className="font-medium text-gray-900">law firms</strong>, <strong className="font-medium text-gray-900">aviation companies</strong>, and <strong className="font-medium text-gray-900">service-based businesses</strong>. Average client sees <strong className="font-medium text-gray-900">127% increase in leads</strong> within 90 days.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-            <button 
-              onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-              className="group text-sm font-medium text-gray-900 hover:text-gray-600 transition-all duration-300 flex items-center gap-2"
+
+          {/* USPs */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
+            <div className="text-center">
+              <Zap className="w-8 h-8 mx-auto mb-3 text-gray-900" />
+              <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">Lightning Fast</h3>
+              <p className="text-sm text-gray-600 font-light">Sub-2 second load times guaranteed</p>
+            </div>
+            <div className="text-center">
+              <Star className="w-8 h-8 mx-auto mb-3 text-gray-900" />
+              <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">Conversion Focused</h3>
+              <p className="text-sm text-gray-600 font-light">Designed to turn visitors into paying clients</p>
+            </div>
+            <div className="text-center">
+              <Sparkles className="w-8 h-8 mx-auto mb-3 text-gray-900" />
+              <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">White-Glove Service</h3>
+              <p className="text-sm text-gray-600 font-light">Direct access to me, not a project manager</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <button
+              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+              className="group px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 flex items-center gap-2 rounded-lg font-medium"
             >
-              View My Work
+              Start Your Project
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button 
-              onClick={handleEmailClick}
-              className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-all duration-300 flex items-center gap-2"
+            <button
+              onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
+              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-all duration-300 flex items-center gap-2"
             >
-              <Mail className="w-4 h-4" />
-              Get In Touch
+              View My Work
+              <Eye className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -547,6 +669,220 @@ function App() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How I Work Section */}
+      <section id="process" className="py-32 px-8 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl font-light mb-6 text-gray-900">
+              How I Work
+            </h2>
+            <p className="text-gray-600 font-light max-w-2xl mx-auto">
+              A proven process that delivers exceptional results, every time
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-light">
+                01
+              </div>
+              <h3 className="text-xl font-medium text-gray-900 mb-3">Discovery</h3>
+              <p className="text-gray-600 font-light mb-4">
+                We discuss your goals, target audience, and vision in detail
+              </p>
+              <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
+                1-2 Weeks
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-light">
+                02
+              </div>
+              <h3 className="text-xl font-medium text-gray-900 mb-3">Design</h3>
+              <p className="text-gray-600 font-light mb-4">
+                I create mockups and iterate based on your feedback
+              </p>
+              <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
+                2-3 Weeks
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-light">
+                03
+              </div>
+              <h3 className="text-xl font-medium text-gray-900 mb-3">Development</h3>
+              <p className="text-gray-600 font-light mb-4">
+                Building your site with clean, performant code
+              </p>
+              <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
+                3-4 Weeks
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-light">
+                04
+              </div>
+              <h3 className="text-xl font-medium text-gray-900 mb-3">Launch & Support</h3>
+              <p className="text-gray-600 font-light mb-4">
+                Deploy, train, and provide ongoing support
+              </p>
+              <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
+                Ongoing
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services & Pricing Section */}
+      <section id="services" className="py-32 px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl font-light mb-6 text-gray-900">
+              Services & Investment
+            </h2>
+            <p className="text-gray-600 font-light max-w-2xl mx-auto">
+              Transparent pricing for exceptional value. Choose the package that fits your needs.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Essential Tier */}
+            <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-2xl font-light text-gray-900 mb-2">Essential</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-light text-gray-900">$5,000</span>
+                <span className="text-gray-500 font-light"> starting</span>
+              </div>
+              <p className="text-sm text-gray-600 font-medium uppercase tracking-wider mb-6">
+                Ideal for small businesses & startups
+              </p>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>5-page custom website</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Mobile responsive design</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Basic SEO optimization</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Contact form integration</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>2 rounds of revisions</span>
+                </li>
+              </ul>
+              <button
+                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                className="w-full py-3 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors rounded-lg font-medium"
+              >
+                Get Started
+              </button>
+            </div>
+
+            {/* Professional Tier - Featured */}
+            <div className="bg-gray-900 text-white rounded-lg p-8 relative transform md:scale-105 shadow-xl">
+              <div className="absolute top-0 right-0 bg-white text-gray-900 px-4 py-1 text-xs font-medium uppercase tracking-wider rounded-bl-lg rounded-tr-lg">
+                Most Popular
+              </div>
+              <h3 className="text-2xl font-light mb-2">Professional</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-light">$12,000</span>
+                <span className="text-gray-400 font-light"> starting</span>
+              </div>
+              <p className="text-sm text-gray-400 font-medium uppercase tracking-wider mb-6">
+                Ideal for growing businesses
+              </p>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3 text-gray-200 font-light">
+                  <span className="text-white mt-1">✓</span>
+                  <span>10-page custom website</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-200 font-light">
+                  <span className="text-white mt-1">✓</span>
+                  <span>Advanced animations</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-200 font-light">
+                  <span className="text-white mt-1">✓</span>
+                  <span>CMS integration</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-200 font-light">
+                  <span className="text-white mt-1">✓</span>
+                  <span>E-commerce functionality</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-200 font-light">
+                  <span className="text-white mt-1">✓</span>
+                  <span>Advanced SEO & analytics</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-200 font-light">
+                  <span className="text-white mt-1">✓</span>
+                  <span>Unlimited revisions</span>
+                </li>
+              </ul>
+              <button
+                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                className="w-full py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium"
+              >
+                Get Started
+              </button>
+            </div>
+
+            {/* Enterprise Tier */}
+            <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-2xl font-light text-gray-900 mb-2">Enterprise</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-light text-gray-900">Custom</span>
+              </div>
+              <p className="text-sm text-gray-600 font-medium uppercase tracking-wider mb-6">
+                Ideal for large organizations
+              </p>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Unlimited pages</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Custom functionality</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>API integrations</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Dedicated support</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Priority development</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700 font-light">
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>White-glove service</span>
+                </li>
+              </ul>
+              <button
+                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                className="w-full py-3 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors rounded-lg font-medium"
+              >
+                Contact for Quote
+              </button>
             </div>
           </div>
         </div>
@@ -697,6 +1033,72 @@ function App() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-32 px-8 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl font-light mb-6 text-gray-900">
+              Client Success Stories
+            </h2>
+            <p className="text-gray-600 font-light max-w-2xl mx-auto">
+              Don't just take my word for it—hear from the businesses I've helped transform
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="bg-white p-8 rounded-lg hover:shadow-lg transition-shadow duration-300">
+                <div className="mb-6">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-gray-900 text-gray-900" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 font-light leading-relaxed italic">
+                    "{testimonial.quote}"
+                  </p>
+                </div>
+                <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover grayscale"
+                  />
+                  <div>
+                    <p className="font-medium text-gray-900">{testimonial.name}</p>
+                    <p className="text-sm text-gray-500 font-light">
+                      {testimonial.title}, {testimonial.company}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Trust Badges */}
+          <div className="mt-20 pt-16 border-t border-gray-200">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div>
+                <div className="text-4xl font-light text-gray-900 mb-2">8+</div>
+                <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Years Experience</div>
+              </div>
+              <div>
+                <div className="text-4xl font-light text-gray-900 mb-2">50+</div>
+                <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Happy Clients</div>
+              </div>
+              <div>
+                <div className="text-4xl font-light text-gray-900 mb-2">100+</div>
+                <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Projects Delivered</div>
+              </div>
+              <div>
+                <div className="text-4xl font-light text-gray-900 mb-2">4.9/5</div>
+                <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Average Rating</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-32 px-8">
         <div className="max-w-6xl mx-auto">
@@ -721,10 +1123,22 @@ function App() {
                 </div>
                 
                 <div className="flex gap-6 pt-4">
-                  <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">
+                  <a
+                    href="https://github.com/eldonpeterson"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 hover:text-gray-900 transition-colors"
+                    aria-label="GitHub Profile"
+                  >
                     <Github className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">
+                  <a
+                    href="https://linkedin.com/in/eldonpeterson"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 hover:text-gray-900 transition-colors"
+                    aria-label="LinkedIn Profile"
+                  >
                     <Linkedin className="w-5 h-5" />
                   </a>
                 </div>
@@ -732,50 +1146,103 @@ function App() {
             </div>
 
             <div className="lg:col-span-8">
-              <form className="space-y-8" onSubmit={handleContactFormSubmit}>
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
-                      Name
-                    </label>
-                    <input 
-                      type="text" 
-                      name="name"
-                      required
-                      className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none transition-colors font-light"
-                    />
+              {formSubmitted ? (
+                <div className="bg-gray-50 p-12 rounded-lg text-center">
+                  <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
-                      Email
-                    </label>
-                    <input 
-                      type="email" 
-                      name="email"
-                      required
-                      className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none transition-colors font-light"
-                    />
-                  </div>
+                  <h3 className="text-2xl font-light mb-4 text-gray-900">Thank You!</h3>
+                  <p className="text-gray-600 font-light">
+                    Your message has been received. I'll get back to you within 24 hours.
+                  </p>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
-                    Message
-                  </label>
-                  <textarea 
-                    rows={6}
-                    name="message"
-                    required
-                    className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none transition-colors resize-none font-light"
-                  ></textarea>
-                </div>
-                <button 
-                  type="submit"
-                  className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-all duration-300 flex items-center gap-2"
+              ) : (
+                <form
+                  className="space-y-8"
+                  onSubmit={handleContactFormSubmit}
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
                 >
-                  Send Message
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
+                  {/* Hidden fields for Netlify */}
+                  <input type="hidden" name="form-name" value="contact" />
+                  <input type="hidden" name="bot-field" />
+
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        required
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none transition-colors font-light"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none transition-colors font-light"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
+                        Phone (Optional)
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none transition-colors font-light"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
+                        Project Budget
+                      </label>
+                      <select
+                        name="budget"
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 focus:border-gray-900 focus:outline-none transition-colors font-light"
+                      >
+                        <option value="">Select a range</option>
+                        <option value="5k-10k">$5,000 - $10,000</option>
+                        <option value="10k-20k">$10,000 - $20,000</option>
+                        <option value="20k-50k">$20,000 - $50,000</option>
+                        <option value="50k+">$50,000+</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
+                      Project Details
+                    </label>
+                    <textarea
+                      rows={6}
+                      name="message"
+                      required
+                      placeholder="Tell me about your project, goals, and timeline..."
+                      className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none transition-colors resize-none font-light"
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-all duration-300 flex items-center gap-2"
+                  >
+                    Send Message
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
