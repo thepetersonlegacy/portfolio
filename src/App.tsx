@@ -17,6 +17,10 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'projects', 'contact'];
+
+      // Show mobile CTA after scrolling past hero section
+      setShowMobileCTA(window.scrollY > 600);
+
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -502,6 +506,7 @@ function App() {
   };
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [showMobileCTA, setShowMobileCTA] = useState(false);
 
   const handleContactFormSubmit = (e) => {
     e.preventDefault();
@@ -534,8 +539,16 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+      {/* Skip to main content link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-gray-900 focus:text-white focus:rounded-lg"
+      >
+        Skip to main content
+      </a>
+
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm" role="navigation" aria-label="Main navigation">
         <div className="max-w-6xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="text-lg font-medium text-gray-900">
@@ -561,7 +574,8 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center px-8">
+      <main id="main-content">
+      <section id="home" className="relative min-h-screen flex items-center justify-center px-8" aria-label="Hero section">
         <div className="text-center max-w-5xl mx-auto">
           <div className="mb-12">
             <div className="inline-block mb-6 px-4 py-2 bg-gray-100 rounded-full">
@@ -1099,6 +1113,35 @@ function App() {
         </div>
       </section>
 
+      {/* CTA Section */}
+      <section className="py-24 px-8 bg-gray-900 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-light mb-6">
+            Ready to Transform Your Online Presence?
+          </h2>
+          <p className="text-xl text-gray-300 font-light mb-10 max-w-2xl mx-auto">
+            Join 50+ businesses that have increased their leads by an average of 127% with a high-converting website
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-4 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium"
+            >
+              Start Your Project Today
+            </button>
+            <button
+              onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-4 border border-white hover:bg-white hover:text-gray-900 transition-colors rounded-lg font-medium"
+            >
+              View Pricing
+            </button>
+          </div>
+          <p className="text-sm text-gray-400 mt-6">
+            Free consultation • No obligation • Response within 24 hours
+          </p>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-32 px-8">
         <div className="max-w-6xl mx-auto">
@@ -1166,53 +1209,60 @@ function App() {
                   method="POST"
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"
+                  aria-label="Contact form"
                 >
                   {/* Hidden fields for Netlify */}
                   <input type="hidden" name="form-name" value="contact" />
-                  <input type="hidden" name="bot-field" />
+                  <input type="hidden" name="bot-field" aria-hidden="true" />
 
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
-                      <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
-                        Name
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
+                        Name *
                       </label>
                       <input
                         type="text"
+                        id="name"
                         name="name"
                         required
-                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none transition-colors font-light"
+                        aria-required="true"
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
-                        Email
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
+                        Email *
                       </label>
                       <input
                         type="email"
+                        id="email"
                         name="email"
                         required
-                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none transition-colors font-light"
+                        aria-required="true"
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
                       />
                     </div>
                   </div>
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
-                      <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
                         Phone (Optional)
                       </label>
                       <input
                         type="tel"
+                        id="phone"
                         name="phone"
-                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none transition-colors font-light"
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
+                      <label htmlFor="budget" className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
                         Project Budget
                       </label>
                       <select
+                        id="budget"
                         name="budget"
-                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 focus:border-gray-900 focus:outline-none transition-colors font-light"
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
                       >
                         <option value="">Select a range</option>
                         <option value="5k-10k">$5,000 - $10,000</option>
@@ -1223,15 +1273,17 @@ function App() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
-                      Project Details
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-3 uppercase tracking-wider">
+                      Project Details *
                     </label>
                     <textarea
                       rows={6}
+                      id="message"
                       name="message"
                       required
+                      aria-required="true"
                       placeholder="Tell me about your project, goals, and timeline..."
-                      className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none transition-colors resize-none font-light"
+                      className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors resize-none font-light"
                     ></textarea>
                   </div>
                   <button
@@ -1339,6 +1391,29 @@ function App() {
           </div>
         </div>
       )}
+      </main>
+
+      {/* Sticky Mobile CTA */}
+      <div
+        className={`fixed bottom-0 left-0 right-0 z-50 bg-gray-900 text-white p-4 md:hidden transition-transform duration-300 ${
+          showMobileCTA ? 'translate-y-0' : 'translate-y-full'
+        }`}
+      >
+        <div className="flex gap-3">
+          <button
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+            className="flex-1 py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium text-sm"
+          >
+            Start Your Project
+          </button>
+          <button
+            onClick={handleEmailClick}
+            className="py-3 px-4 border border-white hover:bg-white hover:text-gray-900 transition-colors rounded-lg"
+          >
+            <Mail className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
