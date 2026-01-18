@@ -1933,7 +1933,7 @@ function App() {
       <footer className="py-16 px-8 border-t border-gray-100">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-sm text-gray-500 font-light">
-            © 2025 Peterson Pro Services, LLC
+            © 2026 Peterson Pro Design Services, LLC
           </p>
         </div>
       </footer>
