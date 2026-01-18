@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar } from 'lucide-react';
+import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar, BookOpen } from 'lucide-react';
 import { ProjectPages } from './components/ProjectPages';
+import { CaseStudies } from './components/CaseStudies';
 import { PopupModal } from 'react-calendly';
 
 function App() {
@@ -428,6 +429,96 @@ function App() {
     }
   ];
 
+  const caseStudiesData = [
+    {
+      id: 13,
+      title: "Money Team Law Firm Website Redesign",
+      client: "Money Team Law Firm",
+      industry: "Legal Services",
+      image: "https://images.pexels.com/photos/5668772/pexels-photo-5668772.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      summary: "Transforming a traditional law firm's online presence into a modern, client-focused digital experience that increased consultations by 156%.",
+      challenge: "Money Team Law Firm had an outdated website that failed to convey their expertise and professionalism. The site had poor mobile responsiveness, slow loading times, and a confusing navigation structure that was driving potential clients away. They were losing business to competitors with more modern web presences.",
+      process: [
+        "Conducted comprehensive competitor analysis and user research to understand client expectations in the legal industry",
+        "Developed a modern, trust-focused design system with professional typography and a sophisticated color palette",
+        "Restructured the site architecture to prioritize key practice areas and make it easy for clients to find relevant information",
+        "Implemented strategic CTAs and a streamlined contact process to reduce friction in the consultation booking flow",
+        "Optimized for mobile-first experience and implemented performance best practices for fast loading times"
+      ],
+      solution: "We created a sophisticated, modern website that positions Money Team Law Firm as industry leaders. The new design features clear service descriptions, attorney profiles with credentials, client testimonials, and an intuitive consultation booking system. We implemented a content strategy that addresses common legal questions and establishes the firm's expertise.",
+      results: {
+        metric1: { label: "Increase in Consultations", value: "+156%" },
+        metric2: { label: "Faster Load Time", value: "3.2s" },
+        metric3: { label: "Mobile Traffic", value: "+89%" }
+      },
+      testimonial: {
+        quote: "Eldon transformed our online presence completely. We've seen a 156% increase in consultation requests, and clients consistently compliment our professional website. Best investment we've made in our practice.",
+        author: "Michael Thompson, Managing Partner at Money Team Law Firm"
+      },
+      link: "https://moneyteamlawfirm.com",
+      duration: "8 weeks",
+      year: "2024"
+    },
+    {
+      id: 14,
+      title: "Atikis Aviation Catering Brand & Website",
+      client: "Atikis Aviation Catering",
+      industry: "Aviation & Hospitality",
+      image: "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      summary: "Creating a premium digital experience for a luxury aviation catering service that elevated their brand and increased inquiries by 45%.",
+      challenge: "Atikis Aviation Catering needed to establish a strong online presence that reflected their premium service quality. As a new player in the competitive aviation catering market, they needed to quickly build credibility and attract high-value clients. They had no existing brand identity or digital presence.",
+      process: [
+        "Developed a comprehensive brand strategy including logo design, color palette, and visual identity that conveys luxury and professionalism",
+        "Created high-end photography direction and sourced premium imagery that showcases the quality of their catering services",
+        "Designed a sophisticated website with elegant animations and smooth user experience that reflects their premium positioning",
+        "Implemented a service showcase system with detailed menus, aircraft compatibility, and easy inquiry forms",
+        "Optimized for SEO to capture searches from private jet operators and charter companies"
+      ],
+      solution: "We built a complete brand identity and digital presence from the ground up. The website features stunning visuals, detailed service descriptions, and an easy-to-use inquiry system. We created a content strategy that highlights their unique value proposition: fresh, gourmet meals prepared specifically for each flight.",
+      results: {
+        metric1: { label: "Increase in Inquiries", value: "+45%" },
+        metric2: { label: "Average Session", value: "4.2min" },
+        metric3: { label: "Conversion Rate", value: "8.3%" }
+      },
+      testimonial: {
+        quote: "Working with Eldon was a game-changer for our aviation catering business. The website perfectly captures our premium service, and we've seen a 45% increase in online inquiries.",
+        author: "Maria Atikis, Owner of Atikis Aviation Catering"
+      },
+      link: "https://atikisaviation.com",
+      duration: "10 weeks",
+      year: "2024"
+    },
+    {
+      id: 15,
+      title: "Noval Noir Artist Portfolio",
+      client: "Noval Noir",
+      industry: "Arts & Creative",
+      image: "https://images.pexels.com/photos/1839919/pexels-photo-1839919.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      summary: "Designing a visually stunning portfolio for a multidisciplinary artist that tripled commission bookings and established their digital presence.",
+      challenge: "Noval Noir, a talented multidisciplinary artist, was struggling to showcase their diverse work effectively online. Their existing portfolio was cluttered, didn't do justice to their artwork, and made it difficult for potential clients to understand their range and book commissions. They were losing opportunities to artists with better online presentations.",
+      process: [
+        "Analyzed the artist's body of work to develop a categorization system that makes sense for both the artist and potential clients",
+        "Created a minimalist, gallery-style design that puts the artwork front and center without distractions",
+        "Implemented a sophisticated image gallery with high-resolution zoom capabilities and smooth transitions",
+        "Developed a commission inquiry system that guides clients through the process and sets clear expectations",
+        "Optimized images for web while maintaining visual quality, ensuring fast loading without compromising the viewing experience"
+      ],
+      solution: "We created a beautiful, minimalist portfolio that serves as a digital gallery for Noval's work. The design features large, high-quality images, intuitive navigation by medium and style, and a streamlined commission booking process. We implemented a blog section for sharing creative process insights, which has helped build a following and establish Noval as a thought leader in their field.",
+      results: {
+        metric1: { label: "More Commissions", value: "3x" },
+        metric2: { label: "Social Shares", value: "+234%" },
+        metric3: { label: "Gallery Views", value: "+412%" }
+      },
+      testimonial: {
+        quote: "As an artist, I needed someone who understood visual storytelling. Eldon created a portfolio that truly represents my work and has helped me book 3x more commissions.",
+        author: "Noval Noir, Multidisciplinary Artist"
+      },
+      link: "https://novalnoir.com",
+      duration: "6 weeks",
+      year: "2023"
+    }
+  ];
+
   const skills = [
     { name: "Web Design", level: 95, icon: Code },
     { name: "Graphic Design", level: 98, icon: Palette },
@@ -506,11 +597,23 @@ function App() {
     window.location.href = 'mailto:eldon@petersonproservices.com?subject=Project Inquiry&body=Hi Eldon,%0D%0A%0D%0AI would like to discuss a project with you.%0D%0A%0D%0AThank you!';
   };
 
+  const handleCaseStudyView = (caseStudy) => {
+    setSelectedCaseStudy(caseStudy);
+    setShowCaseStudy(true);
+  };
+
+  const handleCloseCaseStudy = () => {
+    setShowCaseStudy(false);
+    setSelectedCaseStudy(null);
+  };
+
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [showMobileCTA, setShowMobileCTA] = useState(false);
   const [showLeadMagnet, setShowLeadMagnet] = useState(false);
   const [leadMagnetSubmitted, setLeadMagnetSubmitted] = useState(false);
   const [showCalendly, setShowCalendly] = useState(false);
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
+  const [showCaseStudy, setShowCaseStudy] = useState(false);
 
   const handleContactFormSubmit = (e) => {
     e.preventDefault();
@@ -560,6 +663,10 @@ function App() {
     );
   }
 
+  if (showCaseStudy && selectedCaseStudy) {
+    return <CaseStudies caseStudy={selectedCaseStudy} onClose={handleCloseCaseStudy} />;
+  }
+
   return (
     <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
       {/* Skip to main content link for accessibility */}
@@ -591,6 +698,13 @@ function App() {
                   {item}
                 </a>
               ))}
+              <button
+                onClick={() => document.getElementById('case-studies').scrollIntoView({ behavior: 'smooth' })}
+                className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-all duration-300 flex items-center gap-1"
+              >
+                <BookOpen className="w-4 h-4" />
+                Case Studies
+              </button>
             </div>
           </div>
         </div>
@@ -1096,6 +1210,58 @@ function App() {
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies Section */}
+      <section id="case-studies" className="py-32 px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl font-light mb-6 text-gray-900">
+              Featured Case Studies
+            </h2>
+            <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
+              Deep dives into real projects with measurable results
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {caseStudiesData.map((caseStudy) => (
+              <div
+                key={caseStudy.id}
+                className="group bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => handleCaseStudyView(caseStudy)}
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={caseStudy.image}
+                    alt={caseStudy.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
+                    {caseStudy.industry}
+                  </div>
+                  <h3 className="text-xl font-light text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
+                    {caseStudy.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 font-light mb-4 line-clamp-2">
+                    {caseStudy.summary}
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                    <span>{caseStudy.results.metric1.value}</span>
+                    <span>•</span>
+                    <span>{caseStudy.duration}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-900 font-medium text-sm group-hover:gap-3 transition-all">
+                    Read Case Study
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
