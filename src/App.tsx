@@ -296,6 +296,94 @@ function App() {
       year: "2024",
       link: "#",
       size: "medium"
+    },
+    {
+      id: 13,
+      title: "The Money Team Law Firm",
+      category: "Legal Services",
+      description: "Professional law firm website specializing in personal injury cases with bold branding and client-focused messaging. Features case evaluation forms, attorney profiles, and comprehensive legal resources. Built to inspire confidence and drive client conversions.",
+      image: "https://images.pexels.com/photos/5668772/pexels-photo-5668772.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Legal", "Personal Injury", "Branding", "Lead Generation"],
+      features: [
+        "Online case evaluation system",
+        "Attorney profile showcases",
+        "Client testimonials and case results",
+        "Legal resources and blog",
+        "Multi-step contact forms",
+        "Mobile-responsive design"
+      ],
+      technologies: ["React", "Next.js", "Tailwind CSS", "Netlify", "Form Handling"],
+      client: "The Money Team Law Firm",
+      duration: "8 weeks",
+      year: "2025",
+      link: "https://money-team-law-firm.netlify.app/",
+      size: "large"
+    },
+    {
+      id: 14,
+      title: "Atikis Aviation Catering",
+      category: "Aviation Services",
+      description: "Premium aviation catering website serving Minnesota airports with exceptional in-flight dining experiences. Features elegant menu presentations, airport service areas, and streamlined ordering system. Designed to reflect luxury and professionalism in private jet catering.",
+      image: "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Aviation", "Catering", "Luxury", "Next.js"],
+      features: [
+        "Interactive menu browsing",
+        "Airport service area mapping",
+        "Online order inquiry system",
+        "Client testimonials showcase",
+        "Photo gallery with lightbox",
+        "Multi-language support"
+      ],
+      technologies: ["Next.js", "React", "Tailwind CSS", "Vercel", "Email Integration"],
+      client: "Atikis Minnesota Aviation Catering",
+      duration: "10 weeks",
+      year: "2025",
+      link: "https://atikiscatering.com/",
+      size: "medium"
+    },
+    {
+      id: 15,
+      title: "Noval Noir Artist Portfolio",
+      category: "Artist Portfolio",
+      description: "Stunning portfolio website for Twin Cities multidisciplinary artist specializing in live performance art, live painting, and community workshops. Features dynamic gallery, event calendar, and commission inquiry system. Designed to showcase artistic vision and cultural impact.",
+      image: "https://images.pexels.com/photos/1839919/pexels-photo-1839919.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Portfolio", "Artist", "Performance Art", "Community"],
+      features: [
+        "Dynamic artwork gallery",
+        "Event calendar and booking",
+        "Commission inquiry forms",
+        "Artist biography and statement",
+        "Social media integration",
+        "Memorial art showcase"
+      ],
+      technologies: ["React", "Next.js", "Tailwind CSS", "CMS Integration", "SEO Optimization"],
+      client: "Noval Noir",
+      duration: "6 weeks",
+      year: "2025",
+      link: "https://novalnoir.com/",
+      size: "small"
+    },
+    {
+      id: 16,
+      title: "Flight Ready Consulting",
+      category: "Aviation Consulting",
+      description: "Professional aviation consulting website offering expert guidance for flight operations, safety compliance, and crew training. Features service breakdowns, consultation booking, and industry insights. Built to establish authority and trust in the aviation sector.",
+      image: "https://images.pexels.com/photos/46148/aircraft-jet-landing-cloud-46148.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Aviation", "Consulting", "Professional Services", "B2B"],
+      features: [
+        "Service portfolio showcase",
+        "Consultation booking system",
+        "Industry insights blog",
+        "Team credentials display",
+        "Client case studies",
+        "Contact and inquiry forms"
+      ],
+      technologies: ["React", "Vite", "Tailwind CSS", "Netlify", "Form Integration"],
+      client: "Flight Ready Consulting",
+      duration: "7 weeks",
+      year: "2025",
+      link: "https://flight-ready-consulting.netlify.app/",
+      size: "medium"
     }
   ];
 
