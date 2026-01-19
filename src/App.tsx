@@ -876,15 +876,15 @@ function App() {
                 key={i}
                 variants={staggerItem}
               >
-                <Card hover className="p-phi-2xl h-full flex flex-col items-center text-center">
+                <Card hover className="p-phi-xl h-full flex flex-col items-center justify-center text-center min-h-[320px]">
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    className="flex justify-center"
+                    className="flex justify-center mb-phi-xl"
                   >
                     {/* Icon container - Golden ratio dimensions */}
                     <div
-                      className="mb-phi-lg rounded-xl bg-gold-50 border border-gold-300 flex items-center justify-center shadow-gold-glow"
+                      className="rounded-xl bg-gold-50 border border-gold-300 flex items-center justify-center shadow-gold-glow"
                       style={{
                         width: 'calc(var(--space-phi-2xl) * 2.618)',
                         height: 'calc(var(--space-phi-2xl) * 2.618)'
@@ -899,8 +899,8 @@ function App() {
                       />
                     </div>
                   </motion.div>
-                  <h3 className="text-phi-sm font-semibold text-gray-900 mb-phi-md uppercase tracking-wider text-center">{usp.title}</h3>
-                  <p className="text-phi-xs text-gray-600 leading-relaxed text-center">{usp.desc}</p>
+                  <h3 className="text-phi-sm font-semibold text-gray-900 mb-phi-lg uppercase tracking-wider text-center">{usp.title}</h3>
+                  <p className="text-phi-sm text-gray-600 leading-relaxed text-center max-w-[280px]">{usp.desc}</p>
                 </Card>
               </motion.div>
             ))}
