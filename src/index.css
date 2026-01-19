@@ -2,6 +2,110 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Golden Ratio Constants */
+  --golden-ratio: 1.618;
+  --golden-ratio-inverse: 0.618;
+  --golden-ratio-squared: 2.618;
+  --golden-ratio-cubed: 4.236;
+  --golden-ratio-fourth: 6.854;
+  --golden-ratio-fifth: 11.089;
+  --golden-ratio-sixth: 17.944;
+
+  /* Brand Colors - Extracted from Peterson Pro Services Logo */
+  --brand-red: #D40000;        /* Logo diamond red - rgb(212, 0, 0) */
+  --brand-gold: #EBC562;       /* Logo lion gold - rgb(235, 197, 98) */
+  --brand-blue: #0a2f85;       /* Primary blue - rgb(10, 47, 133) */
+
+  /* Brand Red Scale (for accents, CTAs, highlights) */
+  --red-50: #FEF2F2;
+  --red-100: #FEE2E2;
+  --red-200: #FECACA;
+  --red-300: #FCA5A5;
+  --red-400: #F87171;
+  --red-500: #EF4444;
+  --red-600: #D40000;          /* Primary brand red */
+  --red-700: #B91C1C;
+  --red-800: #991B1B;
+  --red-900: #7F1D1D;
+  --red-950: #450A0A;
+
+  /* Brand Gold Scale (for premium elements, accents) */
+  --gold-50: #FFFBEB;
+  --gold-100: #FEF3C7;
+  --gold-200: #FDE68A;
+  --gold-300: #FCD34D;
+  --gold-400: #FBBF24;
+  --gold-500: #EBC562;         /* Primary brand gold */
+  --gold-600: #D97706;
+  --gold-700: #B45309;
+  --gold-800: #92400E;
+  --gold-900: #78350F;
+  --gold-950: #451A03;
+
+  /* Golden Ratio Spacing Scale (base: 8px) */
+  --space-phi-xs: 0.309rem;    /* 5px - φ⁻² */
+  --space-phi-sm: 0.5rem;      /* 8px - base */
+  --space-phi-md: 0.809rem;    /* 13px - φ */
+  --space-phi-lg: 1.309rem;    /* 21px - φ² */
+  --space-phi-xl: 2.118rem;    /* 34px - φ³ */
+  --space-phi-2xl: 3.427rem;   /* 55px - φ⁴ */
+  --space-phi-3xl: 5.545rem;   /* 89px - φ⁵ */
+  --space-phi-4xl: 8.972rem;   /* 144px - φ⁶ */
+
+  /* Golden Ratio Typography Scale (base: 16px) */
+  --text-phi-xs: 0.618rem;     /* 9.888px */
+  --text-phi-sm: 1rem;         /* 16px - base */
+  --text-phi-base: 1.618rem;   /* 25.888px */
+  --text-phi-lg: 2.618rem;     /* 41.888px */
+  --text-phi-xl: 4.236rem;     /* 67.776px */
+  --text-phi-2xl: 6.854rem;    /* 109.664px */
+  --text-phi-3xl: 11.089rem;   /* 177.424px */
+
+  /* Golden Ratio Line Heights */
+  --leading-phi-tight: 1.236;  /* φ⁻¹ × 2 */
+  --leading-phi-normal: 1.618; /* φ */
+  --leading-phi-relaxed: 2.618; /* φ² */
+
+  /* Golden Ratio Container Widths */
+  --container-phi-sm: 35rem;   /* 560px */
+  --container-phi-md: 56.618rem; /* 906px - 1440/φ */
+  --container-phi-lg: 91.618rem; /* 1466px */
+  --container-phi-xl: 148.236rem; /* 2372px */
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply bg-white text-gray-900 antialiased;
+  font-size: var(--text-phi-sm);
+  line-height: var(--leading-phi-normal);
+}
+
+/* Premium "Framer-ish" background */
+.bg-elite {
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(99,102,241,0.20), transparent 60%),
+    radial-gradient(900px 500px at 80% 20%, rgba(34,211,238,0.16), transparent 55%),
+    radial-gradient(700px 450px at 50% 90%, rgba(244,63,94,0.10), transparent 60%),
+    linear-gradient(to bottom, rgba(255,255,255,0.03), transparent 35%),
+    #000;
+}
+
+/* Subtle noise (no image required) */
+.noise:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+
 /* iOS 18.2 Liquid Glass Effects */
 @layer utilities {
   .glass-effect {
@@ -38,4 +142,78 @@
 /* Smooth transitions for glass effects */
 .glass-transition {
   transition: background 0.3s ease, backdrop-filter 0.3s ease, border 0.3s ease;
+}
+
+/* Premium light-theme background with subtle gradients */
+.bg-premium-light {
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(10, 47, 133, 0.03), transparent 60%),
+    radial-gradient(900px 500px at 80% 20%, rgba(58, 104, 246, 0.02), transparent 55%),
+    radial-gradient(700px 450px at 50% 90%, rgba(10, 47, 133, 0.02), transparent 60%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(249, 250, 251, 1));
+}
+
+/* Subtle texture overlay for depth (light theme) */
+.texture-light:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.015;
+  mix-blend-mode: overlay;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+
+/* Shimmer animation for premium elements */
+@keyframes shimmer-light {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer-light {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(10, 47, 133, 0.05) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-light 3s ease-in-out infinite;
+}
+
+/* Float animation for decorative elements */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+/* Premium card hover effect */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(10, 47, 133, 0.08);
+}
+
+/* Gradient text effect with blue */
+.gradient-text-blue {
+  background: linear-gradient(135deg, #0a2f85 0%, #3a68f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

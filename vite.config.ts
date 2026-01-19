@@ -9,22 +9,24 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Eldon Peterson | Peterson Pro Services - Web Design',
-        short_name: 'Eldon Peterson',
-        description: 'High-converting websites for law firms, aviation companies, and service-based businesses',
-        theme_color: '#1f2937',
+        name: 'Peterson Pro Services - Premium Web Design & Development',
+        short_name: 'Peterson Pro',
+        description: 'High-converting websites for law firms, aviation companies, and service-based businesses. 127% average lead increase.',
+        theme_color: '#0a2f85', // Primary blue from extracted color
         background_color: '#ffffff',
         display: 'standalone',
         icons: [
           {
-            src: '/icon-192.png',
+            src: '/favicon-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
           },
           {
-            src: '/icon-512.png',
+            src: '/favicon-512x512.png',
             sizes: '512x512',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
           }
         ]
       },

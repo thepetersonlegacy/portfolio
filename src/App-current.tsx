@@ -1,5 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar, BookOpen, BadgeCheck, Blocks, FileText, TrendingUp } from 'lucide-react';
+import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar, BookOpen } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { MobileNav } from './components/MobileNav';
@@ -7,7 +7,6 @@ import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { SocialProofNotification } from './components/SocialProofNotification';
 import { IntakeForm } from './components/IntakeForm';
 import { trackEvent, trackCTAClick, trackFormSubmit, trackDownload } from './utils/analytics';
-import { Pill, SectionTitle, Card, BentoCard, FeatureBadge, StatCard } from './components/FramerComponents';
 
 // Lazy load heavy components for better performance
 const ProjectPages = lazy(() => import('./components/ProjectPages').then(module => ({ default: module.ProjectPages })));
@@ -50,11 +49,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [hoveredProject, setHoveredProject] = useState(null);
 
-  // Parallax scroll for hero - Extended fade-out range to keep CTAs clearly visible
+  // Parallax scroll for hero
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 500], [0, 150]);
-  // Extended to 2000px scroll range with minimum 70% opacity to ensure CTAs remain visible and clickable
-  const heroOpacity = useTransform(scrollY, [0, 2000], [1, 0.7]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
@@ -734,31 +732,14 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-glass border-b border-glass-white shadow-lg shadow-black/5" role="navigation" aria-label="Main navigation">
         <div className="max-w-6xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
-            {/* Peterson Pro Services Logo */}
-            <motion.a
-              href="#home"
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-3 group"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
-              }}
+              className="text-lg font-medium text-gray-900"
             >
-              <img
-                src="/peterson-pro-services-logo.png"
-                alt="Peterson Pro Services - Professional Web Design & Development"
-                className="h-12 w-auto transition-transform duration-300 group-hover:scale-105 bg-transparent"
-                onError={(e) => {
-                  // Fallback to text if logo not found
-                  e.target.style.display = 'none';
-                }}
-              />
-              <span className="text-lg font-medium text-gray-900 ml-2">
-                Peterson Pro Services
-              </span>
-            </motion.a>
+              Eldon Peterson | Peterson Pro Services
+            </motion.div>
             <div className="hidden md:flex space-x-12">
               {['Home', 'About', 'Projects', 'Contact'].map((item) => (
                 <a
@@ -766,8 +747,8 @@ function App() {
                   href={`#${item.toLowerCase()}`}
                   className={`text-sm font-medium transition-all duration-300 relative ${
                     activeSection === item.toLowerCase()
-                      ? 'text-gold-900 after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-0.5 after:bg-gold-500'
-                      : 'text-gray-500 hover:text-red-600'
+                      ? 'text-primary-600 after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-0.5 after:bg-primary-600'
+                      : 'text-gray-500 hover:text-primary-500'
                   }`}
                 >
                   {item}
@@ -780,7 +761,7 @@ function App() {
                   trackCTAClick('navigation', 'Case Studies');
                   document.getElementById('case-studies').scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="text-sm font-medium text-gray-500 hover:text-red-600 transition-all duration-300 flex items-center gap-1"
+                className="text-sm font-medium text-gray-500 hover:text-primary-500 transition-all duration-300 flex items-center gap-1"
               >
                 <BookOpen className="w-4 h-4" />
                 Case Studies
@@ -793,56 +774,37 @@ function App() {
         </div>
       </nav>
 
-      {/* Hero Section - Golden Ratio Layout */}
+      {/* Hero Section */}
       <main id="main-content">
-      <section id="home" className="relative min-h-screen flex items-center justify-center px-phi-xl md:px-phi-3xl py-phi-5xl bg-premium-light" aria-label="Hero section">
-        {/* Floating orbs for depth - Golden ratio positioning */}
-        <div className="pointer-events-none absolute inset-0 opacity-40">
-          <div className="absolute -left-40 top-[10%] h-[520px] w-[520px] float-gentle rounded-full bg-gold-100 blur-3xl" />
-          <div className="absolute -right-40 top-[38.2%] h-[520px] w-[520px] float-gentle rounded-full bg-gold-50 blur-3xl" style={{ animationDelay: '1s' }} />
-        </div>
-
+      <section id="home" className="relative min-h-screen flex items-center justify-center px-8" aria-label="Hero section">
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
-          className="text-center max-w-phi-xl mx-auto relative z-10"
+          className="text-center max-w-5xl mx-auto"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-phi-3xl"
+            className="mb-12"
           >
-            {/* Premium Pills - Golden ratio spacing */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="mb-phi-2xl flex flex-wrap justify-center gap-phi-md"
+              className="inline-block mb-6 px-4 py-2 bg-gray-100 rounded-full"
             >
-              <Pill variant="primary">
-                <BadgeCheck className="h-3.5 w-3.5" />
-                8+ Years Experience
-              </Pill>
-              <Pill variant="primary">
-                <Star className="h-3.5 w-3.5" />
-                100+ Happy Clients
-              </Pill>
-              <Pill variant="success">
-                <TrendingUp className="h-3.5 w-3.5" />
-                4.9/5 Rating
-              </Pill>
+              <p className="text-xs font-medium text-gray-700 uppercase tracking-wider">
+                8+ Years Experience • 100+ Happy Clients • 4.9/5 Rating
+              </p>
             </motion.div>
-
-            {/* Hero Heading - Golden ratio typography */}
-            <h1 className="text-fluid-2xl md:text-fluid-3xl font-light mb-phi-3xl leading-tight tracking-tight">
-              {["Transform Your Website Into", "A 24/7 Lead Generation", "Machine That Pays For Itself"].map((line, i) => (
+            <h1 className="text-6xl md:text-8xl font-light mb-8 leading-none tracking-tight">
+              {["I Build Websites That", "Convert Visitors", "Into Customers"].map((line, i) => (
                 <motion.span
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.2 + 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className={`block ${i === 0 ? 'text-gray-900' : i === 1 ? 'text-red-600 font-medium' : 'text-gray-600'}`}
-                  style={{ marginBottom: i < 2 ? 'var(--space-phi-lg)' : '0' }}
+                  className={`block ${i === 0 ? 'text-gray-900' : 'text-gray-600'}`}
                 >
                   {line}
                 </motion.span>
@@ -850,85 +812,61 @@ function App() {
             </h1>
           </motion.div>
 
-          {/* Subheading - Golden ratio typography and spacing */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.6 }}
-            className="text-fluid-base md:text-fluid-lg text-gray-600 mb-phi-3xl leading-relaxed font-light max-w-phi-md mx-auto"
+            className="text-lg md:text-xl text-gray-600 mb-12 leading-relaxed font-light max-w-3xl mx-auto"
           >
-            Stop Losing Money to a Website That Doesn't Convert. Conversion-first web design for law firms, aviation companies, and premium service brands—built to turn traffic into booked calls.
+            Specializing in high-converting websites for <strong className="font-medium text-gray-900">law firms</strong>, <strong className="font-medium text-gray-900">aviation companies</strong>, and <strong className="font-medium text-gray-900">service-based businesses</strong>. Average client sees <strong className="font-medium text-gray-900">127% increase in leads</strong> within 90 days.
           </motion.p>
 
-          {/* USPs - Premium Cards with Golden Ratio */}
+          {/* USPs */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="grid md:grid-cols-3 gap-phi-xl mb-phi-4xl max-w-phi-lg mx-auto"
+            className="grid md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto"
           >
             {[
-              { icon: Zap, title: "127% More Leads", desc: "Average client increase in qualified inquiries within 90 days" },
-              { icon: Code, title: "3X Higher Conversions", desc: "Strategic design that turns 60% more visitors into paying clients" },
-              { icon: Sparkles, title: "Done-For-You", desc: "Zero hassle. I handle everything from design to deployment." }
+              { icon: Zap, title: "Lightning Fast", desc: "Sub-2 second load times guaranteed" },
+              { icon: Star, title: "Conversion Focused", desc: "Designed to turn visitors into paying clients" },
+              { icon: Sparkles, title: "White-Glove Service", desc: "Direct access to me, not a project manager" }
             ].map((usp, i) => (
               <motion.div
                 key={i}
                 variants={staggerItem}
+                whileHover={{ y: -4 }}
+                className="text-center bg-white/60 backdrop-blur-glass border border-glass-white rounded-xl p-6 shadow-lg transition-all duration-300"
               >
-                <Card hover className="p-phi-2xl h-full aspect-golden flex flex-col items-center text-center">
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="flex justify-center"
-                  >
-                    {/* Icon container - Golden ratio dimensions */}
-                    <div
-                      className="mb-phi-lg rounded-xl bg-gold-50 border border-gold-300 flex items-center justify-center shadow-gold-glow"
-                      style={{
-                        width: 'calc(var(--space-phi-2xl) * 2.618)',
-                        height: 'calc(var(--space-phi-2xl) * 2.618)'
-                      }}
-                    >
-                      <usp.icon
-                        className="text-gold-700"
-                        style={{
-                          width: 'var(--space-phi-2xl)',
-                          height: 'var(--space-phi-2xl)'
-                        }}
-                      />
-                    </div>
-                  </motion.div>
-                  <h3 className="text-phi-sm font-semibold text-gray-900 mb-phi-md uppercase tracking-wider text-center">{usp.title}</h3>
-                  <p className="text-phi-xs text-gray-600 leading-relaxed text-center">{usp.desc}</p>
-                </Card>
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <usp.icon className="w-8 h-8 mx-auto mb-3 text-gray-900" />
+                </motion.div>
+                <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">{usp.title}</h3>
+                <p className="text-sm text-gray-600 font-light">{usp.desc}</p>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* CTA Buttons - Golden Ratio Padding */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-phi-lg justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.button
-              whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(212, 0, 0, 0.3)' }}
+              whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(10, 47, 133, 0.3)' }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 trackCTAClick('hero', 'Schedule Free Consultation');
                 setShowIntakeForm(true);
               }}
-              className="group bg-red-600 text-white hover:bg-red-700 active:bg-red-800 transition-all duration-300 flex items-center gap-phi-md rounded-lg font-medium shadow-red-glow hover:shadow-red-glow-lg text-phi-sm"
-              style={{
-                paddingLeft: 'var(--space-phi-2xl)',
-                paddingRight: 'var(--space-phi-2xl)',
-                paddingTop: 'var(--space-phi-lg)',
-                paddingBottom: 'var(--space-phi-lg)'
-              }}
+              className="group px-8 py-4 bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800 transition-all duration-300 flex items-center gap-2 rounded-lg font-medium shadow-blue-glow"
             >
-              Claim Your Free Strategy Session
+              Schedule Free Consultation
               <Calendar className="w-4 h-4" />
             </motion.button>
             <motion.button
@@ -938,20 +876,14 @@ function App() {
                 trackCTAClick('hero', 'Get Free Guide');
                 setShowLeadMagnet(true);
               }}
-              className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-300 flex items-center gap-phi-md rounded-lg font-medium text-phi-sm"
-              style={{
-                paddingLeft: 'var(--space-phi-2xl)',
-                paddingRight: 'var(--space-phi-2xl)',
-                paddingTop: 'var(--space-phi-lg)',
-                paddingBottom: 'var(--space-phi-lg)'
-              }}
+              className="px-8 py-4 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition-all duration-300 flex items-center gap-2 rounded-lg font-medium"
             >
-              Download Free ROI Calculator
+              Get Free Guide
               <Sparkles className="w-4 h-4" />
             </motion.button>
           </motion.div>
-          <p className="text-phi-xs text-gray-500 mt-phi-xl">
-            ⚡ Only 3 strategy sessions available this month • $2,500 value • Zero pressure sales
+          <p className="text-sm text-gray-500 mt-6">
+            🎯 Free 30-min consultation • No obligation • Response within 24 hours
           </p>
         </motion.div>
       </section>
@@ -997,13 +929,13 @@ function App() {
                 <div className="lg:col-span-7 space-y-8">
                   <div className="space-y-6">
                     <p className="text-lg text-gray-700 leading-relaxed font-light">
-                      I'm Eldon Peterson, and I've spent the last 8+ years engineering websites that generate measurable ROI for premium service businesses. While most developers focus on making sites "look pretty," I architect conversion systems that transform your website into your #1 sales employee.
+                      I'm Eldon Peterson, a software engineer and graphic, web, and app designer dedicated to bringing visions to life through clean, modern, and impactful digital experiences. With a keen eye for design and a passion for functionality, I create websites and graphics that not only look stunning but also drive results for brands and businesses.
                     </p>
                     <p className="text-lg text-gray-700 leading-relaxed font-light">
-                      My clients don't hire me for another generic website—they invest in a strategic asset that pays for itself within 90 days. From aviation companies closing $50K+ contracts to law firms booking 3X more consultations, I deliver results that matter to your bottom line, not just your ego.
+                      From custom websites to cohesive branding, I combine creativity with strategy to ensure every project communicates its message clearly and powerfully. Whether you're looking to establish your online presence or elevate your existing brand, I'm here to design solutions that work seamlessly and leave a lasting impression.
                     </p>
                     <p className="text-lg text-gray-900 font-medium leading-relaxed">
-                      If you're ready to stop wasting money on a website that doesn't work, let's talk.
+                      Let's build something extraordinary together.
                     </p>
                   </div>
                   
@@ -1029,24 +961,24 @@ function App() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block px-4 py-2 bg-white/10 rounded-full mb-6">
             <p className="text-xs font-medium uppercase tracking-wider">
-              $2,500 Value • Yours Free
+              Free Resource
             </p>
           </div>
           <h2 className="text-3xl md:text-4xl font-light mb-6">
-            Calculate Your Website's True ROI Potential
+            Is Your Website Driving Customers Away?
           </h2>
           <p className="text-xl text-gray-300 font-light mb-8 max-w-2xl mx-auto">
-            Discover exactly how much revenue you're leaving on the table with my proprietary ROI calculator. Most businesses find they're losing $10K-$50K annually from poor website performance alone.
+            Download our free guide and discover the 10 critical mistakes that are costing you clients—and how to fix them today.
           </p>
           <button
             onClick={() => setShowLeadMagnet(true)}
-            className="px-8 py-4 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium inline-flex items-center gap-2 shadow-red-glow hover:shadow-red-glow-lg"
+            className="px-8 py-4 bg-white text-gray-900 hover:bg-gray-100 transition-colors rounded-lg font-medium inline-flex items-center gap-2"
           >
-            Get Your Free ROI Report
+            Download Free Guide
             <Sparkles className="w-5 h-5" />
           </button>
           <p className="text-sm text-gray-400 mt-4">
-            Join 847+ business owners who discovered their website's hidden revenue potential
+            Join 500+ business owners who've transformed their websites
           </p>
         </div>
       </section>
@@ -1056,10 +988,10 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl font-light mb-6 text-gray-900">
-              My Results-Driven Process
+              How I Work
             </h2>
             <p className="text-gray-600 font-light max-w-2xl mx-auto">
-              A battle-tested system that's generated over $2.3M in client revenue
+              A proven process that delivers exceptional results, every time
             </p>
           </div>
 
@@ -1068,12 +1000,12 @@ function App() {
               <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-light">
                 01
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-3">Revenue Audit</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-3">Discovery</h3>
               <p className="text-gray-600 font-light mb-4">
-                I analyze your current site's conversion gaps and identify $10K+ in hidden revenue opportunities
+                We discuss your goals, target audience, and vision in detail
               </p>
               <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
-                Week 1
+                1-2 Weeks
               </p>
             </div>
 
@@ -1081,12 +1013,12 @@ function App() {
               <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-light">
                 02
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-3">Strategic Design</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-3">Design</h3>
               <p className="text-gray-600 font-light mb-4">
-                Psychology-driven layouts engineered to convert your specific audience—not generic templates
+                I create mockups and iterate based on your feedback
               </p>
               <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
-                Weeks 2-3
+                2-3 Weeks
               </p>
             </div>
 
@@ -1094,12 +1026,12 @@ function App() {
               <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-light">
                 03
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-3">Elite Development</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-3">Development</h3>
               <p className="text-gray-600 font-light mb-4">
-                Lightning-fast code optimized for conversions, SEO, and mobile—guaranteed sub-2s load times
+                Building your site with clean, performant code
               </p>
               <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
-                Weeks 4-6
+                3-4 Weeks
               </p>
             </div>
 
@@ -1107,249 +1039,90 @@ function App() {
               <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-light">
                 04
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-3">Launch & Optimize</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-3">Launch & Support</h3>
               <p className="text-gray-600 font-light mb-4">
-                90-day performance guarantee with ongoing optimization until you hit your lead targets
+                Deploy, train, and provide ongoing support
               </p>
               <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
-                Week 7+
+                Ongoing
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Bento Grid - Golden Ratio Layout */}
-      <motion.section
-        className="py-phi-5xl px-phi-xl md:px-phi-3xl bg-gray-50"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={fadeInUp}
-      >
-        <div className="max-w-phi-xl mx-auto">
-          <SectionTitle
-            eyebrow="Services That Generate ROI"
-            title="Strategic web systems engineered for revenue growth"
-            subtitle="I don't build websites. I build conversion machines that pay for themselves in 90 days or less."
-            centered
-          />
-
-          {/* Bento Grid - Golden ratio spacing and proportions */}
-          <motion.div
-            className="mt-phi-4xl grid gap-phi-lg md:grid-cols-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {/* Large cards - 3 columns each (1:1 ratio in grid) */}
-            <BentoCard size="default" className="md:col-span-3 border-2 border-gold-500 shadow-gold-glow">
-              <div className="flex items-start gap-phi-md mb-phi-lg">
-                <div
-                  className="rounded-xl bg-gold-50 border border-gold-300 flex items-center justify-center shrink-0"
-                  style={{
-                    width: 'calc(var(--space-phi-2xl) * 1.618)',
-                    height: 'calc(var(--space-phi-2xl) * 1.618)'
-                  }}
-                >
-                  <Code
-                    className="text-gold-700"
-                    style={{
-                      width: 'var(--space-phi-xl)',
-                      height: 'var(--space-phi-xl)'
-                    }}
-                  />
-                </div>
-                <div>
-                  <h3 className="text-phi-base font-semibold text-gold-900 mb-phi-xs">Custom Development</h3>
-                  <p className="text-phi-xs text-gray-600 leading-relaxed">
-                    Enterprise-grade web applications that handle 10,000+ daily visitors without breaking a sweat. Built for scale, speed, and serious ROI.
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-phi-sm mt-phi-lg">
-                <Pill>React</Pill>
-                <Pill>TypeScript</Pill>
-                <Pill>Tailwind</Pill>
-                <Pill>Next.js</Pill>
-              </div>
-            </BentoCard>
-
-            <BentoCard size="default" className="md:col-span-3 border-2 border-gold-500 shadow-gold-glow">
-              <div className="flex items-start gap-phi-md mb-phi-lg">
-                <div
-                  className="rounded-xl bg-gold-50 border border-gold-300 flex items-center justify-center shrink-0"
-                  style={{
-                    width: 'calc(var(--space-phi-2xl) * 1.618)',
-                    height: 'calc(var(--space-phi-2xl) * 1.618)'
-                  }}
-                >
-                  <Palette
-                    className="text-gold-700"
-                    style={{
-                      width: 'var(--space-phi-xl)',
-                      height: 'var(--space-phi-xl)'
-                    }}
-                  />
-                </div>
-                <div>
-                  <h3 className="text-phi-base font-semibold text-gold-900 mb-phi-xs">UI/UX Design</h3>
-                  <p className="text-phi-xs text-gray-600 leading-relaxed">
-                    Psychology-driven designs that guide visitors to take action. Every pixel engineered to increase conversions by 60%+.
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-phi-sm mt-phi-lg">
-                <Pill>Figma</Pill>
-                <Pill>Prototyping</Pill>
-                <Pill>User Testing</Pill>
-              </div>
-            </BentoCard>
-
-            {/* Small cards - 2 columns each (golden ratio: 3:2 ≈ 1.5:1) */}
-            <BentoCard size="small" className="md:col-span-2">
-              <div
-                className="rounded-xl bg-gold-50 border border-gold-300 flex items-center justify-center mb-phi-lg shadow-gold-glow"
-                style={{
-                  width: 'calc(var(--space-phi-2xl) * 1.618)',
-                  height: 'calc(var(--space-phi-2xl) * 1.618)'
-                }}
-              >
-                <Zap
-                  className="text-gold-700"
-                  style={{
-                    width: 'var(--space-phi-xl)',
-                    height: 'var(--space-phi-xl)'
-                  }}
-                />
-              </div>
-              <h3 className="text-phi-sm font-semibold text-gray-900 mb-phi-md">Sub-2s Load Times</h3>
-              <p className="text-phi-xs text-gray-600 leading-relaxed">
-                Guaranteed lightning-fast performance. Every 1s delay costs you 7% in conversions—I won't let that happen.
-              </p>
-            </BentoCard>
-
-            <BentoCard size="small" className="md:col-span-2">
-              <div
-                className="rounded-xl bg-gold-50 border border-gold-300 flex items-center justify-center mb-phi-lg shadow-gold-glow"
-                style={{
-                  width: 'calc(var(--space-phi-2xl) * 1.618)',
-                  height: 'calc(var(--space-phi-2xl) * 1.618)'
-                }}
-              >
-                <FileText
-                  className="text-gold-700"
-                  style={{
-                    width: 'var(--space-phi-xl)',
-                    height: 'var(--space-phi-xl)'
-                  }}
-                />
-              </div>
-              <h3 className="text-phi-sm font-semibold text-gray-900 mb-phi-md">SEO Domination</h3>
-              <p className="text-phi-xs text-gray-600 leading-relaxed">
-                Rank higher, get found faster. Technical SEO that puts you on page 1 for your money keywords.
-              </p>
-            </BentoCard>
-
-            <BentoCard size="small" className="md:col-span-2">
-              <div
-                className="rounded-xl bg-gold-50 border border-gold-300 flex items-center justify-center mb-phi-lg shadow-gold-glow"
-                style={{
-                  width: 'calc(var(--space-phi-2xl) * 1.618)',
-                  height: 'calc(var(--space-phi-2xl) * 1.618)'
-                }}
-              >
-                <Blocks
-                  className="text-gold-700"
-                  style={{
-                    width: 'var(--space-phi-xl)',
-                    height: 'var(--space-phi-xl)'
-                  }}
-                />
-              </div>
-              <h3 className="text-phi-sm font-semibold text-gray-900 mb-phi-md">Smart Integrations</h3>
-              <p className="text-phi-xs text-gray-600 leading-relaxed">
-                CRM, email, analytics, payments—everything connected and automated so you can focus on closing deals.
-              </p>
-            </BentoCard>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Services & Pricing Section - Golden Ratio Layout */}
+      {/* Services & Pricing Section */}
       <motion.section
         id="services"
-        className="py-phi-5xl px-phi-xl md:px-phi-3xl"
+        className="py-32 px-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeInUp}
       >
-        <div className="max-w-phi-xl mx-auto">
-          <SectionTitle
-            eyebrow="Investment That Pays For Itself"
-            title="Choose your revenue acceleration tier"
-            subtitle="Every package includes my 90-day performance guarantee: hit your lead targets or you don't pay the final invoice."
-            centered
-          />
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-light mb-6 text-gray-900">
+              Services & Investment
+            </h2>
+            <p className="text-gray-600 font-light max-w-2xl mx-auto">
+              Transparent pricing for exceptional value. Choose the package that fits your needs.
+            </p>
+          </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-phi-xl mt-phi-4xl"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {/* Non-Profit Tier - Golden Ratio Spacing */}
+            {/* Non-Profit Tier */}
             <motion.div
               variants={staggerItem}
               whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-              className="bg-white/85 backdrop-blur-glass border-2 border-green-500 rounded-xl shadow-lg transition-all duration-300 relative"
-              style={{ padding: 'var(--space-phi-2xl)' }}
+              className="bg-white/85 backdrop-blur-glass border-2 border-green-500 rounded-xl p-8 shadow-lg transition-all duration-300 relative"
             >
-              <div
-                className="absolute top-0 right-0 bg-green-500 text-white text-phi-xs font-medium uppercase tracking-wider rounded-bl-lg rounded-tr-lg"
-                style={{
-                  paddingLeft: 'var(--space-phi-md)',
-                  paddingRight: 'var(--space-phi-md)',
-                  paddingTop: 'var(--space-phi-xs)',
-                  paddingBottom: 'var(--space-phi-xs)'
-                }}
-              >
+              <div className="absolute top-0 right-0 bg-green-500 text-white px-3 py-1 text-xs font-medium uppercase tracking-wider rounded-bl-lg rounded-tr-lg">
                 Non-Profit
               </div>
-              <h3 className="text-phi-base font-light text-gray-900 mb-phi-sm border-b-2 border-gold-200 pb-phi-md">Community</h3>
-              <div className="mb-phi-2xl mt-phi-lg">
-                <span className="text-phi-lg font-light text-gold-900">$3,000</span>
-                <span className="text-phi-xs text-gray-500 font-light"> starting</span>
+              <h3 className="text-2xl font-light text-gray-900 mb-2">Community</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-light text-gray-900">$3,000</span>
+                <span className="text-gray-500 font-light"> starting</span>
               </div>
-              <p className="text-phi-xs text-gray-600 font-medium uppercase tracking-wider mb-phi-2xl">
-                For mission-driven organizations making a difference
+              <p className="text-sm text-gray-600 font-medium uppercase tracking-wider mb-6">
+                Special rates for 501(c)(3) organizations
               </p>
-              <ul className="space-y-phi-lg mb-phi-3xl">
+              <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>5-page custom website</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>Mobile responsive design</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>Donation form integration</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>Volunteer signup forms</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>Basic SEO optimization</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
+                  <span className="text-primary-600 mt-1">✓</span>
                   <span>2 rounds of revisions</span>
                 </li>
               </ul>
@@ -1363,9 +1136,9 @@ function App() {
                   trackCTAClick('pricing_community', 'Schedule Consultation');
                   setShowIntakeForm(true);
                 }}
-                className="w-full py-3 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium shadow-red-glow hover:shadow-red-glow-lg"
+                className="w-full py-3 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition-colors rounded-lg font-medium"
               >
-                Claim Your Spot
+                Schedule Consultation
               </motion.button>
             </motion.div>
 
@@ -1375,34 +1148,34 @@ function App() {
               whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
               className="bg-white/85 backdrop-blur-glass border border-glass-white rounded-xl p-8 shadow-lg transition-all duration-300"
             >
-              <h3 className="text-2xl font-light text-gray-900 mb-2 border-b-2 border-gold-200 pb-3">Essential</h3>
-              <div className="mb-6 mt-4">
-                <span className="text-4xl font-light text-gold-900">$5,000</span>
+              <h3 className="text-2xl font-light text-gray-900 mb-2">Essential</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-light text-gray-900">$5,000</span>
                 <span className="text-gray-500 font-light"> starting</span>
               </div>
               <p className="text-sm text-gray-600 font-medium uppercase tracking-wider mb-6">
-                Perfect for businesses ready to scale
+                Ideal for small businesses & startups
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
-                  <span>5-page conversion-optimized website</span>
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>5-page custom website</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
-                  <span>Mobile-first responsive design</span>
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Mobile responsive design</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
-                  <span>Technical SEO + keyword targeting</span>
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Basic SEO optimization</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
-                  <span>Lead capture forms + CRM integration</span>
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Contact form integration</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
-                  <span>Unlimited revisions until you're thrilled</span>
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>2 rounds of revisions</span>
                 </li>
               </ul>
               <motion.button
@@ -1412,9 +1185,9 @@ function App() {
                   trackCTAClick('pricing_essential', 'Schedule Consultation');
                   setShowIntakeForm(true);
                 }}
-                className="w-full py-3 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium shadow-red-glow hover:shadow-red-glow-lg"
+                className="w-full py-3 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition-colors rounded-lg font-medium"
               >
-                Start Generating Leads
+                Schedule Consultation
               </motion.button>
             </motion.div>
 
@@ -1427,50 +1200,50 @@ function App() {
               <div className="absolute top-0 right-0 bg-white text-gray-900 px-4 py-1 text-xs font-medium uppercase tracking-wider rounded-bl-lg rounded-tr-lg">
                 Most Popular
               </div>
-              <h3 className="text-2xl font-light mb-2 border-b-2 border-gold-500 pb-3">Professional</h3>
-              <div className="mb-6 mt-4">
-                <span className="text-4xl font-light text-gold-300">$12,000</span>
+              <h3 className="text-2xl font-light mb-2">Professional</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-light">$12,000</span>
                 <span className="text-gray-400 font-light"> starting</span>
               </div>
               <p className="text-sm text-gray-400 font-medium uppercase tracking-wider mb-6">
-                For businesses serious about dominating their market
+                Ideal for growing businesses
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3 text-gray-200 font-light">
                   <span className="text-white mt-1">✓</span>
-                  <span>10-page revenue-focused website</span>
+                  <span>10-page custom website</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-200 font-light">
                   <span className="text-white mt-1">✓</span>
-                  <span>Premium animations + micro-interactions</span>
+                  <span>Advanced animations</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-200 font-light">
                   <span className="text-white mt-1">✓</span>
-                  <span>Full CMS + content strategy</span>
+                  <span>CMS integration</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-200 font-light">
                   <span className="text-white mt-1">✓</span>
-                  <span>E-commerce with conversion optimization</span>
+                  <span>E-commerce functionality</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-200 font-light">
                   <span className="text-white mt-1">✓</span>
-                  <span>Advanced SEO + analytics dashboard</span>
+                  <span>Advanced SEO & analytics</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-200 font-light">
                   <span className="text-white mt-1">✓</span>
-                  <span>90-day performance guarantee</span>
+                  <span>Unlimited revisions</span>
                 </li>
               </ul>
               <motion.button
-                whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(212, 0, 0, 0.4)' }}
+                whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)' }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   trackCTAClick('pricing_professional', 'Schedule Consultation');
                   setShowIntakeForm(true);
                 }}
-                className="w-full py-3 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium shadow-red-glow-lg"
+                className="w-full py-3 bg-white text-primary-600 hover:bg-primary-50 transition-colors rounded-lg font-medium"
               >
-                Accelerate My Revenue
+                Schedule Consultation
               </motion.button>
             </motion.div>
 
@@ -1480,37 +1253,37 @@ function App() {
               whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
               className="bg-white/85 backdrop-blur-glass border border-glass-white rounded-xl p-8 shadow-lg transition-all duration-300"
             >
-              <h3 className="text-2xl font-light text-gray-900 mb-2 border-b-2 border-gold-200 pb-3">Enterprise</h3>
-              <div className="mb-6 mt-4">
-                <span className="text-4xl font-light text-gold-900">Custom</span>
+              <h3 className="text-2xl font-light text-gray-900 mb-2">Enterprise</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-light text-gray-900">Custom</span>
               </div>
               <p className="text-sm text-gray-600 font-medium uppercase tracking-wider mb-6">
-                For organizations demanding elite-tier results
+                Ideal for large organizations
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
-                  <span>Unlimited pages + custom architecture</span>
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Unlimited pages</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
-                  <span>Bespoke features engineered for your workflow</span>
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Custom functionality</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
-                  <span>Full API ecosystem + automation</span>
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>API integrations</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
-                  <span>Direct Slack/phone access to me 24/7</span>
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Dedicated support</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
-                  <span>Priority development + same-day responses</span>
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>Priority development</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700 font-light">
-                  <span className="text-gold-700 mt-1">✓</span>
-                  <span>Quarterly strategy sessions + optimization</span>
+                  <span className="text-gray-900 mt-1">✓</span>
+                  <span>White-glove service</span>
                 </li>
               </ul>
               <motion.button
@@ -1520,9 +1293,9 @@ function App() {
                   trackCTAClick('pricing_enterprise', 'Schedule Consultation');
                   setShowIntakeForm(true);
                 }}
-                className="w-full py-3 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium shadow-red-glow hover:shadow-red-glow-lg"
+                className="w-full py-3 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition-colors rounded-lg font-medium"
               >
-                Let's Talk Strategy
+                Schedule Consultation
               </motion.button>
             </motion.div>
           </motion.div>
@@ -1543,7 +1316,7 @@ function App() {
             <div className="lg:col-span-4">
               <h2 className="text-4xl font-light mb-8 text-gray-900 relative inline-block">
                 Selected Work
-                <span className="absolute bottom-0 left-0 w-20 h-1 bg-gold-500 rounded-full shadow-gold-glow"></span>
+                <span className="absolute bottom-0 left-0 w-20 h-1 bg-primary-600 rounded-full"></span>
               </h2>
               <p className="text-gray-600 font-light leading-relaxed mt-4">
                 A showcase of my latest work spanning web design, brand identity, and digital experiences
@@ -1651,15 +1424,15 @@ function App() {
                     </div>
                   </div>
 
-                  {/* Interactive Border with Gold Glow */}
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold-500/50 group-hover:shadow-gold-glow-lg transition-all duration-500"></div>
+                  {/* Interactive Border */}
+                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-white/30 transition-all duration-500"></div>
                 </motion.div>
               );
             })}
           </motion.div>
 
           {/* Featured Project Spotlight */}
-          <div className="mt-32 pt-16 border-t border-gold-200">
+          <div className="mt-32 pt-16 border-t border-gray-100">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <div className="text-xs font-medium uppercase tracking-wider text-gray-500 mb-4">
@@ -1710,10 +1483,10 @@ function App() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl font-light mb-6 text-gray-900">
-              Real Results. Real Revenue Growth.
+              Featured Case Studies
             </h2>
             <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
-              See exactly how I've helped businesses like yours generate millions in additional revenue
+              Deep dives into real projects with measurable results
             </p>
           </motion.div>
 
@@ -1784,10 +1557,10 @@ function App() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl font-light mb-6 text-gray-900">
-              What My Clients Say About Working With Me
+              Client Success Stories
             </h2>
             <p className="text-gray-600 font-light max-w-2xl mx-auto mb-6">
-              Real business owners sharing the exact results they achieved—not vague testimonials, but specific revenue increases and lead growth
+              Don't just take my word for it—hear from the businesses I've helped transform
             </p>
             {testimonials.some(t => t.videoUrl) && (
               <div className="flex justify-center gap-4 mt-8">
@@ -1826,8 +1599,8 @@ function App() {
               <motion.div
                 key={testimonial.id}
                 variants={staggerItem}
-                whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(235, 197, 98, 0.2), 0 10px 10px -5px rgba(235, 197, 98, 0.1)" }}
-                className="bg-gold-50 backdrop-blur-glass border-l-4 border-gold-500 p-8 rounded-xl shadow-gold-glow transition-all duration-300"
+                whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+                className="bg-white/80 backdrop-blur-glass border border-glass-white p-8 rounded-xl shadow-lg transition-all duration-300"
               >
                 {showVideoTestimonials && testimonial.videoUrl ? (
                   <div className="mb-6">
@@ -1843,7 +1616,7 @@ function App() {
                     </div>
                     <div className="flex gap-1 mb-2">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-gold-500 text-gold-500" />
+                        <Star key={i} className="w-4 h-4 fill-gray-900 text-gray-900" />
                       ))}
                     </div>
                   </div>
@@ -1851,7 +1624,7 @@ function App() {
                   <div className="mb-6">
                     <div className="flex gap-1 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-gold-500 text-gold-500" />
+                        <Star key={i} className="w-4 h-4 fill-gray-900 text-gray-900" />
                       ))}
                     </div>
                     <p className="text-gray-700 font-light leading-relaxed italic">
@@ -1859,9 +1632,9 @@ function App() {
                     </p>
                   </div>
                 )}
-                <div className="pt-6 border-t border-gold-200">
-                  <p className="font-semibold text-gold-900">{testimonial.name}</p>
-                  <p className="text-sm text-gray-600 font-light">
+                <div className="pt-6 border-t border-gray-100">
+                  <p className="font-medium text-gray-900">{testimonial.name}</p>
+                  <p className="text-sm text-gray-500 font-light">
                     {testimonial.title}, {testimonial.company}
                   </p>
                 </div>
@@ -1871,27 +1644,27 @@ function App() {
 
           {/* Trust Badges */}
           <motion.div
-            className="mt-20 pt-16 border-t border-gold-200"
+            className="mt-20 pt-16 border-t border-gray-200"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <motion.div variants={staggerItem} className="bg-gold-50 border border-gold-300 rounded-lg p-6 shadow-gold-glow">
-                <div className="text-4xl font-light text-gold-900 mb-2">8+</div>
+              <motion.div variants={staggerItem}>
+                <div className="text-4xl font-light text-gray-900 mb-2">8+</div>
                 <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Years Experience</div>
               </motion.div>
-              <motion.div variants={staggerItem} className="bg-gold-50 border border-gold-300 rounded-lg p-6 shadow-gold-glow">
-                <div className="text-4xl font-light text-gold-900 mb-2">100+</div>
+              <motion.div variants={staggerItem}>
+                <div className="text-4xl font-light text-gray-900 mb-2">100+</div>
                 <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Happy Clients</div>
               </motion.div>
-              <motion.div variants={staggerItem} className="bg-gold-50 border border-gold-300 rounded-lg p-6 shadow-gold-glow">
-                <div className="text-4xl font-light text-gold-900 mb-2">100+</div>
+              <motion.div variants={staggerItem}>
+                <div className="text-4xl font-light text-gray-900 mb-2">100+</div>
                 <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Projects Delivered</div>
               </motion.div>
-              <motion.div variants={staggerItem} className="bg-gold-50 border border-gold-300 rounded-lg p-6 shadow-gold-glow">
-                <div className="text-4xl font-light text-gold-900 mb-2">4.9/5</div>
+              <motion.div variants={staggerItem}>
+                <div className="text-4xl font-light text-gray-900 mb-2">4.9/5</div>
                 <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Average Rating</div>
               </motion.div>
             </div>
@@ -1915,7 +1688,7 @@ function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Stop Losing $10K+ Per Month to a Mediocre Website
+            Ready to Transform Your Online Presence?
           </motion.h2>
           <motion.p
             className="text-xl text-gray-300 font-light mb-10 max-w-2xl mx-auto"
@@ -1924,7 +1697,7 @@ function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Join 847+ businesses generating <strong className="font-bold text-red-600">127% more qualified leads</strong> with a website engineered for conversions. Only 3 strategy sessions available this month.
+            Join 100+ businesses that have increased their leads by an average of 127% with a high-converting website
           </motion.p>
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -1934,16 +1707,16 @@ function App() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <motion.button
-              whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(212, 0, 0, 0.5)' }}
+              whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(255, 255, 255, 0.4)' }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 trackCTAClick('cta_section', 'Schedule Free Consultation');
                 setShowIntakeForm(true);
               }}
-              className="px-8 py-4 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium inline-flex items-center gap-2 justify-center shadow-red-glow-lg"
+              className="px-8 py-4 bg-white text-primary-600 hover:bg-primary-50 transition-colors rounded-lg font-medium inline-flex items-center gap-2 justify-center"
             >
               <Calendar className="w-5 h-5" />
-              Claim Your Strategy Session Now
+              Schedule Free Consultation
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -1952,9 +1725,9 @@ function App() {
                 trackCTAClick('cta_section', 'Send Message');
                 document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-8 py-4 border-2 border-white text-white hover:bg-red-600 hover:border-red-600 transition-colors rounded-lg font-medium"
+              className="px-8 py-4 border border-white hover:bg-white hover:text-gray-900 transition-colors rounded-lg font-medium"
             >
-              Get Your Free ROI Report
+              Send Message
             </motion.button>
           </motion.div>
           <motion.p
@@ -1964,7 +1737,7 @@ function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            ⚡ $2,500 value • Zero pressure • Only 3 spots left this month
+            🎯 Free 30-min consultation • No obligation • Book instantly
           </motion.p>
         </div>
       </motion.section>
@@ -2066,7 +1839,7 @@ function App() {
                         name="name"
                         required
                         aria-required="true"
-                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 transition-colors font-light"
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
                       />
                     </div>
                     <div>
@@ -2079,7 +1852,7 @@ function App() {
                         name="email"
                         required
                         aria-required="true"
-                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 transition-colors font-light"
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
                       />
                     </div>
                   </div>
@@ -2092,7 +1865,7 @@ function App() {
                         type="tel"
                         id="phone"
                         name="phone"
-                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 transition-colors font-light"
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
                       />
                     </div>
                     <div>
@@ -2102,7 +1875,7 @@ function App() {
                       <select
                         id="budget"
                         name="budget"
-                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 transition-colors font-light"
+                        className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
                       >
                         <option value="">Select a range</option>
                         <option value="5k-10k">$5,000 - $10,000</option>
@@ -2123,7 +1896,7 @@ function App() {
                       required
                       aria-required="true"
                       placeholder="Tell me about your project, goals, and timeline..."
-                      className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 transition-colors resize-none font-light"
+                      className="w-full py-3 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors resize-none font-light"
                     ></textarea>
                   </div>
                   <button
@@ -2141,7 +1914,7 @@ function App() {
       </motion.section>
 
       {/* Footer */}
-      <footer className="py-16 px-8 border-t border-gold-200">
+      <footer className="py-16 px-8 border-t border-gray-100">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-sm text-gray-500 font-light">
             © 2026 Peterson Pro Design Services, LLC
@@ -2317,7 +2090,7 @@ function App() {
                       name="name"
                       required
                       aria-required="true"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 transition-colors font-light"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
                       placeholder="John Doe"
                     />
                   </div>
@@ -2332,14 +2105,14 @@ function App() {
                       name="email"
                       required
                       aria-required="true"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 transition-colors font-light"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors font-light"
                       placeholder="john@example.com"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium shadow-red-glow hover:shadow-red-glow-lg"
+                    className="w-full py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors rounded-lg font-medium"
                   >
                     Download Free Guide Now
                   </button>
@@ -2372,7 +2145,7 @@ function App() {
 
       {/* Sticky Mobile CTA */}
       <div
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-glass-lg border-t border-gold-500/20 text-white p-4 md:hidden transition-transform duration-300 shadow-gold-glow-lg ${
+        className={`fixed bottom-0 left-0 right-0 z-50 bg-primary-900/95 backdrop-blur-glass-lg border-t border-primary-500/20 text-white p-4 md:hidden transition-transform duration-300 shadow-blue-glow-lg ${
           showMobileCTA ? 'translate-y-0' : 'translate-y-full'
         }`}
       >
@@ -2384,7 +2157,7 @@ function App() {
               trackCTAClick('mobile_sticky', 'Book Free Call');
               setShowIntakeForm(true);
             }}
-            className="flex-1 py-3 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium text-sm shadow-red-glow"
+            className="flex-1 py-3 bg-white text-primary-600 hover:bg-primary-50 transition-colors rounded-lg font-medium text-sm"
           >
             Book Free Call
           </motion.button>
@@ -2392,7 +2165,7 @@ function App() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleEmailClick}
-            className="py-3 px-4 border-2 border-white hover:bg-red-600 hover:border-red-600 transition-colors rounded-lg"
+            className="py-3 px-4 border border-white hover:bg-white hover:text-gray-900 transition-colors rounded-lg"
           >
             <Mail className="w-5 h-5" />
           </motion.button>
