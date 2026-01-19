@@ -468,6 +468,586 @@ function App() {
       solution: "Built a professional, trust-focused website highlighting team expertise, certifications, and client success stories. Implemented clear service descriptions and easy consultation booking.",
       testimonialQuote: "Professional, responsive, and incredibly talented. Eldon delivered ahead of schedule and exceeded all expectations.",
       testimonialAuthor: "James Rodriguez, CEO"
+    },
+    {
+      id: 17,
+      title: "Bright Smile Dental Group",
+      category: "Healthcare",
+      description: "Modern dental practice website with online appointment booking, treatment showcases, and patient portal integration. Increased new patient appointments by 89% through strategic SEO and conversion-optimized design. Features virtual consultation booking and insurance verification.",
+      image: "https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Healthcare", "Dental", "Booking System", "Patient Portal"],
+      features: [
+        "Online appointment scheduling",
+        "Treatment procedure galleries",
+        "Patient portal integration",
+        "Insurance verification system",
+        "Before/after photo showcases",
+        "Virtual consultation booking"
+      ],
+      technologies: ["React", "Node.js", "PostgreSQL", "Twilio", "Stripe"],
+      client: "Bright Smile Dental Group",
+      duration: "10 weeks",
+      year: "2025",
+      link: "#",
+      size: "large",
+      results: {
+        metric1: { label: "New Patients", value: "+89%" },
+        metric2: { label: "Online Bookings", value: "340/mo" },
+        metric3: { label: "No-Show Rate", value: "-45%" }
+      },
+      challenge: "Bright Smile was losing potential patients to competitors with better online booking systems and struggled with high no-show rates.",
+      solution: "Built a comprehensive patient acquisition platform with automated reminders, easy rescheduling, and insurance pre-verification that reduced friction in the booking process."
+    },
+    {
+      id: 18,
+      title: "Summit HVAC Solutions",
+      category: "Home Services",
+      description: "High-converting HVAC contractor website with emergency service booking, maintenance plan signups, and seasonal promotion management. Features real-time technician tracking and instant quote calculator. Drove 156% increase in service calls.",
+      image: "https://images.pexels.com/photos/5463576/pexels-photo-5463576.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["HVAC", "Home Services", "Lead Generation", "Booking"],
+      features: [
+        "Emergency service request system",
+        "Instant quote calculator",
+        "Maintenance plan signup",
+        "Real-time technician tracking",
+        "Seasonal promotion management",
+        "Customer review integration"
+      ],
+      technologies: ["Next.js", "Supabase", "Twilio", "Google Maps API", "Stripe"],
+      client: "Summit HVAC Solutions",
+      duration: "8 weeks",
+      year: "2025",
+      link: "#",
+      size: "medium",
+      results: {
+        metric1: { label: "Service Calls", value: "+156%" },
+        metric2: { label: "Maintenance Plans", value: "89 new" },
+        metric3: { label: "Response Time", value: "< 2 hrs" }
+      },
+      challenge: "Summit HVAC was relying on outdated phone-only booking and losing emergency calls to competitors with better online presence.",
+      solution: "Created an emergency-first website with prominent call-to-action buttons, instant quote tools, and automated dispatch notifications that captured leads 24/7."
+    },
+    {
+      id: 19,
+      title: "Ironclad Roofing & Restoration",
+      category: "Construction",
+      description: "Lead-generating roofing contractor website with storm damage assessment tools, financing calculator, and project gallery. Features drone inspection booking and insurance claim assistance. Resulted in 234% increase in qualified leads.",
+      image: "https://images.pexels.com/photos/8961438/pexels-photo-8961438.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Roofing", "Construction", "Lead Generation", "Insurance"],
+      features: [
+        "Storm damage assessment booking",
+        "Financing calculator integration",
+        "Before/after project gallery",
+        "Drone inspection scheduling",
+        "Insurance claim assistance portal",
+        "Material selection visualizer"
+      ],
+      technologies: ["React", "Node.js", "MongoDB", "Calendly API", "Cloudinary"],
+      client: "Ironclad Roofing & Restoration",
+      duration: "9 weeks",
+      year: "2025",
+      link: "#",
+      size: "large",
+      results: {
+        metric1: { label: "Qualified Leads", value: "+234%" },
+        metric2: { label: "Avg. Project Value", value: "+$4,200" },
+        metric3: { label: "Close Rate", value: "38%" }
+      },
+      challenge: "Ironclad needed to stand out in the competitive roofing market and capture homeowners searching for storm damage repairs.",
+      solution: "Built a trust-focused website with extensive social proof, transparent pricing tools, and streamlined insurance claim support that positioned them as the go-to contractor."
+    },
+    {
+      id: 20,
+      title: "Precision Plumbing Pros",
+      category: "Home Services",
+      description: "24/7 plumbing service website with emergency dispatch system, upfront pricing calculator, and service area mapping. Features live chat support and customer loyalty program. Increased emergency call conversions by 178%.",
+      image: "https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Plumbing", "Emergency Services", "Pricing", "Dispatch"],
+      features: [
+        "24/7 emergency dispatch system",
+        "Upfront pricing calculator",
+        "Service area interactive map",
+        "Live chat support integration",
+        "Customer loyalty rewards",
+        "Video call diagnostics"
+      ],
+      technologies: ["Vue.js", "Firebase", "Twilio", "Intercom", "Mapbox"],
+      client: "Precision Plumbing Pros",
+      duration: "7 weeks",
+      year: "2025",
+      link: "#",
+      size: "small",
+      results: {
+        metric1: { label: "Emergency Calls", value: "+178%" },
+        metric2: { label: "Avg. Ticket", value: "+$320" },
+        metric3: { label: "Repeat Customers", value: "67%" }
+      },
+      challenge: "Precision Plumbing was losing emergency calls because customers couldn't get immediate pricing or dispatch confirmation online.",
+      solution: "Developed a conversion-optimized platform with transparent pricing, instant booking confirmation, and live tracking that built trust and captured leads around the clock."
+    },
+    {
+      id: 21,
+      title: "Sterling & Associates CPA",
+      category: "Accounting",
+      description: "Professional accounting firm website with client portal, tax deadline reminders, and secure document upload. Features service package comparison and consultation booking. Increased high-value client acquisitions by 92%.",
+      image: "https://images.pexels.com/photos/6863183/pexels-photo-6863183.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Accounting", "CPA", "Client Portal", "Tax Services"],
+      features: [
+        "Secure client portal",
+        "Tax deadline reminder system",
+        "Document upload & e-signature",
+        "Service package comparisons",
+        "Consultation scheduling",
+        "Tax savings calculator"
+      ],
+      technologies: ["React", "Node.js", "AWS S3", "DocuSign API", "Calendly"],
+      client: "Sterling & Associates CPA",
+      duration: "11 weeks",
+      year: "2025",
+      link: "#",
+      size: "medium",
+      results: {
+        metric1: { label: "Client Acquisition", value: "+92%" },
+        metric2: { label: "Document Processing", value: "-60% time" },
+        metric3: { label: "Client Retention", value: "94%" }
+      },
+      challenge: "Sterling was struggling to attract business clients and differentiate from large franchise tax preparation services.",
+      solution: "Created a sophisticated, trust-building website emphasizing their expertise with business clients, featuring case studies and a streamlined client onboarding process."
+    },
+    {
+      id: 22,
+      title: "Apex Industrial Manufacturing",
+      category: "Manufacturing",
+      description: "B2B manufacturing website with product configurator, RFQ system, and distributor portal. Features 3D product visualization and technical specification downloads. Generated $2.4M in new distributor partnerships.",
+      image: "https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Manufacturing", "B2B", "Product Configurator", "Industrial"],
+      features: [
+        "3D product configurator",
+        "Request for quote system",
+        "Distributor partner portal",
+        "Technical spec downloads",
+        "Inventory availability checker",
+        "CAD file library"
+      ],
+      technologies: ["React", "Three.js", "Node.js", "SAP Integration", "AWS"],
+      client: "Apex Industrial Manufacturing",
+      duration: "16 weeks",
+      year: "2025",
+      link: "#",
+      size: "large",
+      results: {
+        metric1: { label: "New Partnerships", value: "$2.4M" },
+        metric2: { label: "RFQ Submissions", value: "+340%" },
+        metric3: { label: "Catalog Downloads", value: "12K/mo" }
+      },
+      challenge: "Apex relied on trade shows and cold calling for leads, missing the growing segment of buyers who research online before making B2B purchases.",
+      solution: "Built a comprehensive digital catalog with self-service tools that allowed prospects to configure products, check specs, and submit RFQs without waiting for sales calls."
+    },
+    {
+      id: 23,
+      title: "Velocity Freight Logistics",
+      category: "Logistics",
+      description: "Comprehensive freight management platform with real-time shipment tracking, rate calculator, and carrier portal. Features automated dispatch and customer shipment visibility. Reduced customer service calls by 67%.",
+      image: "https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Logistics", "Freight", "Tracking", "B2B"],
+      features: [
+        "Real-time shipment tracking",
+        "Instant rate calculator",
+        "Carrier partner portal",
+        "Automated dispatch system",
+        "POD documentation",
+        "Customer shipment dashboard"
+      ],
+      technologies: ["React", "Node.js", "PostgreSQL", "Redis", "Google Maps API"],
+      client: "Velocity Freight Logistics",
+      duration: "14 weeks",
+      year: "2025",
+      link: "#",
+      size: "medium",
+      results: {
+        metric1: { label: "Service Calls", value: "-67%" },
+        metric2: { label: "Quote Speed", value: "< 30 sec" },
+        metric3: { label: "New Accounts", value: "+124%" }
+      },
+      challenge: "Velocity was drowning in customer service calls for shipment updates and losing quotes because their manual process was too slow.",
+      solution: "Created a self-service platform with real-time tracking and instant quoting that freed up staff while improving customer experience."
+    },
+    {
+      id: 24,
+      title: "Heritage Family Law",
+      category: "Legal Services",
+      description: "Compassionate family law firm website with confidential consultation booking, resource library, and case evaluation forms. Features multi-language support and secure client communication portal. Increased consultations by 145%.",
+      image: "https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Legal", "Family Law", "Consultation", "Resources"],
+      features: [
+        "Confidential consultation booking",
+        "Legal resource library",
+        "Case evaluation questionnaire",
+        "Multi-language support",
+        "Secure client portal",
+        "Attorney profile showcases"
+      ],
+      technologies: ["Next.js", "Supabase", "SendGrid", "Calendly", "i18n"],
+      client: "Heritage Family Law",
+      duration: "9 weeks",
+      year: "2025",
+      link: "#",
+      size: "small",
+      results: {
+        metric1: { label: "Consultations", value: "+145%" },
+        metric2: { label: "Spanish Inquiries", value: "+78%" },
+        metric3: { label: "Resource Downloads", value: "2.1K/mo" }
+      },
+      challenge: "Heritage needed to reach underserved communities and build trust with potential clients going through difficult family situations.",
+      solution: "Designed a warm, approachable website with multi-language support and extensive educational resources that positioned the firm as a trusted advocate."
+    },
+    {
+      id: 25,
+      title: "ProElectric Services",
+      category: "Home Services",
+      description: "Licensed electrical contractor website with project estimation tool, service scheduling, and safety certification showcase. Features electrical panel upgrade calculator and commercial project portfolio. Drove 189% increase in commercial leads.",
+      image: "https://images.pexels.com/photos/8005397/pexels-photo-8005397.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Electrical", "Contractor", "Commercial", "Estimation"],
+      features: [
+        "Project estimation calculator",
+        "Online service scheduling",
+        "Safety certification showcase",
+        "Panel upgrade advisor",
+        "Commercial project portfolio",
+        "Emergency service dispatch"
+      ],
+      technologies: ["React", "Firebase", "Stripe", "Twilio", "Google Calendar API"],
+      client: "ProElectric Services",
+      duration: "8 weeks",
+      year: "2025",
+      link: "#",
+      size: "medium",
+      results: {
+        metric1: { label: "Commercial Leads", value: "+189%" },
+        metric2: { label: "Avg. Project Size", value: "+$8,400" },
+        metric3: { label: "Booking Rate", value: "43%" }
+      },
+      challenge: "ProElectric wanted to move beyond residential work and capture more lucrative commercial electrical projects.",
+      solution: "Built a professional website highlighting commercial capabilities, certifications, and past project success that attracted property managers and general contractors."
+    },
+    {
+      id: 26,
+      title: "Radiance Medical Spa",
+      category: "Healthcare",
+      description: "Luxury medical spa website with treatment booking, virtual consultations, and membership management. Features before/after galleries and treatment package customization. Increased treatment bookings by 167%.",
+      image: "https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Medical Spa", "Aesthetics", "Booking", "Membership"],
+      features: [
+        "Online treatment booking",
+        "Virtual consultation scheduling",
+        "Membership portal",
+        "Before/after photo galleries",
+        "Treatment package builder",
+        "Loyalty rewards tracking"
+      ],
+      technologies: ["Next.js", "Prisma", "Stripe", "Zoom API", "Cloudinary"],
+      client: "Radiance Medical Spa",
+      duration: "11 weeks",
+      year: "2025",
+      link: "#",
+      size: "large",
+      results: {
+        metric1: { label: "Bookings", value: "+167%" },
+        metric2: { label: "Membership Signups", value: "89/mo" },
+        metric3: { label: "Avg. Ticket", value: "+$340" }
+      },
+      challenge: "Radiance was losing clients to competitors with better online booking and struggled to communicate the value of their premium treatments.",
+      solution: "Created an elegant, spa-like digital experience with seamless booking, membership benefits clearly displayed, and compelling before/after showcases."
+    },
+    {
+      id: 27,
+      title: "Titan General Contractors",
+      category: "Construction",
+      description: "Commercial construction firm website with project portfolio, bid request system, and subcontractor portal. Features 3D project renderings and construction timeline visualization. Generated $12M in new project inquiries.",
+      image: "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Construction", "Commercial", "Bid Management", "Portfolio"],
+      features: [
+        "Interactive project portfolio",
+        "Bid request submission",
+        "Subcontractor portal",
+        "3D project renderings",
+        "Timeline visualization",
+        "Safety record showcase"
+      ],
+      technologies: ["React", "Three.js", "Node.js", "MongoDB", "AWS S3"],
+      client: "Titan General Contractors",
+      duration: "13 weeks",
+      year: "2025",
+      link: "#",
+      size: "large",
+      results: {
+        metric1: { label: "Project Inquiries", value: "$12M" },
+        metric2: { label: "Bid Submissions", value: "+89%" },
+        metric3: { label: "Subcontractor Apps", value: "156" }
+      },
+      challenge: "Titan relied on word-of-mouth and struggled to showcase their capabilities to developers and property owners seeking commercial contractors.",
+      solution: "Built a portfolio-driven website with stunning project photography, detailed case studies, and a streamlined bid request process that attracted larger projects."
+    },
+    {
+      id: 28,
+      title: "Cornerstone Insurance Group",
+      category: "Insurance",
+      description: "Independent insurance agency website with multi-carrier quote comparison, policy management portal, and claims assistance. Features risk assessment tools and business insurance configurator. Increased policy sales by 134%.",
+      image: "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Insurance", "Quote System", "Multi-Carrier", "Portal"],
+      features: [
+        "Multi-carrier quote comparison",
+        "Policy management portal",
+        "Claims filing assistance",
+        "Risk assessment calculator",
+        "Business insurance configurator",
+        "Renewal reminder system"
+      ],
+      technologies: ["React", "Node.js", "PostgreSQL", "Plaid API", "SendGrid"],
+      client: "Cornerstone Insurance Group",
+      duration: "12 weeks",
+      year: "2025",
+      link: "#",
+      size: "medium",
+      results: {
+        metric1: { label: "Policy Sales", value: "+134%" },
+        metric2: { label: "Quote Requests", value: "890/mo" },
+        metric3: { label: "Retention Rate", value: "91%" }
+      },
+      challenge: "Cornerstone was losing clients to online-only insurers and needed to demonstrate the value of working with an independent agent.",
+      solution: "Created a hybrid platform combining the convenience of online quoting with personalized service, showing multiple carrier options while highlighting advisory benefits."
+    },
+    {
+      id: 29,
+      title: "Hope Community Foundation",
+      category: "Nonprofit",
+      description: "Nonprofit organization website with donation processing, volunteer management, and impact storytelling. Features event registration, recurring giving programs, and donor recognition. Increased online donations by 267%.",
+      image: "https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Nonprofit", "Donations", "Volunteer", "Community"],
+      features: [
+        "Secure donation processing",
+        "Volunteer registration portal",
+        "Impact story showcases",
+        "Event registration system",
+        "Recurring giving programs",
+        "Donor recognition wall"
+      ],
+      technologies: ["Next.js", "Stripe", "Sanity CMS", "Mailchimp", "Eventbrite API"],
+      client: "Hope Community Foundation",
+      duration: "9 weeks",
+      year: "2025",
+      link: "#",
+      size: "small",
+      results: {
+        metric1: { label: "Online Donations", value: "+267%" },
+        metric2: { label: "Monthly Donors", value: "340+" },
+        metric3: { label: "Volunteer Signups", value: "+189%" }
+      },
+      challenge: "Hope Foundation's outdated website made donating difficult and failed to communicate the impact of their community programs.",
+      solution: "Built an emotionally compelling website with streamlined donation flows, impact metrics, and powerful storytelling that connected donors with their mission."
+    },
+    {
+      id: 30,
+      title: "SkyBridge Aviation MRO",
+      category: "Aviation Services",
+      description: "Aircraft maintenance and repair organization website with service scheduling, parts inventory, and compliance documentation. Features AOG emergency support and maintenance tracking portal. Reduced service scheduling time by 78%.",
+      image: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Aviation", "MRO", "Maintenance", "Compliance"],
+      features: [
+        "Service scheduling system",
+        "Parts inventory lookup",
+        "Compliance documentation portal",
+        "AOG emergency request",
+        "Maintenance tracking dashboard",
+        "Aircraft records management"
+      ],
+      technologies: ["React", "Node.js", "MongoDB", "AWS", "DocuSign API"],
+      client: "SkyBridge Aviation MRO",
+      duration: "14 weeks",
+      year: "2025",
+      link: "#",
+      size: "medium",
+      results: {
+        metric1: { label: "Scheduling Time", value: "-78%" },
+        metric2: { label: "New Clients", value: "+56%" },
+        metric3: { label: "AOG Response", value: "< 2 hrs" }
+      },
+      challenge: "SkyBridge relied on phone and email for service requests, causing delays and missed opportunities during peak maintenance seasons.",
+      solution: "Developed a comprehensive service portal with self-scheduling, parts availability, and compliance document access that streamlined operations."
+    },
+    {
+      id: 31,
+      title: "Clearview Property Management",
+      category: "Real Estate",
+      description: "Property management company website with tenant portal, owner dashboard, and maintenance request system. Features online rent payment and vacancy marketing. Reduced administrative workload by 45%.",
+      image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Property Management", "Tenant Portal", "Real Estate", "Payments"],
+      features: [
+        "Tenant self-service portal",
+        "Owner financial dashboard",
+        "Maintenance request system",
+        "Online rent payment",
+        "Vacancy listing syndication",
+        "Lease document management"
+      ],
+      technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "Plaid"],
+      client: "Clearview Property Management",
+      duration: "11 weeks",
+      year: "2025",
+      link: "#",
+      size: "small",
+      results: {
+        metric1: { label: "Admin Workload", value: "-45%" },
+        metric2: { label: "Online Payments", value: "89%" },
+        metric3: { label: "Maintenance Response", value: "< 24 hrs" }
+      },
+      challenge: "Clearview was spending too much time on administrative tasks and struggling to attract new property owners with their outdated processes.",
+      solution: "Built an integrated management platform that automated routine tasks while providing transparency to both tenants and property owners."
+    },
+    {
+      id: 32,
+      title: "Pediatric Partners Clinic",
+      category: "Healthcare",
+      description: "Pediatric medical practice website with child-friendly design, parent portal, and immunization tracking. Features sick visit scheduling and wellness milestone reminders. Increased new patient registrations by 123%.",
+      image: "https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Healthcare", "Pediatric", "Patient Portal", "Wellness"],
+      features: [
+        "Child-friendly interface design",
+        "Parent communication portal",
+        "Immunization tracking",
+        "Sick visit scheduling",
+        "Wellness milestone reminders",
+        "Prescription refill requests"
+      ],
+      technologies: ["Next.js", "Supabase", "Twilio", "Google Calendar API", "HIPAA-compliant hosting"],
+      client: "Pediatric Partners Clinic",
+      duration: "10 weeks",
+      year: "2025",
+      link: "#",
+      size: "medium",
+      results: {
+        metric1: { label: "New Patients", value: "+123%" },
+        metric2: { label: "Same-Day Bookings", value: "67%" },
+        metric3: { label: "Parent Satisfaction", value: "4.9/5" }
+      },
+      challenge: "Pediatric Partners needed to attract young families and make it easy for busy parents to manage their children's healthcare.",
+      solution: "Designed a warm, welcoming website with parent-focused features like quick sick visit booking, immunization tracking, and milestone reminders."
+    },
+    {
+      id: 33,
+      title: "Charter Executive Aviation",
+      category: "Aviation Services",
+      description: "Private jet charter company website with fleet showcase, instant quote system, and trip planning tools. Features aircraft comparison and empty leg deals. Generated 89% increase in charter inquiries.",
+      image: "https://images.pexels.com/photos/912050/pexels-photo-912050.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Aviation", "Charter", "Luxury", "Booking"],
+      features: [
+        "Aircraft fleet showcase",
+        "Instant charter quote system",
+        "Trip planning calculator",
+        "Aircraft comparison tool",
+        "Empty leg deal alerts",
+        "Concierge service portal"
+      ],
+      technologies: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "Aviation APIs"],
+      client: "Charter Executive Aviation",
+      duration: "12 weeks",
+      year: "2025",
+      link: "#",
+      size: "large",
+      results: {
+        metric1: { label: "Charter Inquiries", value: "+89%" },
+        metric2: { label: "Avg. Trip Value", value: "$34K" },
+        metric3: { label: "Repeat Clients", value: "67%" }
+      },
+      challenge: "Charter Executive needed to compete with larger charter brokers and showcase their fleet to high-net-worth travelers.",
+      solution: "Created a luxury digital experience with stunning aircraft photography, transparent pricing tools, and VIP-level service presentation."
+    },
+    {
+      id: 34,
+      title: "Midwest Steel Fabrication",
+      category: "Manufacturing",
+      description: "Custom steel fabrication website with project gallery, capabilities showcase, and RFQ system. Features tolerance specifications and material certifications. Captured $4.7M in new project contracts.",
+      image: "https://images.pexels.com/photos/2760243/pexels-photo-2760243.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Manufacturing", "Steel", "Fabrication", "B2B"],
+      features: [
+        "Project portfolio gallery",
+        "Capabilities matrix",
+        "RFQ submission system",
+        "Tolerance specifications",
+        "Material certifications",
+        "CAD file upload"
+      ],
+      technologies: ["React", "Node.js", "MongoDB", "AWS S3", "SendGrid"],
+      client: "Midwest Steel Fabrication",
+      duration: "10 weeks",
+      year: "2025",
+      link: "#",
+      size: "medium",
+      results: {
+        metric1: { label: "New Contracts", value: "$4.7M" },
+        metric2: { label: "RFQ Submissions", value: "+234%" },
+        metric3: { label: "Avg. Project Size", value: "+$180K" }
+      },
+      challenge: "Midwest Steel was losing bids to competitors with better online presence and struggled to showcase their precision capabilities.",
+      solution: "Built a technically detailed website with project case studies, precise capability specifications, and streamlined RFQ process for engineers."
+    },
+    {
+      id: 35,
+      title: "Criminal Defense Associates",
+      category: "Legal Services",
+      description: "Criminal defense law firm website with 24/7 emergency contact, case type education, and confidential consultation booking. Features attorney credentials and case result showcases. Increased client inquiries by 178%.",
+      image: "https://images.pexels.com/photos/5669619/pexels-photo-5669619.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Legal", "Criminal Defense", "Emergency", "Consultation"],
+      features: [
+        "24/7 emergency contact system",
+        "Case type educational resources",
+        "Confidential consultation booking",
+        "Attorney credentials display",
+        "Case results showcase",
+        "Jail visit scheduling"
+      ],
+      technologies: ["Next.js", "Twilio", "Calendly", "Sanity CMS", "Netlify"],
+      client: "Criminal Defense Associates",
+      duration: "8 weeks",
+      year: "2025",
+      link: "#",
+      size: "small",
+      results: {
+        metric1: { label: "Client Inquiries", value: "+178%" },
+        metric2: { label: "After-Hours Calls", value: "34%" },
+        metric3: { label: "Consultation Rate", value: "67%" }
+      },
+      challenge: "The firm needed to reach people in crisis situations quickly and establish trust during stressful circumstances.",
+      solution: "Designed a responsive, urgent-action website with prominent emergency contact, educational resources, and trust-building attorney profiles."
+    },
+    {
+      id: 36,
+      title: "Youth Empowerment Network",
+      category: "Nonprofit",
+      description: "Youth development nonprofit website with program enrollment, mentor matching, and impact reporting. Features success story showcases and corporate partnership portal. Increased program enrollment by 234%.",
+      image: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Nonprofit", "Youth", "Programs", "Mentorship"],
+      features: [
+        "Program enrollment system",
+        "Mentor matching portal",
+        "Impact metric dashboard",
+        "Success story showcases",
+        "Corporate partnership portal",
+        "Event calendar and registration"
+      ],
+      technologies: ["React", "Firebase", "Stripe", "Airtable", "Mailchimp"],
+      client: "Youth Empowerment Network",
+      duration: "10 weeks",
+      year: "2025",
+      link: "#",
+      size: "medium",
+      results: {
+        metric1: { label: "Program Enrollment", value: "+234%" },
+        metric2: { label: "Corporate Partners", value: "23 new" },
+        metric3: { label: "Mentor Signups", value: "+156%" }
+      },
+      challenge: "The organization struggled to attract both youth participants and corporate sponsors with their outdated digital presence.",
+      solution: "Created an inspiring website showcasing program impact, making it easy for youth to enroll, mentors to sign up, and corporations to partner."
     }
   ];
 
