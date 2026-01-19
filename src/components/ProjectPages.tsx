@@ -106,8 +106,9 @@ export const ProjectPages: React.FC<ProjectPagesProps> = ({ project, onClose }) 
     return <HeritageEventDemo onClose={onClose} />;
   }
 
-  // For projects 13-36, use the dynamic WebsiteMockup component
-  if (project.id >= 13) {
+  // For projects 14-36, use the dynamic WebsiteMockup component
+  // Note: Project 13 (The Money Team Law Firm) uses the default detail page
+  if (project.id >= 14) {
     return <WebsiteMockup project={project} onClose={onClose} />;
   }
 
