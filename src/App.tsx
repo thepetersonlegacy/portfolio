@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { MobileNav } from './components/MobileNav';
 import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { SocialProofNotification } from './components/SocialProofNotification';
+import { SmartScrollCTA } from './components/SmartScrollCTA';
 import { IntakeForm } from './components/IntakeForm';
 import { trackEvent, trackCTAClick, trackFormSubmit, trackDownload } from './utils/analytics';
 import { Pill, SectionTitle, Card, BentoCard, FeatureBadge, StatCard } from './components/FramerComponents';
@@ -980,13 +981,13 @@ function App() {
             className="flex flex-col sm:flex-row gap-phi-lg justify-center items-center"
           >
             <motion.button
-              whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(212, 0, 0, 0.3)' }}
+              whileHover={{ scale: 1.02, boxShadow: '0 0 50px rgba(212, 0, 0, 0.4)' }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 trackCTAClick('hero', 'Schedule Free Consultation');
                 setShowIntakeForm(true);
               }}
-              className="group bg-red-600 text-white hover:bg-red-700 active:bg-red-800 transition-all duration-300 flex items-center gap-phi-md rounded-lg font-medium shadow-red-glow hover:shadow-red-glow-lg text-phi-sm"
+              className="group bg-red-600 text-white hover:bg-red-700 active:bg-red-800 transition-all duration-300 flex items-center gap-phi-md rounded-lg font-semibold shadow-red-glow hover:shadow-red-glow-lg text-phi-sm relative overflow-hidden"
               style={{
                 paddingLeft: 'var(--space-phi-2xl)',
                 paddingRight: 'var(--space-phi-2xl)',
@@ -994,8 +995,21 @@ function App() {
                 paddingBottom: 'var(--space-phi-lg)'
               }}
             >
-              Claim Your Free Strategy Session
-              <Calendar className="w-4 h-4" />
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                animate={{ x: ['-100%', '100%'] }}
+                transition={{ repeat: Infinity, duration: 2.5, ease: 'linear' }}
+              />
+              <span className="relative z-10 flex items-center gap-2">
+                Claim Your Free Strategy Session
+                <motion.span
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                >
+                  <Calendar className="w-4 h-4" />
+                </motion.span>
+              </span>
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -2205,16 +2219,36 @@ function App() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <motion.button
-              whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(212, 0, 0, 0.5)' }}
+              whileHover={{ scale: 1.02, boxShadow: '0 0 50px rgba(212, 0, 0, 0.5)' }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 trackCTAClick('cta_section', 'Schedule Free Consultation');
                 setShowIntakeForm(true);
               }}
-              className="px-8 py-4 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium inline-flex items-center gap-2 justify-center shadow-red-glow-lg"
+              className="px-8 py-4 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-semibold justify-center shadow-red-glow-lg relative overflow-hidden"
             >
-              <Calendar className="w-5 h-5" />
-              Claim Your Strategy Session Now
+              {/* Pulse ring animation */}
+              <motion.span
+                className="absolute inset-0 border-2 border-white/30 rounded-lg"
+                animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0, 0.5] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+              />
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                animate={{ x: ['-100%', '100%'] }}
+                transition={{ repeat: Infinity, duration: 2.5, ease: 'linear' }}
+              />
+              <span className="relative z-10 flex items-center gap-2">
+                <Calendar className="w-5 h-5" />
+                Claim Your Strategy Session Now
+                <motion.span
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </motion.span>
+              </span>
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -2713,11 +2747,21 @@ function App() {
 
       {/* Sticky Mobile CTA */}
       <div
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-glass-lg border-t border-gold-500/20 text-white p-4 md:hidden transition-transform duration-300 shadow-gold-glow-lg ${
+        className={`fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-glass-lg border-t border-gold-500/20 text-white md:hidden transition-transform duration-300 shadow-gold-glow-lg ${
           showMobileCTA ? 'translate-y-0' : 'translate-y-full'
         }`}
       >
-        <div className="flex gap-3">
+        {/* Urgency Banner */}
+        <div className="bg-red-600 px-4 py-1.5 text-center">
+          <motion.span
+            className="text-xs font-medium"
+            animate={{ opacity: [1, 0.7, 1] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          >
+            🔥 Only 3 spots left this month
+          </motion.span>
+        </div>
+        <div className="p-3 flex gap-3">
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -2725,9 +2769,17 @@ function App() {
               trackCTAClick('mobile_sticky', 'Book Free Call');
               setShowIntakeForm(true);
             }}
-            className="flex-1 py-3 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium text-sm shadow-red-glow"
+            className="flex-1 py-3 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-semibold text-sm shadow-red-glow relative overflow-hidden"
           >
-            Book Free Call
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              animate={{ x: ['-100%', '100%'] }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: 'linear' }}
+            />
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              <Calendar className="w-4 h-4" />
+              Book Free Strategy Call
+            </span>
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -2748,6 +2800,12 @@ function App() {
 
       {/* Social Proof Notifications */}
       <SocialProofNotification />
+
+      {/* Smart Scroll CTA - Appears after 30% scroll or 30 seconds */}
+      <SmartScrollCTA onCtaClick={() => {
+        trackCTAClick('smart_scroll_cta', 'Claim Your Free Session');
+        setShowIntakeForm(true);
+      }} />
     </div>
   );
 }
