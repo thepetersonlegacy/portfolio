@@ -3579,11 +3579,15 @@ function App() {
         rootElement={document.getElementById('root') as HTMLElement}
       />
 
-      {/* Sticky Mobile CTA */}
+      {/* Sticky Mobile CTA - iOS Safari optimized with high z-index */}
       <div
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-glass-lg border-t border-gold-500/20 text-white md:hidden transition-transform duration-300 shadow-gold-glow-lg ${
+        className={`fixed bottom-0 left-0 right-0 bg-gray-900/95 backdrop-blur-glass-lg border-t border-gold-500/20 text-white md:hidden transition-transform duration-300 shadow-gold-glow-lg ${
           showMobileCTA ? 'translate-y-0' : 'translate-y-full'
         }`}
+        style={{
+          zIndex: 99990,
+          WebkitTransform: showMobileCTA ? 'translateY(0)' : 'translateY(100%)',
+        }}
       >
         {/* Urgency Banner */}
         <div className="bg-red-600 px-4 py-1.5 text-center">
@@ -3596,33 +3600,41 @@ function App() {
           </motion.span>
         </div>
         <div className="p-3 flex gap-3">
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+          <button
+            type="button"
             onClick={() => {
               trackCTAClick('mobile_sticky', 'Book Free Call');
               setShowIntakeForm(true);
             }}
-            className="flex-1 py-3 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-semibold text-sm shadow-red-glow relative overflow-hidden"
+            className="flex-1 py-3 bg-red-600 text-white active:bg-red-700 transition-colors rounded-lg font-semibold text-sm shadow-red-glow relative overflow-hidden"
+            style={{
+              WebkitTapHighlightColor: 'transparent',
+              touchAction: 'manipulation',
+              cursor: 'pointer'
+            }}
           >
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
               animate={{ x: ['-100%', '100%'] }}
               transition={{ repeat: Infinity, duration: 2.5, ease: 'linear' }}
             />
-            <span className="relative z-10 flex items-center justify-center gap-2">
+            <span className="relative z-10 flex items-center justify-center gap-2 pointer-events-none">
               <Calendar className="w-4 h-4" />
               Book Free Strategy Call
             </span>
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          </button>
+          <button
+            type="button"
             onClick={handleEmailClick}
-            className="py-3 px-4 border-2 border-white hover:bg-red-600 hover:border-red-600 transition-colors rounded-lg"
+            className="py-3 px-4 border-2 border-white active:bg-red-600 active:border-red-600 transition-colors rounded-lg"
+            style={{
+              WebkitTapHighlightColor: 'transparent',
+              touchAction: 'manipulation',
+              cursor: 'pointer'
+            }}
           >
-            <Mail className="w-5 h-5" />
-          </motion.button>
+            <Mail className="w-5 h-5 pointer-events-none" />
+          </button>
         </div>
       </div>
 

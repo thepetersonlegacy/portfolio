@@ -132,7 +132,8 @@ export const SocialProofNotification = () => {
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -400, opacity: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
-          className="fixed bottom-24 left-4 bg-white shadow-2xl rounded-xl p-4 max-w-xs z-40 border border-gray-100 hidden md:block"
+          className="fixed left-4 bg-white shadow-2xl rounded-xl p-4 max-w-xs border border-gray-100 bottom-36 md:bottom-24"
+          style={{ zIndex: 99980 }}
         >
           {/* Verified badge */}
           <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-medium flex items-center gap-1">

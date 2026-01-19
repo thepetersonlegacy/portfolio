@@ -26,11 +26,29 @@ export const ExitIntentPopup = ({ onDownloadClick }: ExitIntentPopupProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-    setShowPopup(false);
-    onDownloadClick();
+
+    // Submit to Netlify Forms
+    const formData = new FormData();
+    formData.append('form-name', 'exit-intent-leads');
+    formData.append('email', email);
+    formData.append('source', 'exit-intent-popup');
+    formData.append('timestamp', new Date().toISOString());
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        body: formData
+      });
+      setIsSubmitting(false);
+      setShowPopup(false);
+      onDownloadClick();
+    } catch (error) {
+      console.error('Form submission error:', error);
+      // Still proceed to download even if submission fails
+      setIsSubmitting(false);
+      setShowPopup(false);
+      onDownloadClick();
+    }
   };
 
   const auditPoints = [

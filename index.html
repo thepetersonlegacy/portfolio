@@ -92,7 +92,7 @@
     <link rel="canonical" href="https://eldonpetersonportfolio.netlify.app/" />
   </head>
   <body>
-    <!-- Hidden form for Netlify Forms detection -->
+    <!-- Hidden form for Netlify Forms detection - Intake Form -->
     <form name="intake-form" netlify netlify-honeypot="bot-field" hidden>
       <input type="text" name="name" />
       <input type="email" name="email" />
@@ -122,6 +122,22 @@
       <select name="referralSource">
         <option value="google">Google Search</option>
       </select>
+    </form>
+
+    <!-- Hidden form for Netlify Forms detection - Exit Intent Lead Capture -->
+    <form name="exit-intent-leads" netlify netlify-honeypot="bot-field" hidden>
+      <input type="email" name="email" />
+      <input type="text" name="source" />
+      <input type="text" name="timestamp" />
+    </form>
+
+    <!-- Hidden form for Netlify Forms detection - Quick Contact -->
+    <form name="quick-contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <textarea name="message"></textarea>
+      <input type="text" name="source" />
     </form>
 
     <div id="root"></div>
