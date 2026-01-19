@@ -1924,7 +1924,7 @@ function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Join 847+ businesses generating <strong className="font-bold text-red-600">127% more qualified leads</strong> with a website engineered for conversions. Only 3 strategy sessions available this month.
+            Stop Losing Money to a Website That Doesn't Convert. Conversion-first web design for law firms, aviation companies, and premium service brands—built to turn traffic into booked calls.
           </motion.p>
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
