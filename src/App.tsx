@@ -2443,9 +2443,9 @@ function App() {
             </motion.div>
           </div>
 
-          {/* Creative Masonry Grid */}
+          {/* Optimized Portfolio Grid */}
           <motion.div
-            className="grid grid-cols-12 gap-4 auto-rows-[200px]"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -2454,17 +2454,23 @@ function App() {
           >
             <AnimatePresence mode="popLayout">
             {(activeCategory === 'All' ? projects : projects.filter(p => p.category === activeCategory)).map((project, index) => {
-              // Define dynamic grid spans and row spans for creative layout
+              // Strategic grid placement based on size and position
+              // Large: spans 2 cols, Medium: spans 2 cols on larger screens, Small: 1 col
               const getGridClass = () => {
-                switch (project.size) {
-                  case 'large':
-                    return 'col-span-12 md:col-span-8 row-span-3';
-                  case 'medium':
-                    return 'col-span-12 md:col-span-6 row-span-2';
-                  case 'small':
-                    return 'col-span-12 md:col-span-4 row-span-2';
-                  default:
-                    return 'col-span-12 md:col-span-6 row-span-2';
+                const positionInGrid = index % 12; // Pattern repeats every 12 items
+
+                if (project.size === 'large') {
+                  // Large items span 2 columns and have more height
+                  return 'sm:col-span-2 lg:col-span-2 aspect-[16/10] sm:aspect-[16/9]';
+                } else if (project.size === 'medium') {
+                  // Medium items can span 2 cols at certain positions for variety
+                  if (positionInGrid === 3 || positionInGrid === 7) {
+                    return 'sm:col-span-2 lg:col-span-1 xl:col-span-2 aspect-[4/3]';
+                  }
+                  return 'sm:col-span-1 lg:col-span-1 aspect-[4/3]';
+                } else {
+                  // Small items are always single column with square-ish aspect
+                  return 'sm:col-span-1 aspect-[4/3] sm:aspect-square';
                 }
               };
 
@@ -2534,12 +2540,12 @@ function App() {
                 <motion.div
                   key={project.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4 }}
-                  whileHover={{ scale: 1.02, zIndex: 10 }}
-                  className={`group cursor-pointer relative overflow-hidden bg-gray-100 ${getGridClass()} ${getBorderStyle()}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  whileHover={{ y: -8, zIndex: 10 }}
+                  className={`group cursor-pointer relative overflow-hidden bg-gray-100 ${getGridClass()} ${getBorderStyle()} shadow-lg hover:shadow-2xl transition-shadow duration-500`}
                   onClick={() => handleProjectView(project)}
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
@@ -2550,97 +2556,76 @@ function App() {
                       src={project.image}
                       alt={project.title}
                       loading="lazy"
-                      className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${getImageFilter()}`}
+                      className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${getImageFilter()}`}
                     />
-                    <div className={`absolute inset-0 ${getOverlayGradient()} group-hover:bg-black/50 transition-all duration-500`}></div>
+                    <div className={`absolute inset-0 ${getOverlayGradient()} group-hover:bg-black/60 transition-all duration-500`}></div>
                   </div>
 
-                  {/* Content Overlay with varied positioning */}
-                  <div className={`absolute inset-0 p-6 flex flex-col ${getContentPosition()} text-white backdrop-blur-[1px] group-hover:backdrop-blur-sm transition-all duration-500`}>
-                    {/* Top: Project Number - varied placement */}
-                    {(cardStyle === 0 || cardStyle === 1 || cardStyle === 5) && (
-                      <div className="flex justify-between items-start">
-                        <div className="text-xs font-medium uppercase tracking-wider opacity-70">
-                          {String(project.id).padStart(2, '0')}
-                        </div>
-                        <div className="text-xs font-medium uppercase tracking-wider opacity-70">
-                          {project.year}
-                        </div>
-                      </div>
-                    )}
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 p-4 sm:p-5 lg:p-6 flex flex-col justify-end text-white">
+                    {/* Project Number & Year - Top corner */}
+                    <div className="absolute top-4 left-4 right-4 flex justify-between items-start opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-xs font-mono tracking-wider">
+                        {String(project.id).padStart(2, '0')}
+                      </span>
+                      <span className="text-xs font-mono tracking-wider">
+                        {project.year}
+                      </span>
+                    </div>
 
-                    {/* Project Info with varied styles */}
-                    <div className={`transform ${cardStyle === 2 ? '' : 'translate-y-4 group-hover:translate-y-0'} transition-transform duration-500`}>
-                      {/* Category badge with varied styles */}
-                      <div className={`text-xs font-medium uppercase tracking-wider mb-2 inline-block ${getCategoryStyle()}`}>
+                    {/* Main Content - Bottom */}
+                    <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                      {/* Category badge */}
+                      <div className={`text-[10px] sm:text-xs font-medium uppercase tracking-wider mb-2 inline-block ${getCategoryStyle()}`}>
                         {project.category}
                       </div>
 
-                      <h3 className={`font-medium leading-tight mb-2 ${
-                        project.size === 'large' ? 'text-xl md:text-2xl' :
-                        project.size === 'medium' ? 'text-lg md:text-xl' : 'text-base md:text-lg'
+                      <h3 className={`font-semibold leading-tight mb-1 ${
+                        project.size === 'large' ? 'text-lg sm:text-xl lg:text-2xl' :
+                        project.size === 'medium' ? 'text-base sm:text-lg lg:text-xl' : 'text-sm sm:text-base lg:text-lg'
                       }`}>
                         {project.title}
                       </h3>
 
-                      {/* Description - varied visibility */}
-                      {(project.size === 'large' || cardStyle === 2) && (
-                        <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 leading-relaxed max-w-md">
-                          {project.description.substring(0, 100)}...
+                      {/* Description - shows on hover for larger cards */}
+                      {project.size !== 'small' && (
+                        <p className="text-xs sm:text-sm opacity-0 group-hover:opacity-80 transition-opacity duration-500 delay-100 leading-relaxed line-clamp-2 mt-2">
+                          {project.description.substring(0, 80)}...
                         </p>
                       )}
 
-                      {/* Tags with varied styles */}
-                      <div className="flex flex-wrap gap-2 mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                        {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-1.5 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-150">
+                        {project.tags.slice(0, project.size === 'small' ? 2 : 3).map((tag) => (
                           <span
                             key={tag}
-                            className={`text-xs px-2 py-1 ${
-                              cardStyle === 2 ? 'bg-gray-900/60 rounded-md' :
-                              cardStyle === 3 ? 'bg-red-600/40 rounded-full' :
-                              cardStyle === 4 ? 'bg-gold-500/40 rounded-md text-white' :
-                              'bg-white/20 backdrop-blur-sm rounded-full'
-                            }`}
+                            className="text-[10px] sm:text-xs px-2 py-0.5 bg-white/20 backdrop-blur-sm rounded-full"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
 
-                      {/* Results badge for projects with results */}
-                      {project.results && cardStyle % 2 === 0 && (
-                        <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
-                          <span className="text-xs font-semibold bg-green-500/80 px-2 py-1 rounded-full">
+                      {/* Results badge */}
+                      {project.results && (
+                        <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                          <span className="text-[10px] sm:text-xs font-semibold bg-emerald-500/90 px-2 py-0.5 rounded-full">
                             {project.results.metric1?.value || ''}
                           </span>
                         </div>
                       )}
                     </div>
 
-                    {/* Hover indicator with varied styles */}
-                    <div className={`absolute ${
-                      cardStyle === 4 ? 'bottom-6 right-6' : 'top-6 right-6'
-                    } opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0`}>
-                      {cardStyle === 2 ? (
-                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                          <ArrowRight className="w-5 h-5" />
-                        </div>
-                      ) : cardStyle === 3 ? (
-                        <div className="w-8 h-8 rounded-md bg-gold-500 flex items-center justify-center text-gray-900">
-                          <ArrowRight className="w-4 h-4" />
-                        </div>
-                      ) : (
-                        <ArrowRight className="w-5 h-5" />
-                      )}
+                    {/* Arrow indicator */}
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                      <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
                     </div>
                   </div>
 
-                  {/* Interactive Border with varied glow styles */}
-                  <div className={`absolute inset-0 border-2 border-transparent ${getBorderStyle()} ${
-                    cardStyle === 2 ? 'group-hover:border-white/50' :
-                    cardStyle === 3 ? 'group-hover:border-red-500/50 group-hover:shadow-red-glow' :
-                    'group-hover:border-gold-500/50 group-hover:shadow-gold-glow-lg'
-                  } transition-all duration-500`}></div>
+                  {/* Interactive Border */}
+                  <div className={`absolute inset-0 border-2 border-transparent ${getBorderStyle()} group-hover:border-gold-500/60 transition-all duration-500`}></div>
                 </motion.div>
               );
             })}

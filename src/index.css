@@ -226,3 +226,28 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Portfolio grid line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth aspect ratio transitions */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-\[4\/3\] {
+  aspect-ratio: 4 / 3;
+}
+
+.aspect-\[16\/9\] {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-\[16\/10\] {
+  aspect-ratio: 16 / 10;
+}
