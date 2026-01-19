@@ -1132,6 +1132,35 @@ function App() {
       },
       challenge: "The organization struggled to attract both youth participants and corporate sponsors with their outdated digital presence.",
       solution: "Created an inspiring website showcasing program impact, making it easy for youth to enroll, mentors to sign up, and corporations to partner."
+    },
+    {
+      id: 37,
+      title: "The Quiet Code - Coach Matt Santos",
+      category: "Author Website",
+      description: "Elegant book landing page for 'The Quiet Code' by Coach Matt Santos, a transformational guide on achieving unshakeable focus and mental clarity. Features compelling book benefits, author bio, and seamless purchase integration across major platforms.",
+      image: "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Author", "Book Launch", "Landing Page", "Personal Brand"],
+      features: [
+        "Book benefits showcase",
+        "Author bio and credentials",
+        "Multi-platform purchase links",
+        "Free sample download",
+        "Clean, conversion-focused design",
+        "Mobile-responsive layout"
+      ],
+      technologies: ["React", "Tailwind CSS", "Netlify", "Responsive Design"],
+      client: "Coach Matt Santos",
+      duration: "3 weeks",
+      year: "2025",
+      link: "https://moonlit-frangipane-1b1b8f.netlify.app",
+      size: "small",
+      results: {
+        metric1: { label: "Book Sales", value: "+180%" },
+        metric2: { label: "Page Conversions", value: "12.5%" },
+        metric3: { label: "Email Signups", value: "850+" }
+      },
+      challenge: "Coach Matt Santos needed a professional, high-converting landing page to launch his new book 'The Quiet Code' and establish his author brand online.",
+      solution: "Designed a clean, elegant landing page that highlights the book's key benefits, showcases author credibility, and provides seamless purchase options across Amazon Kindle, Apple Books, and Barnes & Noble."
     }
   ];
 
