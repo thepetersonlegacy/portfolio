@@ -12,6 +12,7 @@ import { PrestigePropertiesDemo } from './PrestigePropertiesDemo';
 import { PrimeMortgageDemo } from './PrimeMortgageDemo';
 import { GuardianLifeDemo } from './GuardianLifeDemo';
 import { HeritageEventDemo } from './HeritageEventDemo';
+import { WebsiteMockup } from './WebsiteMockup';
 
 interface Project {
   id: number;
@@ -26,6 +27,13 @@ interface Project {
   duration?: string;
   year?: string;
   link?: string;
+  results?: {
+    metric1?: { label: string; value: string };
+    metric2?: { label: string; value: string };
+    metric3?: { label: string; value: string };
+  };
+  challenge?: string;
+  solution?: string;
 }
 
 interface ProjectPagesProps {
@@ -98,13 +106,18 @@ export const ProjectPages: React.FC<ProjectPagesProps> = ({ project, onClose }) 
     return <HeritageEventDemo onClose={onClose} />;
   }
 
+  // For projects 13-36, use the dynamic WebsiteMockup component
+  if (project.id >= 13) {
+    return <WebsiteMockup project={project} onClose={onClose} />;
+  }
+
   return (
     <div className="min-h-screen bg-slate-900 text-white">
       {/* Header */}
       <div className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-cyan-500/20">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <button 
+            <button
               onClick={onClose}
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
             >
