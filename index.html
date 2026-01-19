@@ -78,14 +78,18 @@
     }
     </script>
 
-    <!-- Google Analytics - Replace G-XXXXXXXXXX with your actual GA4 ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google Analytics 4 - IMPORTANT: Replace GA4_MEASUREMENT_ID with your actual GA4 Measurement ID -->
+    <!-- To find your GA4 ID: Go to Google Analytics → Admin → Data Streams → Select your stream → Copy Measurement ID (format: G-XXXXXXXXXX) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA4_MEASUREMENT_ID"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      gtag('config', 'GA4_MEASUREMENT_ID');
     </script>
+
+    <!-- Canonical URL for SEO -->
+    <link rel="canonical" href="https://eldonpetersonportfolio.netlify.app/" />
   </head>
   <body>
     <!-- Hidden form for Netlify Forms detection -->

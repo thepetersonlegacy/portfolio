@@ -1,5 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar, BookOpen, BadgeCheck, Blocks, FileText, TrendingUp } from 'lucide-react';
+import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar, BookOpen, BadgeCheck, Blocks, FileText, TrendingUp, HelpCircle, Plus, Minus, Shield, Clock, DollarSign, CheckCircle2 } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { MobileNav } from './components/MobileNav';
@@ -57,7 +57,7 @@ function App() {
   const heroOpacity = useTransform(scrollY, [0, 2000], [1, 0.7]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
+    const timer = setTimeout(() => setIsLoading(false), 500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -565,39 +565,51 @@ function App() {
 
   const testimonials = [
     {
-      id: 3,
-      quote: "As an artist, I needed someone who understood visual storytelling. Eldon created a portfolio that truly represents my work and has helped me book 3x more commissions.",
-      name: "Noval Noir",
-      title: "Multidisciplinary Artist",
-      company: "Noval Noir Studio",
+      id: 1,
+      quote: "Within 90 days of launching our new website, we saw a 156% increase in qualified leads. Eldon's strategic approach to conversion optimization transformed our entire digital presence.",
+      name: "Michael Harrison",
+      title: "Managing Partner",
+      company: "Harrison & Associates Law Firm",
+      industry: "Legal Services",
+      result: "156% more leads",
       rating: 5,
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
+      videoUrl: null
+    },
+    {
+      id: 2,
+      quote: "Our aviation consulting website went from an afterthought to our top lead generator. Eldon understood the technical nature of our business and created something that truly speaks to our clients.",
+      name: "Captain James Rodriguez",
+      title: "CEO & Founder",
+      company: "Flight Ready Aviation Consulting",
+      industry: "Aviation",
+      result: "$340K additional revenue",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      videoUrl: null
+    },
+    {
+      id: 3,
+      quote: "As an artist, I needed someone who understood visual storytelling. Eldon created a portfolio that represents my work authentically and has helped me book 3x more commissions.",
+      name: "Noval Noir",
+      title: "Creative Director",
+      company: "Noval Noir Creative Studio",
+      industry: "Creative Arts",
+      result: "3x commission bookings",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       videoUrl: null
     },
     {
       id: 4,
-      quote: "Professional, responsive, and incredibly talented. Eldon delivered our consulting website ahead of schedule and exceeded all expectations. Highly recommend!",
-      name: "James Rodriguez",
-      title: "CEO",
-      company: "Flight Ready Consulting",
+      quote: "The ROI on our new e-commerce site has been incredible. Sales increased 89% in the first quarter alone. Eldon's attention to UX details made all the difference.",
+      name: "Sarah Chen",
+      title: "Founder & CEO",
+      company: "Luxe Fashion Collective",
+      industry: "E-Commerce",
+      result: "89% sales increase",
       rating: 5,
-      videoUrl: null
-    },
-    {
-      id: 5,
-      quote: "The ROI on our new website has been incredible. Eldon's strategic approach to design and conversion optimization has paid for itself many times over.",
-      name: "David Chen",
-      title: "Director of Marketing",
-      company: "TechVenture Solutions",
-      rating: 5,
-      videoUrl: null
-    },
-    {
-      id: 6,
-      quote: "Eldon doesn't just build websites—he builds business solutions. His understanding of user experience and conversion principles is world-class.",
-      name: "Emily Thompson",
-      title: "Founder",
-      company: "Luxe Fashion Boutique",
-      rating: 5,
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face",
       videoUrl: null
     }
   ];
@@ -635,6 +647,51 @@ function App() {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
   const [showCaseStudy, setShowCaseStudy] = useState(false);
   const [showVideoTestimonials, setShowVideoTestimonials] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  // FAQ Data
+  const faqs = [
+    {
+      question: "How much does a website cost?",
+      answer: "Projects typically range from $3,000 for non-profit/community sites to $12,000+ for professional business sites with advanced features. During our free strategy session, I'll provide a detailed quote based on your specific needs, goals, and timeline. Every project includes my 90-day performance guarantee.",
+      icon: DollarSign
+    },
+    {
+      question: "How long does it take to complete a website?",
+      answer: "Most projects are completed within 4-8 weeks, depending on complexity. Simple sites can launch in 2-3 weeks, while enterprise projects with custom integrations may take 10-12 weeks. I'll give you a clear timeline during our initial call, and I stick to my deadlines—guaranteed.",
+      icon: Clock
+    },
+    {
+      question: "What's included in your web design services?",
+      answer: "Every project includes: custom design (no templates), mobile optimization, SEO foundation, conversion optimization, speed optimization (sub-2s load times), 30 days of post-launch support, and training on how to manage your site. Enterprise packages also include ongoing maintenance and priority support.",
+      icon: CheckCircle2
+    },
+    {
+      question: "Do you offer payment plans?",
+      answer: "Yes! I offer flexible payment options: 50% upfront with 50% upon completion, or monthly payment plans for larger projects. For qualified businesses, I also offer a 3-payment plan spread across the project timeline. Let's discuss what works best for your budget.",
+      icon: DollarSign
+    },
+    {
+      question: "What if I'm not happy with the design?",
+      answer: "Your satisfaction is guaranteed. I include unlimited design revisions during the design phase, and I won't move forward until you're 100% happy. Plus, my 90-day performance guarantee means if your site doesn't perform as promised, I'll fix it at no additional cost.",
+      icon: Shield
+    },
+    {
+      question: "Will I be able to update the website myself?",
+      answer: "Absolutely! I build sites with user-friendly content management systems (CMS) and provide comprehensive training so you can make updates without any technical knowledge. I also include video tutorials and documentation specific to your site.",
+      icon: CheckCircle2
+    },
+    {
+      question: "Do you work with clients outside of Minnesota?",
+      answer: "Yes! I work with clients nationwide and internationally. Most of my client communication happens via video calls, email, and project management tools—location is never a barrier. I've successfully completed projects for clients across 12+ states and 3 countries.",
+      icon: CheckCircle2
+    },
+    {
+      question: "What's the first step to get started?",
+      answer: "Simply book a free 30-minute strategy session below. During our call, I'll learn about your business, understand your goals, identify opportunities for growth, and provide recommendations—with no obligation. If we're a good fit, I'll send a detailed proposal within 48 hours.",
+      icon: Calendar
+    }
+  ];
 
   const handleContactFormSubmit = (e) => {
     e.preventDefault();
@@ -841,7 +898,7 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.2 + 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className={`block ${i === 0 ? 'text-gray-900' : i === 1 ? 'text-red-600 font-medium' : 'text-gray-600'}`}
+                  className={`block ${i === 0 ? 'text-gray-900' : i === 1 ? 'text-red-600 font-medium' : 'text-gray-800'}`}
                   style={{ marginBottom: i < 2 ? 'var(--space-phi-lg)' : '0' }}
                 >
                   {line}
@@ -855,7 +912,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.6 }}
-            className="text-fluid-base md:text-fluid-lg text-gray-600 mb-phi-3xl leading-relaxed font-light max-w-phi-md mx-auto"
+            className="text-fluid-base md:text-fluid-lg text-gray-700 mb-phi-3xl leading-relaxed font-light max-w-phi-md mx-auto"
           >
             Stop Losing Money to a Website That Doesn't Convert. Conversion-first web design for law firms, aviation companies, and premium service brands—built to turn traffic into booked calls.
           </motion.p>
@@ -882,25 +939,34 @@ function App() {
                     transition={{ type: "spring", stiffness: 300 }}
                     className="flex justify-center mb-phi-xl"
                   >
-                    {/* Icon container - Golden ratio dimensions */}
+                    {/* Icon container - Golden ratio dimensions with gradient background */}
                     <div
-                      className="rounded-xl bg-gold-50 border border-gold-300 flex items-center justify-center shadow-gold-glow"
+                      className="rounded-xl flex items-center justify-center shadow-gold-glow relative overflow-hidden"
                       style={{
                         width: 'calc(var(--space-phi-2xl) * 2.618)',
-                        height: 'calc(var(--space-phi-2xl) * 2.618)'
+                        height: 'calc(var(--space-phi-2xl) * 2.618)',
+                        background: 'linear-gradient(135deg, #FEF3C7 0%, #FDE68A 50%, #EBC562 100%)',
+                        border: '2px solid rgba(235, 197, 98, 0.5)'
                       }}
                     >
+                      <div
+                        className="absolute inset-0 opacity-30"
+                        style={{
+                          background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8) 0%, transparent 60%)'
+                        }}
+                      />
                       <usp.icon
-                        className="text-gold-700"
+                        className="text-gold-800 relative z-10"
                         style={{
                           width: 'var(--space-phi-2xl)',
-                          height: 'var(--space-phi-2xl)'
+                          height: 'var(--space-phi-2xl)',
+                          filter: 'drop-shadow(0 2px 4px rgba(235, 197, 98, 0.4))'
                         }}
                       />
                     </div>
                   </motion.div>
-                  <h3 className="text-phi-sm font-semibold text-gray-900 mb-phi-lg uppercase tracking-wider text-center">{usp.title}</h3>
-                  <p className="text-phi-sm text-gray-600 leading-relaxed text-center max-w-[280px]">{usp.desc}</p>
+                  <h2 className="text-phi-sm font-semibold text-gray-900 mb-phi-lg uppercase tracking-wider text-center">{usp.title}</h2>
+                  <p className="text-phi-sm text-gray-700 leading-relaxed text-center max-w-[280px]">{usp.desc}</p>
                 </Card>
               </motion.div>
             ))}
@@ -1526,6 +1592,95 @@ function App() {
               </motion.button>
             </motion.div>
           </motion.div>
+
+          {/* Quick Comparison Table */}
+          <motion.div
+            className="mt-16 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="bg-gray-900 text-white px-6 py-4">
+              <h3 className="text-lg font-medium">Quick Comparison: What's Included</h3>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead className="bg-gray-50 border-b border-gray-200">
+                  <tr>
+                    <th className="px-6 py-4 text-left font-medium text-gray-900">Feature</th>
+                    <th className="px-4 py-4 text-center font-medium text-gray-900">Community<br/><span className="text-xs text-gray-500 font-normal">$3K</span></th>
+                    <th className="px-4 py-4 text-center font-medium text-gray-900">Essential<br/><span className="text-xs text-gray-500 font-normal">$5K</span></th>
+                    <th className="px-4 py-4 text-center font-medium text-gray-900 bg-gold-50">Professional<br/><span className="text-xs text-gold-600 font-normal">$12K</span></th>
+                    <th className="px-4 py-4 text-center font-medium text-gray-900">Enterprise<br/><span className="text-xs text-gray-500 font-normal">Custom</span></th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  <tr>
+                    <td className="px-6 py-3 text-gray-700">Custom Pages</td>
+                    <td className="px-4 py-3 text-center">5</td>
+                    <td className="px-4 py-3 text-center">8</td>
+                    <td className="px-4 py-3 text-center bg-gold-50 font-medium">15+</td>
+                    <td className="px-4 py-3 text-center">Unlimited</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-3 text-gray-700">Mobile Optimization</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center bg-gold-50 text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-3 text-gray-700">SEO Foundation</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center bg-gold-50 text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-3 text-gray-700">Conversion Optimization</td>
+                    <td className="px-4 py-3 text-center text-gray-300">—</td>
+                    <td className="px-4 py-3 text-center text-gold-600">Basic</td>
+                    <td className="px-4 py-3 text-center bg-gold-50 text-gold-600 font-medium">Advanced</td>
+                    <td className="px-4 py-3 text-center text-gold-600">Enterprise</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-3 text-gray-700">E-commerce</td>
+                    <td className="px-4 py-3 text-center text-gray-300">—</td>
+                    <td className="px-4 py-3 text-center text-gray-300">—</td>
+                    <td className="px-4 py-3 text-center bg-gold-50 text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-3 text-gray-700">CRM Integration</td>
+                    <td className="px-4 py-3 text-center text-gray-300">—</td>
+                    <td className="px-4 py-3 text-center text-gray-300">—</td>
+                    <td className="px-4 py-3 text-center bg-gold-50 text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-3 text-gray-700">90-Day Guarantee</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center bg-gold-50 text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-3 text-gray-700">Priority Support</td>
+                    <td className="px-4 py-3 text-center text-gray-300">—</td>
+                    <td className="px-4 py-3 text-center text-gray-300">—</td>
+                    <td className="px-4 py-3 text-center bg-gold-50 text-gold-600">✓</td>
+                    <td className="px-4 py-3 text-center text-gold-600">✓</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
+              <p className="text-sm text-gray-600 text-center">
+                Not sure which tier is right for you? <button onClick={() => setShowIntakeForm(true)} className="text-gold-700 hover:text-gold-800 font-medium underline">Schedule a free consultation</button> and I'll recommend the best option for your goals.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </motion.section>
 
@@ -1816,7 +1971,7 @@ function App() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid md:grid-cols-2 gap-8"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -1827,43 +1982,46 @@ function App() {
                 key={testimonial.id}
                 variants={staggerItem}
                 whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(235, 197, 98, 0.2), 0 10px 10px -5px rgba(235, 197, 98, 0.1)" }}
-                className="bg-gold-50 backdrop-blur-glass border-l-4 border-gold-500 p-8 rounded-xl shadow-gold-glow transition-all duration-300"
+                className="bg-white backdrop-blur-glass border border-gold-200 p-8 rounded-xl shadow-lg transition-all duration-300"
               >
-                {showVideoTestimonials && testimonial.videoUrl ? (
-                  <div className="mb-6">
-                    <div className="aspect-video mb-4 rounded-lg overflow-hidden">
-                      <iframe
-                        src={testimonial.videoUrl}
-                        title={`${testimonial.name} testimonial`}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        loading="lazy"
-                        className="w-full h-full"
-                      />
-                    </div>
-                    <div className="flex gap-1 mb-2">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-gold-500 text-gold-500" />
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="mb-6">
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-gold-500 text-gold-500" />
-                      ))}
-                    </div>
-                    <p className="text-gray-700 font-light leading-relaxed italic">
-                      "{testimonial.quote}"
-                    </p>
+                {/* Result Badge */}
+                {testimonial.result && (
+                  <div className="inline-block px-3 py-1 bg-gold-100 text-gold-800 text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
+                    {testimonial.result}
                   </div>
                 )}
-                <div className="pt-6 border-t border-gold-200">
-                  <p className="font-semibold text-gold-900">{testimonial.name}</p>
-                  <p className="text-sm text-gray-600 font-light">
-                    {testimonial.title}, {testimonial.company}
+
+                {/* Quote */}
+                <div className="mb-6">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-gold-500 text-gold-500" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 font-light leading-relaxed italic text-lg">
+                    "{testimonial.quote}"
                   </p>
+                </div>
+
+                {/* Author with Photo */}
+                <div className="pt-6 border-t border-gold-200 flex items-center gap-4">
+                  {testimonial.image && (
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-14 h-14 rounded-full object-cover border-2 border-gold-300"
+                      loading="lazy"
+                    />
+                  )}
+                  <div>
+                    <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600 font-light">
+                      {testimonial.title}
+                    </p>
+                    <p className="text-sm text-gold-700 font-medium">
+                      {testimonial.company}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -1895,6 +2053,119 @@ function App() {
                 <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Average Rating</div>
               </motion.div>
             </div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* FAQ Section */}
+      <motion.section
+        id="faq"
+        className="py-24 px-8 bg-white"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold-100 rounded-full mb-6">
+              <HelpCircle className="w-4 h-4 text-gold-700" />
+              <span className="text-sm font-medium text-gold-800 uppercase tracking-wider">Common Questions</span>
+            </div>
+            <h2 className="text-4xl font-light mb-6 text-gray-900">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-600 font-light max-w-2xl mx-auto">
+              Get answers to the most common questions about working together
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="space-y-4"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                variants={staggerItem}
+                className="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
+                  className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                  aria-expanded={openFaqIndex === index}
+                  aria-controls={`faq-answer-${index}`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-gold-100 flex items-center justify-center flex-shrink-0">
+                      <faq.icon className="w-5 h-5 text-gold-700" />
+                    </div>
+                    <span className="font-medium text-gray-900 text-lg">{faq.question}</span>
+                  </div>
+                  <motion.div
+                    animate={{ rotate: openFaqIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex-shrink-0 ml-4"
+                  >
+                    {openFaqIndex === index ? (
+                      <Minus className="w-5 h-5 text-gold-600" />
+                    ) : (
+                      <Plus className="w-5 h-5 text-gray-400" />
+                    )}
+                  </motion.div>
+                </button>
+                <AnimatePresence>
+                  {openFaqIndex === index && (
+                    <motion.div
+                      id={`faq-answer-${index}`}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-5 pt-2 pl-20 text-gray-600 font-light leading-relaxed">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA under FAQ */}
+          <motion.div
+            className="mt-12 text-center p-8 bg-gold-50 rounded-xl border border-gold-200"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <p className="text-gray-700 font-light mb-4">
+              Still have questions? Let's talk.
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                trackCTAClick('faq_section', 'Book Free Call');
+                setShowIntakeForm(true);
+              }}
+              className="px-6 py-3 bg-gray-900 text-white hover:bg-gray-800 transition-colors rounded-lg font-medium inline-flex items-center gap-2"
+            >
+              <Calendar className="w-5 h-5" />
+              Book a Free Strategy Call
+            </motion.button>
           </motion.div>
         </div>
       </motion.section>
@@ -1969,6 +2240,76 @@ function App() {
         </div>
       </motion.section>
 
+      {/* 90-Day Guarantee Section */}
+      <motion.section
+        className="py-20 px-8 bg-gold-50"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            className="bg-white rounded-2xl p-8 md:p-12 shadow-lg border border-gold-200 relative overflow-hidden"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Background Pattern */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gold-100 rounded-full blur-3xl opacity-50 -mr-32 -mt-32"></div>
+
+            <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              {/* Shield Icon */}
+              <div className="flex-shrink-0">
+                <div className="w-24 h-24 md:w-32 md:h-32 bg-gold-100 rounded-full flex items-center justify-center border-4 border-gold-300 shadow-gold-glow">
+                  <Shield className="w-12 h-12 md:w-16 md:h-16 text-gold-700" />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="text-center md:text-left flex-1">
+                <div className="inline-block px-3 py-1 bg-gold-200 text-gold-800 text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
+                  Risk-Free Investment
+                </div>
+                <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
+                  90-Day Performance Guarantee
+                </h2>
+                <p className="text-lg text-gray-600 font-light leading-relaxed mb-6">
+                  I'm so confident in my work that I offer a <strong className="text-gray-900">full 90-day performance guarantee</strong>. If your new website doesn't measurably improve your leads, conversions, or key metrics within 90 days of launch, I'll continue optimizing it at <strong className="text-gray-900">no additional cost</strong> until it does.
+                </p>
+                <ul className="space-y-3 text-gray-600 mb-8">
+                  <li className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-gold-600 flex-shrink-0" />
+                    <span>Free revisions and optimizations for 90 days post-launch</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-gold-600 flex-shrink-0" />
+                    <span>Weekly performance reports during guarantee period</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-gold-600 flex-shrink-0" />
+                    <span>A/B testing and conversion optimization included</span>
+                  </li>
+                </ul>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    trackCTAClick('guarantee_section', 'Learn More');
+                    setShowIntakeForm(true);
+                  }}
+                  className="px-6 py-3 bg-gray-900 text-white hover:bg-gray-800 transition-colors rounded-lg font-medium inline-flex items-center gap-2"
+                >
+                  Start Risk-Free Today
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
+
       {/* Contact Section */}
       <motion.section
         id="contact"
@@ -1996,7 +2337,7 @@ function App() {
               
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">Email</h4>
+                  <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">Email</h3>
                   <a 
                     href="mailto:eldon@petersonproservices.com"
                     className="text-gray-600 hover:text-gray-900 transition-colors font-light"
@@ -2179,7 +2520,7 @@ function App() {
                   
                   {selectedProject.features && (
                     <div className="mb-8">
-                      <h4 className="text-sm font-medium text-gray-900 mb-4 uppercase tracking-wider">Key Features</h4>
+                      <span className="text-sm font-medium text-gray-900 mb-4 uppercase tracking-wider block">Key Features</span>
                       <div className="grid md:grid-cols-2 gap-2">
                         {selectedProject.features.map((feature, index) => (
                           <div key={index} className="text-sm text-gray-600 font-light">
@@ -2194,20 +2535,20 @@ function App() {
                 <div className="lg:col-span-4">
                   <div className="space-y-6">
                     <div>
-                      <h4 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">Client</h4>
+                      <span className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider block">Client</span>
                       <p className="text-gray-600 font-light">{selectedProject.client}</p>
                     </div>
                     <div>
-                      <h4 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">Duration</h4>
+                      <span className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider block">Duration</span>
                       <p className="text-gray-600 font-light">{selectedProject.duration}</p>
                     </div>
                     <div>
-                      <h4 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">Year</h4>
+                      <span className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider block">Year</span>
                       <p className="text-gray-600 font-light">{selectedProject.year}</p>
                     </div>
                     {selectedProject.technologies && (
                       <div>
-                        <h4 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider">Technologies</h4>
+                        <span className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wider block">Technologies</span>
                         <div className="space-y-1">
                           {selectedProject.technologies.map((tech) => (
                             <div key={tech} className="text-sm text-gray-600 font-light">

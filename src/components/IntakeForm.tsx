@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, DollarSign, Target, Clock, Users, Briefcase } from 'lucide-react';
+import { X, Calendar, DollarSign, Target, Clock, Users, Briefcase, CheckCircle2 } from 'lucide-react';
 
 interface IntakeFormProps {
   isOpen: boolean;
@@ -27,6 +27,42 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  // Progress calculation for steps
+  const steps = [
+    { id: 'contact', label: 'Contact Info', icon: Users },
+    { id: 'project', label: 'Project Details', icon: Target },
+    { id: 'budget', label: 'Budget & Timeline', icon: DollarSign },
+    { id: 'decision', label: 'Final Details', icon: Clock }
+  ];
+
+  const progress = useMemo(() => {
+    const contactFields = ['name', 'email', 'phone', 'company', 'industry', 'companySize'];
+    const projectFields = ['projectType', 'goals', 'challenges'];
+    const budgetFields = ['budget', 'timeline'];
+    const decisionFields = ['decisionMaker'];
+
+    const contactComplete = contactFields.filter(f => formData[f as keyof typeof formData]).length;
+    const projectComplete = projectFields.filter(f => formData[f as keyof typeof formData]).length;
+    const budgetComplete = budgetFields.filter(f => formData[f as keyof typeof formData]).length;
+    const decisionComplete = decisionFields.filter(f => formData[f as keyof typeof formData]).length;
+
+    return {
+      contact: Math.round((contactComplete / contactFields.length) * 100),
+      project: Math.round((projectComplete / projectFields.length) * 100),
+      budget: Math.round((budgetComplete / budgetFields.length) * 100),
+      decision: Math.round((decisionComplete / decisionFields.length) * 100),
+      total: Math.round(((contactComplete + projectComplete + budgetComplete + decisionComplete) /
+        (contactFields.length + projectFields.length + budgetFields.length + decisionFields.length)) * 100)
+    };
+  }, [formData]);
+
+  const getStepStatus = (stepId: string) => {
+    const stepProgress = progress[stepId as keyof typeof progress];
+    if (stepProgress === 100) return 'complete';
+    if (stepProgress > 0) return 'in-progress';
+    return 'pending';
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -116,9 +152,52 @@ export const IntakeForm = ({ isOpen, onClose, onSubmitSuccess }: IntakeFormProps
                       <p className="text-sm text-gray-600">Help us understand your needs better</p>
                     </div>
                   </div>
-                  <p className="text-gray-600 font-light leading-relaxed">
+                  <p className="text-gray-600 font-light leading-relaxed mb-6">
                     Please take 2-3 minutes to share details about your project. This helps us prepare for a productive consultation and ensure we're the right fit for your needs.
                   </p>
+
+                  {/* Progress Steps */}
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-medium text-gray-700">Form Progress</span>
+                      <span className="text-sm font-semibold text-gray-900">{progress.total}% Complete</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
+                      <motion.div
+                        className="bg-gradient-to-r from-gold-500 to-gold-600 h-2 rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${progress.total}%` }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </div>
+                    <div className="grid grid-cols-4 gap-2">
+                      {steps.map((step, index) => {
+                        const status = getStepStatus(step.id);
+                        return (
+                          <div key={step.id} className="flex flex-col items-center">
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center mb-1 transition-colors ${
+                              status === 'complete' ? 'bg-gold-500 text-white' :
+                              status === 'in-progress' ? 'bg-gold-100 text-gold-700 border-2 border-gold-400' :
+                              'bg-gray-100 text-gray-400'
+                            }`}>
+                              {status === 'complete' ? (
+                                <CheckCircle2 className="w-4 h-4" />
+                              ) : (
+                                <step.icon className="w-4 h-4" />
+                              )}
+                            </div>
+                            <span className={`text-xs text-center ${
+                              status === 'complete' ? 'text-gold-700 font-medium' :
+                              status === 'in-progress' ? 'text-gray-700' :
+                              'text-gray-400'
+                            }`}>
+                              {step.label}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
 
                 <form onSubmit={handleSubmit} name="intake-form" method="POST" data-netlify="true">
