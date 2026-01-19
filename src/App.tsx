@@ -105,7 +105,14 @@ function App() {
       duration: "4 months",
       year: "2024",
       link: "#",
-      size: "large"
+      size: "large",
+      results: {
+        metric1: { label: "Revenue Increase", value: "+312%" },
+        metric2: { label: "Avg. Order Value", value: "+47%" },
+        metric3: { label: "Return Rate", value: "-23%" }
+      },
+      challenge: "Luxe Fashion was struggling with high cart abandonment rates and customers returning items due to fit issues. Their existing platform lacked personalization and modern shopping features.",
+      solution: "Implemented an AI-powered recommendation engine that learns customer preferences and a virtual try-on feature using AR technology that reduced returns significantly while increasing average order value."
     },
     {
       id: 2,
@@ -127,7 +134,14 @@ function App() {
       duration: "6 weeks",
       year: "2024",
       link: "#",
-      size: "medium"
+      size: "medium",
+      results: {
+        metric1: { label: "Brand Recognition", value: "+156%" },
+        metric2: { label: "Investor Meetings", value: "+89%" },
+        metric3: { label: "Series A Funding", value: "$4.2M" }
+      },
+      challenge: "Zenith Technologies was a promising startup with innovative technology but lacked a professional brand identity. They were struggling to attract investors and enterprise clients due to inconsistent visual presentation.",
+      solution: "Developed a comprehensive brand identity system that positioned them as industry innovators. The cohesive visual language across all materials helped them close their Series A funding round."
     },
     {
       id: 3,
@@ -149,7 +163,14 @@ function App() {
       duration: "8 months",
       year: "2024",
       link: "#",
-      size: "medium"
+      size: "medium",
+      results: {
+        metric1: { label: "App Downloads", value: "125K+" },
+        metric2: { label: "Daily Active Users", value: "+234%" },
+        metric3: { label: "Customer Satisfaction", value: "4.8/5" }
+      },
+      challenge: "SecureBank's existing mobile app had poor user ratings due to complex navigation and lack of modern features. Customers were switching to competitor apps with better user experiences.",
+      solution: "Completely redesigned the mobile experience with intuitive navigation, biometric login, and personalized financial insights. The new app became the highest-rated banking app in their region."
     },
     {
       id: 4,
@@ -171,7 +192,14 @@ function App() {
       duration: "3 months",
       year: "2024",
       link: "#",
-      size: "large"
+      size: "large",
+      results: {
+        metric1: { label: "Client Inquiries", value: "+278%" },
+        metric2: { label: "Time on Site", value: "4.5 min" },
+        metric3: { label: "Award Nominations", value: "3" }
+      },
+      challenge: "Pixel Creative needed a website that would demonstrate their creative capabilities and stand out in a saturated market of creative agencies. Their old site wasn't converting visitors into clients.",
+      solution: "Built an immersive, award-worthy website with cutting-edge animations and interactive elements that showcase their creative talent. The site itself became their best portfolio piece."
     },
     {
       id: 5,
@@ -193,7 +221,14 @@ function App() {
       duration: "5 months",
       year: "2024",
       link: "#",
-      size: "small"
+      size: "small",
+      results: {
+        metric1: { label: "Total Sales", value: "$890K" },
+        metric2: { label: "Unique Collectors", value: "1,200+" },
+        metric3: { label: "Floor Price", value: "+540%" }
+      },
+      challenge: "CryptoArt Collective wanted to launch a premium NFT collection that would stand out in a crowded marketplace. They needed unique artwork with genuine utility and community engagement features.",
+      solution: "Created a cohesive 50-piece collection with interconnected lore, animated variations, and holder benefits. Built community voting features that increased engagement and secondary market activity."
     },
     {
       id: 6,
@@ -215,7 +250,14 @@ function App() {
       duration: "6 months",
       year: "2024",
       link: "#",
-      size: "small"
+      size: "small",
+      results: {
+        metric1: { label: "User Engagement", value: "+189%" },
+        metric2: { label: "Premium Conversions", value: "+67%" },
+        metric3: { label: "User Retention", value: "78%" }
+      },
+      challenge: "FitTech's existing dashboard had low engagement due to generic recommendations and poor data visualization. Users weren't converting to premium subscriptions.",
+      solution: "Built an AI-powered dashboard with beautiful data visualizations and truly personalized recommendations. Social features like challenges and leaderboards dramatically increased engagement and premium conversions."
     },
     {
       id: 7,
@@ -237,7 +279,14 @@ function App() {
       duration: "10 weeks",
       year: "2024",
       link: "#",
-      size: "medium"
+      size: "medium",
+      results: {
+        metric1: { label: "Booking Requests", value: "+234%" },
+        metric2: { label: "Avg. Event Value", value: "+$8,500" },
+        metric3: { label: "Corporate Clients", value: "45 new" }
+      },
+      challenge: "Saveur Elite was losing high-value corporate clients to competitors with better online presence. Their existing website didn't convey the premium quality of their service.",
+      solution: "Created an elegant digital experience with stunning food photography, interactive menu building, and seamless booking. The site now attracts Fortune 500 companies for corporate events."
     },
     {
       id: 8,
@@ -259,7 +308,14 @@ function App() {
       duration: "7 months",
       year: "2024",
       link: "#",
-      size: "large"
+      size: "large",
+      results: {
+        metric1: { label: "Events Managed", value: "+156%" },
+        metric2: { label: "Planning Time", value: "-45%" },
+        metric3: { label: "Client Satisfaction", value: "4.9/5" }
+      },
+      challenge: "Grandeur Events was struggling to scale their operations due to manual processes and poor vendor coordination. Client communication was scattered across emails and phone calls.",
+      solution: "Built a comprehensive event management platform that centralizes all communications, automates vendor coordination, and provides clients with real-time project visibility."
     },
     {
       id: 9,
@@ -281,7 +337,14 @@ function App() {
       duration: "9 months",
       year: "2024",
       link: "#",
-      size: "small"
+      size: "small",
+      results: {
+        metric1: { label: "Property Inquiries", value: "+312%" },
+        metric2: { label: "Virtual Tours", value: "8,500/mo" },
+        metric3: { label: "Days on Market", value: "-34%" }
+      },
+      challenge: "Prestige Properties was losing luxury buyers to competitors with better online property showcases. Their outdated listing pages couldn't convey the quality of their premium properties.",
+      solution: "Built an immersive real estate platform with 360° virtual tours, interactive neighborhood data, and agent matching that helped buyers find their dream homes faster."
     },
     {
       id: 10,
@@ -303,7 +366,14 @@ function App() {
       duration: "12 months",
       year: "2024",
       link: "#",
-      size: "medium"
+      size: "medium",
+      results: {
+        metric1: { label: "Application Volume", value: "+189%" },
+        metric2: { label: "Processing Time", value: "-67%" },
+        metric3: { label: "Approval Rate", value: "+23%" }
+      },
+      challenge: "Prime Mortgage was losing applicants due to a complex, paper-heavy application process. Loan officers spent too much time on manual tasks instead of closing deals.",
+      solution: "Created an intelligent mortgage platform that automates underwriting, matches borrowers with optimal loan products, and provides real-time application tracking for transparency."
     },
     {
       id: 11,
@@ -325,7 +395,14 @@ function App() {
       duration: "8 months",
       year: "2024",
       link: "#",
-      size: "small"
+      size: "small",
+      results: {
+        metric1: { label: "Quote Requests", value: "+267%" },
+        metric2: { label: "Policy Sales", value: "+145%" },
+        metric3: { label: "Customer LTV", value: "+$12K" }
+      },
+      challenge: "Guardian Life was losing potential customers who found insurance confusing and overwhelming. Their quote process required phone calls and took days to complete.",
+      solution: "Built an educational platform with instant quote generation and easy-to-understand policy comparisons. Customers can now research, compare, and purchase coverage in a single session."
     },
     {
       id: 12,
@@ -347,7 +424,14 @@ function App() {
       duration: "6 months",
       year: "2024",
       link: "#",
-      size: "medium"
+      size: "medium",
+      results: {
+        metric1: { label: "Venue Bookings", value: "+178%" },
+        metric2: { label: "Tour Engagement", value: "12 min avg" },
+        metric3: { label: "Avg. Event Value", value: "+$15K" }
+      },
+      challenge: "Event Center was losing bookings to venues with better online presence. Couples and event planners couldn't visualize their events without multiple site visits.",
+      solution: "Created an immersive digital experience with 3D venue tours and interactive event planning tools. Clients can now visualize table layouts, lighting, and decor before booking."
     },
     {
       id: 13,
