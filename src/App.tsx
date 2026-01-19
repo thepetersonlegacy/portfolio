@@ -1229,6 +1229,7 @@ function App() {
   const [showCaseStudy, setShowCaseStudy] = useState(false);
   const [showVideoTestimonials, setShowVideoTestimonials] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>('All');
 
   // FAQ Data
   const faqs = [
@@ -2288,7 +2289,7 @@ function App() {
         variants={fadeInUp}
       >
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-16 mb-20">
+          <div className="grid lg:grid-cols-12 gap-16 mb-12">
             <div className="lg:col-span-4">
               <h2 className="text-4xl font-light mb-8 text-gray-900 relative inline-block">
                 Selected Work
@@ -2301,10 +2302,61 @@ function App() {
             <div className="lg:col-span-8">
               <div className="text-right">
                 <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
-                  {projects.length} Projects
+                  {activeCategory === 'All' ? projects.length : projects.filter(p => p.category === activeCategory).length} Projects
                 </p>
               </div>
             </div>
+          </div>
+
+          {/* Category Filter Bar */}
+          <div className="mb-12 overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide">
+            <motion.div
+              className="flex flex-wrap gap-2 md:gap-3 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              {/* All Filter Button */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveCategory('All')}
+                className={`px-4 py-2 md:px-5 md:py-2.5 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap flex items-center gap-2 ${
+                  activeCategory === 'All'
+                    ? 'bg-gray-900 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                All
+                <span className={`text-xs px-1.5 py-0.5 rounded-full ${activeCategory === 'All' ? 'bg-white/20' : 'bg-gray-300'}`}>
+                  {projects.length}
+                </span>
+              </motion.button>
+
+              {/* Category Filter Buttons */}
+              {Array.from(new Set(projects.map(p => p.category))).sort().map((category) => {
+                const count = projects.filter(p => p.category === category).length;
+                return (
+                  <motion.button
+                    key={category}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setActiveCategory(category)}
+                    className={`px-4 py-2 md:px-5 md:py-2.5 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap flex items-center gap-2 ${
+                      activeCategory === category
+                        ? 'bg-gray-900 text-white shadow-lg'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    }`}
+                  >
+                    {category}
+                    <span className={`text-xs px-1.5 py-0.5 rounded-full ${activeCategory === category ? 'bg-white/20' : 'bg-gray-300'}`}>
+                      {count}
+                    </span>
+                  </motion.button>
+                );
+              })}
+            </motion.div>
           </div>
 
           {/* Creative Masonry Grid */}
@@ -2314,8 +2366,10 @@ function App() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
+            layout
           >
-            {projects.map((project, index) => {
+            <AnimatePresence mode="popLayout">
+            {(activeCategory === 'All' ? projects : projects.filter(p => p.category === activeCategory)).map((project, index) => {
               // Define dynamic grid spans and row spans for creative layout
               const getGridClass = () => {
                 switch (project.size) {
@@ -2330,81 +2384,183 @@ function App() {
                 }
               };
 
+              // Visual variety patterns based on project id
+              const cardStyle = project.id % 6;
+              const getImageFilter = () => {
+                switch (cardStyle) {
+                  case 0: return 'grayscale group-hover:grayscale-0';
+                  case 1: return 'sepia-[0.2] group-hover:sepia-0';
+                  case 2: return 'saturate-[0.8] group-hover:saturate-100';
+                  case 3: return 'brightness-90 group-hover:brightness-100';
+                  case 4: return 'contrast-[0.9] group-hover:contrast-100';
+                  case 5: return 'grayscale-[0.5] group-hover:grayscale-0';
+                  default: return 'grayscale group-hover:grayscale-0';
+                }
+              };
+
+              const getOverlayGradient = () => {
+                switch (cardStyle) {
+                  case 0: return 'bg-gradient-to-t from-black/70 via-black/20 to-transparent';
+                  case 1: return 'bg-gradient-to-br from-black/60 via-transparent to-black/40';
+                  case 2: return 'bg-gradient-to-r from-black/70 via-transparent to-black/30';
+                  case 3: return 'bg-gradient-to-tl from-black/70 via-black/10 to-transparent';
+                  case 4: return 'bg-gradient-to-b from-transparent via-black/20 to-black/70';
+                  case 5: return 'bg-gradient-to-tr from-black/60 via-transparent to-black/30';
+                  default: return 'bg-gradient-to-t from-black/60 via-transparent to-transparent';
+                }
+              };
+
+              const getContentPosition = () => {
+                switch (cardStyle) {
+                  case 0: return 'justify-end';
+                  case 1: return 'justify-between';
+                  case 2: return 'justify-center';
+                  case 3: return 'justify-end items-start';
+                  case 4: return 'justify-end items-end';
+                  case 5: return 'justify-between items-center';
+                  default: return 'justify-end';
+                }
+              };
+
+              const getBorderStyle = () => {
+                switch (cardStyle) {
+                  case 0: return 'rounded-none';
+                  case 1: return 'rounded-lg';
+                  case 2: return 'rounded-xl';
+                  case 3: return 'rounded-tl-3xl rounded-br-3xl';
+                  case 4: return 'rounded-tr-3xl rounded-bl-3xl';
+                  case 5: return 'rounded-2xl';
+                  default: return 'rounded-none';
+                }
+              };
+
+              const getCategoryStyle = () => {
+                switch (cardStyle) {
+                  case 0: return 'bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full';
+                  case 1: return 'border border-white/40 px-3 py-1 rounded-md';
+                  case 2: return 'bg-gold-500/80 text-gray-900 px-3 py-1 rounded-full';
+                  case 3: return 'bg-red-600/80 px-3 py-1 rounded-md';
+                  case 4: return 'border-l-2 border-gold-500 pl-3';
+                  case 5: return 'bg-gray-900/80 px-3 py-1 rounded-lg';
+                  default: return '';
+                }
+              };
+
               return (
                 <motion.div
                   key={project.id}
-                  variants={staggerItem}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4 }}
                   whileHover={{ scale: 1.02, zIndex: 10 }}
-                  className={`group cursor-pointer relative overflow-hidden bg-gray-100 ${getGridClass()}`}
+                  className={`group cursor-pointer relative overflow-hidden bg-gray-100 ${getGridClass()} ${getBorderStyle()}`}
                   onClick={() => handleProjectView(project)}
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
-                  {/* Background Image */}
+                  {/* Background Image with varied filters */}
                   <div className="absolute inset-0">
                     <img
                       src={project.image}
                       alt={project.title}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                      className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${getImageFilter()}`}
                     />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                    <div className={`absolute inset-0 ${getOverlayGradient()} group-hover:bg-black/50 transition-all duration-500`}></div>
                   </div>
 
-                  {/* Content Overlay */}
-                  <div className="absolute inset-0 p-6 flex flex-col justify-between text-white bg-gradient-to-t from-black/60 via-transparent to-transparent backdrop-blur-[2px] group-hover:backdrop-blur-sm transition-all duration-500">
-                    {/* Top: Project Number */}
-                    <div className="flex justify-between items-start">
-                      <div className="text-xs font-medium uppercase tracking-wider opacity-70">
-                        {String(index + 1).padStart(2, '0')}
-                      </div>
-                      <div className="text-xs font-medium uppercase tracking-wider opacity-70">
-                        {project.year}
-                      </div>
-                    </div>
-
-                    {/* Bottom: Project Info */}
-                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      <div className="mb-2">
-                        <div className="text-xs font-medium uppercase tracking-wider opacity-70 mb-1">
-                          {project.category}
+                  {/* Content Overlay with varied positioning */}
+                  <div className={`absolute inset-0 p-6 flex flex-col ${getContentPosition()} text-white backdrop-blur-[1px] group-hover:backdrop-blur-sm transition-all duration-500`}>
+                    {/* Top: Project Number - varied placement */}
+                    {(cardStyle === 0 || cardStyle === 1 || cardStyle === 5) && (
+                      <div className="flex justify-between items-start">
+                        <div className="text-xs font-medium uppercase tracking-wider opacity-70">
+                          {String(project.id).padStart(2, '0')}
                         </div>
-                        <h3 className="text-lg md:text-xl font-medium leading-tight">
-                          {project.title}
-                        </h3>
+                        <div className="text-xs font-medium uppercase tracking-wider opacity-70">
+                          {project.year}
+                        </div>
                       </div>
-                      
-                      {/* Description - only show on hover for larger cards */}
-                      {project.size === 'large' && (
+                    )}
+
+                    {/* Project Info with varied styles */}
+                    <div className={`transform ${cardStyle === 2 ? '' : 'translate-y-4 group-hover:translate-y-0'} transition-transform duration-500`}>
+                      {/* Category badge with varied styles */}
+                      <div className={`text-xs font-medium uppercase tracking-wider mb-2 inline-block ${getCategoryStyle()}`}>
+                        {project.category}
+                      </div>
+
+                      <h3 className={`font-medium leading-tight mb-2 ${
+                        project.size === 'large' ? 'text-xl md:text-2xl' :
+                        project.size === 'medium' ? 'text-lg md:text-xl' : 'text-base md:text-lg'
+                      }`}>
+                        {project.title}
+                      </h3>
+
+                      {/* Description - varied visibility */}
+                      {(project.size === 'large' || cardStyle === 2) && (
                         <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 leading-relaxed max-w-md">
-                          {project.description.substring(0, 120)}...
+                          {project.description.substring(0, 100)}...
                         </p>
                       )}
 
-                      {/* Tags */}
+                      {/* Tags with varied styles */}
                       <div className="flex flex-wrap gap-2 mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                        {project.tags.slice(0, 3).map((tag) => (
-                          <span 
+                        {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                          <span
                             key={tag}
-                            className="text-xs px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full"
+                            className={`text-xs px-2 py-1 ${
+                              cardStyle === 2 ? 'bg-gray-900/60 rounded-md' :
+                              cardStyle === 3 ? 'bg-red-600/40 rounded-full' :
+                              cardStyle === 4 ? 'bg-gold-500/40 rounded-md text-white' :
+                              'bg-white/20 backdrop-blur-sm rounded-full'
+                            }`}
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
+
+                      {/* Results badge for projects with results */}
+                      {project.results && cardStyle % 2 === 0 && (
+                        <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+                          <span className="text-xs font-semibold bg-green-500/80 px-2 py-1 rounded-full">
+                            {project.results.metric1?.value || ''}
+                          </span>
+                        </div>
+                      )}
                     </div>
 
-                    {/* Hover Arrow */}
-                    <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                      <ArrowRight className="w-5 h-5" />
+                    {/* Hover indicator with varied styles */}
+                    <div className={`absolute ${
+                      cardStyle === 4 ? 'bottom-6 right-6' : 'top-6 right-6'
+                    } opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0`}>
+                      {cardStyle === 2 ? (
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                          <ArrowRight className="w-5 h-5" />
+                        </div>
+                      ) : cardStyle === 3 ? (
+                        <div className="w-8 h-8 rounded-md bg-gold-500 flex items-center justify-center text-gray-900">
+                          <ArrowRight className="w-4 h-4" />
+                        </div>
+                      ) : (
+                        <ArrowRight className="w-5 h-5" />
+                      )}
                     </div>
                   </div>
 
-                  {/* Interactive Border with Gold Glow */}
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold-500/50 group-hover:shadow-gold-glow-lg transition-all duration-500"></div>
+                  {/* Interactive Border with varied glow styles */}
+                  <div className={`absolute inset-0 border-2 border-transparent ${getBorderStyle()} ${
+                    cardStyle === 2 ? 'group-hover:border-white/50' :
+                    cardStyle === 3 ? 'group-hover:border-red-500/50 group-hover:shadow-red-glow' :
+                    'group-hover:border-gold-500/50 group-hover:shadow-gold-glow-lg'
+                  } transition-all duration-500`}></div>
                 </motion.div>
               );
             })}
+            </AnimatePresence>
           </motion.div>
 
           {/* Featured Project Spotlight */}
