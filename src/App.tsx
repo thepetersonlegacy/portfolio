@@ -876,7 +876,7 @@ function App() {
                 key={i}
                 variants={staggerItem}
               >
-                <Card hover className="p-phi-2xl h-full aspect-golden flex flex-col items-center text-center">
+                <Card hover className="p-phi-2xl h-full flex flex-col items-center text-center">
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
