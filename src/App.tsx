@@ -1915,7 +1915,7 @@ function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Stop Losing $10K+ Per Month to a Mediocre Website
+            Stop Losing Money to a Website That Doesn't Convert
           </motion.h2>
           <motion.p
             className="text-xl text-gray-300 font-light mb-10 max-w-2xl mx-auto"
@@ -1924,7 +1924,7 @@ function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Stop Losing Money to a Website That Doesn't Convert. Conversion-first web design for law firms, aviation companies, and premium service brands—built to turn traffic into booked calls.
+            Conversion-first web design for law firms, aviation companies, and premium service brands—built to turn traffic into booked calls.
           </motion.p>
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
