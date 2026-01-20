@@ -1657,7 +1657,7 @@ function App() {
             transition={{ delay: 0.9, duration: 0.6 }}
             className="text-fluid-base md:text-fluid-lg text-gray-700 mb-phi-3xl leading-relaxed font-light max-w-phi-md mx-auto"
           >
-            I build conversion-focused websites for law firms, aviation companies, and premium service brands that turn visitors into booked calls—not just page views.
+            We build conversion-focused websites for premium service brands that turn visitors into booked calls—not just page views.
           </motion.p>
 
           {/* USPs - Premium Cards with Golden Ratio */}
