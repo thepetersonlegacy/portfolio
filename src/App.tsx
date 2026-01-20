@@ -1821,25 +1821,17 @@ function App() {
                 <div className="lg:col-span-7 space-y-8">
                   <div className="space-y-6">
                     <p className="text-lg text-gray-700 leading-relaxed font-light">
-                      I'm Eldon Peterson, a web designer and developer passionate about creating websites that actually work for your business. While most developers focus on making sites "look pretty," I focus on strategic design that helps turn visitors into clients.
+                      I'm Eldon Peterson, and I don't build "pretty websites." I build customer-getting assets.
                     </p>
                     <p className="text-lg text-gray-700 leading-relaxed font-light">
-                      I've worked with law firms, aviation companies, artists, and service-based businesses to create professional web presences that reflect their brand and make it easy for potential clients to take action.
+                      Most sites are digital art projects—nice to look at, expensive to maintain, and they don't move people to act. I design with strategy first, so your website does what it's supposed to do: turn visitors into leads, leads into conversations, and conversations into clients.
+                    </p>
+                    <p className="text-lg text-gray-700 leading-relaxed font-light">
+                      I've built conversion-focused web presences for law firms, aviation companies, artists, and service businesses—sites that look professional, communicate value fast, and make the next step obvious.
                     </p>
                     <p className="text-lg text-gray-900 font-medium leading-relaxed">
-                      If you're looking for a website that represents your business professionally and helps you connect with more clients, let's talk.
+                      If you want a website that doesn't just represent your business… but produces for your business, let's talk.
                     </p>
-                  </div>
-                  
-                  <div className="pt-8">
-                    <div className="grid grid-cols-2 gap-8">
-                      {skills.map((skill) => (
-                        <div key={skill.name} className="text-center">
-                          <div className="text-2xl font-light text-gray-900 mb-2">{skill.level}%</div>
-                          <div className="text-sm text-gray-600 font-medium">{skill.name}</div>
-                        </div>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </div>
