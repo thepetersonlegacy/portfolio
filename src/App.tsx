@@ -1,5 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar, BookOpen, BadgeCheck, Blocks, FileText, TrendingUp, HelpCircle, Plus, Minus, Shield, Clock, DollarSign, CheckCircle2, Phone } from 'lucide-react';
+import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar, BookOpen, BadgeCheck, Blocks, FileText, TrendingUp, HelpCircle, Plus, Minus, Shield, Clock, DollarSign, CheckCircle2, Phone, MapPin } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { MobileNav } from './components/MobileNav';
@@ -11,6 +11,7 @@ import { FastQuoteForm } from './components/FastQuoteForm';
 import { StickyMobileBar } from './components/StickyMobileBar';
 import { ROICalculator } from './components/ROICalculator';
 import { ServiceCTABlock } from './components/ServiceCTABlock';
+import { LegalModal } from './components/LegalModals';
 import { trackEvent, trackCTAClick, trackFormSubmit, trackDownload, trackBookClick, trackFormClick } from './utils/analytics';
 import { Pill, SectionTitle, Card, BentoCard, FeatureBadge, StatCard } from './components/FramerComponents';
 
@@ -1348,6 +1349,7 @@ function App() {
   const [showVideoTestimonials, setShowVideoTestimonials] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [legalModal, setLegalModal] = useState<'terms' | 'privacy' | null>(null);
 
   // Phone number for Call/Text CTAs
   const PHONE_NUMBER = '+14096567142';
@@ -3419,13 +3421,138 @@ function App() {
       </motion.section>
 
       {/* Footer */}
-      <footer className="py-16 px-8 border-t border-gold-200">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-sm text-gray-500 font-light">
-            © 2026 Peterson Pro Design Services, LLC
-          </p>
+      <footer className="bg-gray-900 text-white">
+        {/* Main Footer Content */}
+        <div className="max-w-6xl mx-auto px-6 md:px-8 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+            {/* Brand Column */}
+            <div className="lg:col-span-1">
+              <h3 className="text-xl font-semibold mb-4">Peterson Pro Services</h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                Most websites are art. Ours are assets. We build high-converting websites that turn visitors into customers.
+              </p>
+              {/* Social Links */}
+              <div className="flex gap-4">
+                <a
+                  href="https://linkedin.com/in/eldonpeterson"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5 text-gray-400" />
+                </a>
+                <a
+                  href="https://github.com/eldonpeterson"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+                  aria-label="GitHub"
+                >
+                  <Github className="w-5 h-5 text-gray-400" />
+                </a>
+              </div>
+            </div>
+
+            {/* Services Column */}
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Services</h4>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Web Design</a></li>
+                <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Web Development</a></li>
+                <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">E-commerce Solutions</a></li>
+                <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">SEO & Performance</a></li>
+                <li><a href="#projects" className="text-gray-400 hover:text-white transition-colors">View Portfolio</a></li>
+              </ul>
+            </div>
+
+            {/* Quick Links Column */}
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Quick Links</h4>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">About</a></li>
+                <li><a href="#process" className="text-gray-400 hover:text-white transition-colors">Our Process</a></li>
+                <li><a href="#faq" className="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                <li>
+                  <button
+                    onClick={() => { setShowCalendly(true); trackBookClick('footer'); }}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Book a Call
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Column */}
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Get In Touch</h4>
+              <ul className="space-y-4 text-sm">
+                <li>
+                  <a href="tel:+14096567142" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                    <span className="w-8 h-8 rounded-full bg-gray-800 group-hover:bg-red-600 flex items-center justify-center transition-colors">
+                      <Phone className="w-4 h-4" />
+                    </span>
+                    (409) 656-7142
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:eldon@petersonproservices.com" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                    <span className="w-8 h-8 rounded-full bg-gray-800 group-hover:bg-red-600 flex items-center justify-center transition-colors">
+                      <Mail className="w-4 h-4" />
+                    </span>
+                    eldon@petersonproservices.com
+                  </a>
+                </li>
+                <li>
+                  <div className="flex items-start gap-3 text-gray-400">
+                    <span className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-4 h-4" />
+                    </span>
+                    <span>
+                      Southeast Texas<br />
+                      <span className="text-gray-500">Serving clients nationwide</span>
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-800">
+          <div className="max-w-6xl mx-auto px-6 md:px-8 py-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-sm text-gray-500 text-center md:text-left">
+                © {new Date().getFullYear()} Peterson Pro Services, LLC. All rights reserved.
+              </p>
+              <div className="flex flex-wrap justify-center gap-6 text-sm">
+                <button
+                  onClick={() => setLegalModal('privacy')}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </button>
+                <button
+                  onClick={() => setLegalModal('terms')}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Terms of Service
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </footer>
+
+      {/* Legal Modals */}
+      <LegalModal
+        isOpen={legalModal !== null}
+        onClose={() => setLegalModal(null)}
+        type={legalModal || 'privacy'}
+      />
 
       {/* Project Modal */}
       {selectedProject && !showProjectPage && (
