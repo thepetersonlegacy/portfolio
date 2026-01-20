@@ -133,6 +133,25 @@
       <input type="text" name="source" />
     </form>
 
+    <!-- Hidden form for Netlify Forms detection - Fast Quote -->
+    <form name="fast-quote" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <input type="url" name="website" />
+      <select name="businessType">
+        <option value="law-firm">Law Firm</option>
+        <option value="aviation">Aviation</option>
+        <option value="other">Other</option>
+      </select>
+      <select name="serviceNeeded">
+        <option value="new-website">New Website</option>
+        <option value="redesign">Redesign</option>
+      </select>
+      <textarea name="ninetyDayGoal"></textarea>
+      <input type="checkbox" name="wantsPhoneCall" />
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

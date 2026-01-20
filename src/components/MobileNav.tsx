@@ -1,13 +1,14 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Calendar } from 'lucide-react';
 
 interface MobileNavProps {
   activeSection: string;
   setActiveSection: (section: string) => void;
+  onBookClick?: () => void;
 }
 
-export const MobileNav = ({ activeSection, setActiveSection }: MobileNavProps) => {
+export const MobileNav = ({ activeSection, setActiveSection, onBookClick }: MobileNavProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const scrollPositionRef = useRef(0);
@@ -167,28 +168,52 @@ export const MobileNav = ({ activeSection, setActiveSection }: MobileNavProps) =
 
   return (
     <>
-      {/* Mobile hamburger button */}
-      <button
-        type="button"
-        onClick={handleOpenMenu}
-        onTouchEnd={(e) => {
-          e.preventDefault();
-          handleOpenMenu();
-        }}
-        className="md:hidden p-3 hover:bg-gray-100 active:bg-gray-200 rounded-lg transition-colors"
-        aria-label="Open menu"
-        aria-expanded={isOpen}
-        aria-controls="mobile-menu"
-        style={{
-          WebkitTapHighlightColor: 'transparent',
-          touchAction: 'manipulation',
-          cursor: 'pointer',
-          minWidth: '48px',
-          minHeight: '48px',
-        }}
-      >
-        <Menu className="w-6 h-6" style={{ pointerEvents: 'none' }} />
-      </button>
+      {/* Mobile header buttons */}
+      <div className="md:hidden flex items-center gap-2">
+        {/* Book button in header */}
+        {onBookClick && (
+          <button
+            type="button"
+            onClick={onBookClick}
+            onTouchEnd={(e) => {
+              e.preventDefault();
+              onBookClick();
+            }}
+            className="bg-red-600 text-white px-3 py-2 rounded-lg text-sm font-semibold flex items-center gap-1.5 active:bg-red-700"
+            style={{
+              WebkitTapHighlightColor: 'transparent',
+              touchAction: 'manipulation',
+              cursor: 'pointer',
+            }}
+          >
+            <Calendar className="w-4 h-4" style={{ pointerEvents: 'none' }} />
+            Book
+          </button>
+        )}
+
+        {/* Hamburger menu button */}
+        <button
+          type="button"
+          onClick={handleOpenMenu}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            handleOpenMenu();
+          }}
+          className="p-3 hover:bg-gray-100 active:bg-gray-200 rounded-lg transition-colors"
+          aria-label="Open menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          style={{
+            WebkitTapHighlightColor: 'transparent',
+            touchAction: 'manipulation',
+            cursor: 'pointer',
+            minWidth: '48px',
+            minHeight: '48px',
+          }}
+        >
+          <Menu className="w-6 h-6" style={{ pointerEvents: 'none' }} />
+        </button>
+      </div>
 
       {/* Render menu via portal to body */}
       {mounted && createPortal(menuContent, document.body)}

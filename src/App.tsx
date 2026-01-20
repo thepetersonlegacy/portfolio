@@ -1,5 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar, BookOpen, BadgeCheck, Blocks, FileText, TrendingUp, HelpCircle, Plus, Minus, Shield, Clock, DollarSign, CheckCircle2 } from 'lucide-react';
+import { ChevronDown, Eye, ExternalLink, Mail, Github, Linkedin, Code, Palette, Sparkles, Zap, Star, ArrowRight, Calendar, BookOpen, BadgeCheck, Blocks, FileText, TrendingUp, HelpCircle, Plus, Minus, Shield, Clock, DollarSign, CheckCircle2, Phone } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { MobileNav } from './components/MobileNav';
@@ -7,7 +7,9 @@ import { ExitIntentPopup } from './components/ExitIntentPopup';
 import { SocialProofNotification } from './components/SocialProofNotification';
 import { SmartScrollCTA } from './components/SmartScrollCTA';
 import { IntakeForm } from './components/IntakeForm';
-import { trackEvent, trackCTAClick, trackFormSubmit, trackDownload } from './utils/analytics';
+import { FastQuoteForm } from './components/FastQuoteForm';
+import { StickyMobileBar } from './components/StickyMobileBar';
+import { trackEvent, trackCTAClick, trackFormSubmit, trackDownload, trackBookClick, trackFormClick } from './utils/analytics';
 import { Pill, SectionTitle, Card, BentoCard, FeatureBadge, StatCard } from './components/FramerComponents';
 
 // Lazy load heavy components for better performance
@@ -1337,12 +1339,16 @@ function App() {
   const [showLeadMagnet, setShowLeadMagnet] = useState(false);
   const [leadMagnetSubmitted, setLeadMagnetSubmitted] = useState(false);
   const [showIntakeForm, setShowIntakeForm] = useState(false);
+  const [showFastQuote, setShowFastQuote] = useState(false);
   const [showCalendly, setShowCalendly] = useState(false);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
   const [showCaseStudy, setShowCaseStudy] = useState(false);
   const [showVideoTestimonials, setShowVideoTestimonials] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('All');
+
+  // Phone number for Call/Text CTAs
+  const PHONE_NUMBER = '+18005551234'; // Replace with actual phone number
 
   // FAQ Data
   const faqs = [
@@ -1511,7 +1517,8 @@ function App() {
                 Peterson Pro Services
               </span>
             </motion.a>
-            <div className="hidden md:flex space-x-12">
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
               {['Home', 'About', 'Projects', 'Contact'].map((item) => (
                 <a
                   key={item}
@@ -1525,22 +1532,56 @@ function App() {
                   {item}
                 </a>
               ))}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  trackCTAClick('navigation', 'Case Studies');
-                  document.getElementById('case-studies').scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="text-sm font-medium text-gray-500 hover:text-red-600 transition-all duration-300 flex items-center gap-1"
+            </div>
+
+            {/* Desktop CTA Buttons */}
+            <div className="hidden md:flex items-center gap-4">
+              {/* Phone link */}
+              <a
+                href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
+                className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1 transition-colors"
               >
-                <BookOpen className="w-4 h-4" />
-                Case Studies
+                <Phone className="w-4 h-4" />
+                <span className="hidden lg:inline">(800) 555-1234</span>
+              </a>
+
+              {/* Secondary CTA - Fast Quote */}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  trackFormClick('header');
+                  setShowFastQuote(true);
+                }}
+                className="text-sm font-medium text-red-600 hover:text-red-700 transition-colors"
+              >
+                Get a Fast Quote
+              </motion.button>
+
+              {/* Primary CTA - Book */}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  trackBookClick('header');
+                  setShowIntakeForm(true);
+                }}
+                className="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors flex items-center gap-2"
+              >
+                <Calendar className="w-4 h-4" />
+                Book a 15-Min ROI Review
               </motion.button>
             </div>
 
             {/* Mobile Navigation */}
-            <MobileNav activeSection={activeSection} setActiveSection={setActiveSection} />
+            <MobileNav
+              activeSection={activeSection}
+              setActiveSection={setActiveSection}
+              onBookClick={() => {
+                trackBookClick('mobile_nav');
+                setShowIntakeForm(true);
+              }}
+            />
           </div>
         </div>
       </nav>
@@ -1587,14 +1628,14 @@ function App() {
 
             {/* Hero Heading - Golden ratio typography */}
             <h1 className="text-fluid-2xl md:text-fluid-3xl font-light mb-phi-3xl leading-tight tracking-tight">
-              {["Transform Your Website Into", "A 24/7 Lead Generation", "Machine That Pays For Itself"].map((line, i) => (
+              {["A Website Built to Convert", "Not Just Look Good"].map((line, i) => (
                 <motion.span
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.2 + 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className={`block ${i === 0 ? 'text-gray-900' : i === 1 ? 'text-red-600 font-medium' : 'text-gray-800'}`}
-                  style={{ marginBottom: i < 2 ? 'var(--space-phi-lg)' : '0' }}
+                  className={`block ${i === 0 ? 'text-gray-900' : 'text-red-600 font-medium'}`}
+                  style={{ marginBottom: i < 1 ? 'var(--space-phi-lg)' : '0' }}
                 >
                   {line}
                 </motion.span>
@@ -1609,7 +1650,7 @@ function App() {
             transition={{ delay: 0.9, duration: 0.6 }}
             className="text-fluid-base md:text-fluid-lg text-gray-700 mb-phi-3xl leading-relaxed font-light max-w-phi-md mx-auto"
           >
-            Stop Losing Money to a Website That Doesn't Convert. Conversion-first web design for law firms, aviation companies, and premium service brands—built to turn traffic into booked calls.
+            I build conversion-focused websites for law firms, aviation companies, and premium service brands that turn visitors into booked calls—not just page views.
           </motion.p>
 
           {/* USPs - Premium Cards with Golden Ratio */}
@@ -1674,11 +1715,12 @@ function App() {
             transition={{ delay: 1.2, duration: 0.6 }}
             className="flex flex-col sm:flex-row gap-phi-lg justify-center items-center"
           >
+            {/* Primary CTA - Book ROI Review */}
             <motion.button
               whileHover={{ scale: 1.02, boxShadow: '0 0 50px rgba(212, 0, 0, 0.4)' }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
-                trackCTAClick('hero', 'Schedule Free Consultation');
+                trackBookClick('hero');
                 setShowIntakeForm(true);
               }}
               className="group bg-red-600 text-white hover:bg-red-700 active:bg-red-800 transition-all duration-300 flex items-center gap-phi-md rounded-lg font-semibold shadow-red-glow hover:shadow-red-glow-lg text-phi-sm relative overflow-hidden"
@@ -1696,7 +1738,7 @@ function App() {
                 transition={{ repeat: Infinity, duration: 2.5, ease: 'linear' }}
               />
               <span className="relative z-10 flex items-center gap-2">
-                Claim Your Free Strategy Session
+                Book a 15-Min ROI Review
                 <motion.span
                   animate={{ x: [0, 4, 0] }}
                   transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
@@ -1705,12 +1747,13 @@ function App() {
                 </motion.span>
               </span>
             </motion.button>
+            {/* Secondary CTA - Fast Quote */}
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
-                trackCTAClick('hero', 'Get Free Guide');
-                setShowLeadMagnet(true);
+                trackFormClick('hero');
+                setShowFastQuote(true);
               }}
               className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-300 flex items-center gap-phi-md rounded-lg font-medium text-phi-sm"
               style={{
@@ -1720,12 +1763,12 @@ function App() {
                 paddingBottom: 'var(--space-phi-lg)'
               }}
             >
-              Download Free Website Guide
-              <Sparkles className="w-4 h-4" />
+              Get a Fast Quote (No Call Needed)
+              <FileText className="w-4 h-4" />
             </motion.button>
           </motion.div>
           <p className="text-phi-xs text-gray-500 mt-phi-xl">
-            ⚡ Limited availability • Free consultation • No pressure
+            ⏱️ 15 minutes • Free • No pressure
           </p>
         </motion.div>
       </section>
@@ -3571,6 +3614,12 @@ function App() {
         onSubmitSuccess={handleIntakeFormSuccess}
       />
 
+      {/* Fast Quote Form Modal */}
+      <FastQuoteForm
+        isOpen={showFastQuote}
+        onClose={() => setShowFastQuote(false)}
+      />
+
       {/* Calendly Popup Modal */}
       <PopupModal
         url="https://calendly.com/petersonproservices/1st-meeting-fact-gathering-goals"
@@ -3579,64 +3628,15 @@ function App() {
         rootElement={document.getElementById('root') as HTMLElement}
       />
 
-      {/* Sticky Mobile CTA - iOS Safari optimized with high z-index */}
-      <div
-        className={`fixed bottom-0 left-0 right-0 bg-gray-900/95 backdrop-blur-glass-lg border-t border-gold-500/20 text-white md:hidden transition-transform duration-300 shadow-gold-glow-lg ${
-          showMobileCTA ? 'translate-y-0' : 'translate-y-full'
-        }`}
-        style={{
-          zIndex: 99990,
-          WebkitTransform: showMobileCTA ? 'translateY(0)' : 'translateY(100%)',
+      {/* Sticky Mobile Bar - Call | Text | Book */}
+      <StickyMobileBar
+        isVisible={showMobileCTA}
+        onBookClick={() => {
+          trackBookClick('sticky_mobile_bar');
+          setShowIntakeForm(true);
         }}
-      >
-        {/* Urgency Banner */}
-        <div className="bg-red-600 px-4 py-1.5 text-center">
-          <motion.span
-            className="text-xs font-medium"
-            animate={{ opacity: [1, 0.7, 1] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            🔥 Only 3 spots left this month
-          </motion.span>
-        </div>
-        <div className="p-3 flex gap-3">
-          <button
-            type="button"
-            onClick={() => {
-              trackCTAClick('mobile_sticky', 'Book Free Call');
-              setShowIntakeForm(true);
-            }}
-            className="flex-1 py-3 bg-red-600 text-white active:bg-red-700 transition-colors rounded-lg font-semibold text-sm shadow-red-glow relative overflow-hidden"
-            style={{
-              WebkitTapHighlightColor: 'transparent',
-              touchAction: 'manipulation',
-              cursor: 'pointer'
-            }}
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
-              animate={{ x: ['-100%', '100%'] }}
-              transition={{ repeat: Infinity, duration: 2.5, ease: 'linear' }}
-            />
-            <span className="relative z-10 flex items-center justify-center gap-2 pointer-events-none">
-              <Calendar className="w-4 h-4" />
-              Book Free Strategy Call
-            </span>
-          </button>
-          <button
-            type="button"
-            onClick={handleEmailClick}
-            className="py-3 px-4 border-2 border-white active:bg-red-600 active:border-red-600 transition-colors rounded-lg"
-            style={{
-              WebkitTapHighlightColor: 'transparent',
-              touchAction: 'manipulation',
-              cursor: 'pointer'
-            }}
-          >
-            <Mail className="w-5 h-5 pointer-events-none" />
-          </button>
-        </div>
-      </div>
+        phoneNumber={PHONE_NUMBER}
+      />
 
       {/* Exit Intent Popup */}
       <ExitIntentPopup onDownloadClick={() => {
