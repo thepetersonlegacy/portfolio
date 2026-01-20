@@ -1630,7 +1630,7 @@ function App() {
 
             {/* Hero Heading - Golden ratio typography */}
             <h1 className="text-fluid-2xl md:text-fluid-3xl font-light mb-phi-3xl leading-tight tracking-tight">
-              {["A Website Built to Convert", "Not Just Look Good"].map((line, i) => (
+              {["Most websites are art.", "Ours are assets."].map((line, i) => (
                 <motion.span
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
