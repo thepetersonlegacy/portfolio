@@ -1265,15 +1265,12 @@ function App() {
   const testimonials = [
     {
       id: 1,
-      quote: "Within 90 days of launching our new website, we saw a 156% increase in qualified leads. Eldon's strategic approach to conversion optimization transformed our entire digital presence.",
-      name: "Michael Harrison",
+      quote: "Eldon's strategic approach to conversion optimization transformed our entire digital presence. He understood exactly what we needed and delivered beyond expectations.",
+      name: "Michael Thompson",
       title: "Managing Partner",
-      company: "Harrison & Associates Law Firm",
+      company: "Money Team Law Firm",
       industry: "Legal Services",
-      result: "156% more leads",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
-      videoUrl: null
+      rating: 5
     },
     {
       id: 2,
@@ -1282,34 +1279,25 @@ function App() {
       title: "CEO & Founder",
       company: "Flight Ready Aviation Consulting",
       industry: "Aviation",
-      result: "$340K additional revenue",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-      videoUrl: null
+      rating: 5
     },
     {
       id: 3,
-      quote: "As an artist, I needed someone who understood visual storytelling. Eldon created a portfolio that represents my work authentically and has helped me book 3x more commissions.",
+      quote: "As an artist, I needed someone who understood visual storytelling. Eldon created a portfolio that represents my work authentically and has helped me connect with more clients.",
       name: "Noval Noir",
-      title: "Creative Director",
+      title: "Multidisciplinary Artist",
       company: "Noval Noir Creative Studio",
       industry: "Creative Arts",
-      result: "3x commission bookings",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-      videoUrl: null
+      rating: 5
     },
     {
       id: 4,
-      quote: "The ROI on our new e-commerce site has been incredible. Sales increased 89% in the first quarter alone. Eldon's attention to UX details made all the difference.",
-      name: "Sarah Chen",
-      title: "Founder & CEO",
-      company: "Luxe Fashion Collective",
-      industry: "E-Commerce",
-      result: "89% sales increase",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face",
-      videoUrl: null
+      quote: "The website Eldon built for us perfectly captures the premium nature of our aviation catering service. Professional, elegant, and easy to navigate.",
+      name: "Atikis Team",
+      title: "Operations",
+      company: "Atikis Aviation Catering",
+      industry: "Aviation & Hospitality",
+      rating: 5
     }
   ];
 
@@ -2918,13 +2906,6 @@ function App() {
                 whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(235, 197, 98, 0.2), 0 10px 10px -5px rgba(235, 197, 98, 0.1)" }}
                 className="bg-white backdrop-blur-glass border border-gold-200 p-8 rounded-xl shadow-lg transition-all duration-300"
               >
-                {/* Result Badge */}
-                {testimonial.result && (
-                  <div className="inline-block px-3 py-1 bg-gold-100 text-gold-800 text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
-                    {testimonial.result}
-                  </div>
-                )}
-
                 {/* Quote */}
                 <div className="mb-6">
                   <div className="flex gap-1 mb-4">
@@ -2937,25 +2918,15 @@ function App() {
                   </p>
                 </div>
 
-                {/* Author with Photo */}
-                <div className="pt-6 border-t border-gold-200 flex items-center gap-4">
-                  {testimonial.image && (
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-14 h-14 rounded-full object-cover border-2 border-gold-300"
-                      loading="lazy"
-                    />
-                  )}
-                  <div>
-                    <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600 font-light">
-                      {testimonial.title}
-                    </p>
-                    <p className="text-sm text-gold-700 font-medium">
-                      {testimonial.company}
-                    </p>
-                  </div>
+                {/* Author */}
+                <div className="pt-6 border-t border-gold-200">
+                  <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                  <p className="text-sm text-gray-600 font-light">
+                    {testimonial.title}
+                  </p>
+                  <p className="text-sm text-gold-700 font-medium">
+                    {testimonial.company}
+                  </p>
                 </div>
               </motion.div>
             ))}
