@@ -107,9 +107,9 @@ function App() {
       link: "#",
       size: "large",
       results: {
-        metric1: { label: "Revenue Increase", value: "+312%" },
-        metric2: { label: "Avg. Order Value", value: "+47%" },
-        metric3: { label: "Return Rate", value: "-23%" }
+        metric1: { label: "Platform", value: "E-commerce" },
+        metric2: { label: "Features", value: "AI + AR" },
+        metric3: { label: "Focus", value: "UX" }
       },
       challenge: "Luxe Fashion was struggling with high cart abandonment rates and customers returning items due to fit issues. Their existing platform lacked personalization and modern shopping features.",
       solution: "Implemented an AI-powered recommendation engine that learns customer preferences and a virtual try-on feature using AR technology that reduced returns significantly while increasing average order value."
@@ -136,9 +136,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "Brand Recognition", value: "+156%" },
-        metric2: { label: "Investor Meetings", value: "+89%" },
-        metric3: { label: "Series A Funding", value: "$4.2M" }
+        metric1: { label: "Deliverables", value: "Full Suite" },
+        metric2: { label: "Assets", value: "50+" },
+        metric3: { label: "Guidelines", value: "Complete" }
       },
       challenge: "Zenith Technologies was a promising startup with innovative technology but lacked a professional brand identity. They were struggling to attract investors and enterprise clients due to inconsistent visual presentation.",
       solution: "Developed a comprehensive brand identity system that positioned them as industry innovators. The cohesive visual language across all materials helped them close their Series A funding round."
@@ -165,9 +165,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "App Downloads", value: "125K+" },
-        metric2: { label: "Daily Active Users", value: "+234%" },
-        metric3: { label: "Customer Satisfaction", value: "4.8/5" }
+        metric1: { label: "Platform", value: "iOS + Android" },
+        metric2: { label: "Security", value: "Biometric" },
+        metric3: { label: "Focus", value: "Accessibility" }
       },
       challenge: "SecureBank's existing mobile app had poor user ratings due to complex navigation and lack of modern features. Customers were switching to competitor apps with better user experiences.",
       solution: "Completely redesigned the mobile experience with intuitive navigation, biometric login, and personalized financial insights. The new app became the highest-rated banking app in their region."
@@ -194,9 +194,9 @@ function App() {
       link: "#",
       size: "large",
       results: {
-        metric1: { label: "Client Inquiries", value: "+278%" },
-        metric2: { label: "Time on Site", value: "4.5 min" },
-        metric3: { label: "Award Nominations", value: "3" }
+        metric1: { label: "Type", value: "Agency Site" },
+        metric2: { label: "Features", value: "Interactive" },
+        metric3: { label: "Focus", value: "Portfolio" }
       },
       challenge: "Pixel Creative needed a website that would demonstrate their creative capabilities and stand out in a saturated market of creative agencies. Their old site wasn't converting visitors into clients.",
       solution: "Built an immersive, award-worthy website with cutting-edge animations and interactive elements that showcase their creative talent. The site itself became their best portfolio piece."
@@ -223,9 +223,9 @@ function App() {
       link: "#",
       size: "small",
       results: {
-        metric1: { label: "Total Sales", value: "$890K" },
-        metric2: { label: "Unique Collectors", value: "1,200+" },
-        metric3: { label: "Floor Price", value: "+540%" }
+        metric1: { label: "Collection", value: "50 Pieces" },
+        metric2: { label: "Features", value: "Animated" },
+        metric3: { label: "Utility", value: "Holder Benefits" }
       },
       challenge: "CryptoArt Collective wanted to launch a premium NFT collection that would stand out in a crowded marketplace. They needed unique artwork with genuine utility and community engagement features.",
       solution: "Created a cohesive 50-piece collection with interconnected lore, animated variations, and holder benefits. Built community voting features that increased engagement and secondary market activity."
@@ -252,9 +252,9 @@ function App() {
       link: "#",
       size: "small",
       results: {
-        metric1: { label: "User Engagement", value: "+189%" },
-        metric2: { label: "Premium Conversions", value: "+67%" },
-        metric3: { label: "User Retention", value: "78%" }
+        metric1: { label: "Platform", value: "Dashboard" },
+        metric2: { label: "Features", value: "AI-Powered" },
+        metric3: { label: "Focus", value: "Data Viz" }
       },
       challenge: "FitTech's existing dashboard had low engagement due to generic recommendations and poor data visualization. Users weren't converting to premium subscriptions.",
       solution: "Built an AI-powered dashboard with beautiful data visualizations and truly personalized recommendations. Social features like challenges and leaderboards dramatically increased engagement and premium conversions."
@@ -281,9 +281,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "Booking Requests", value: "+234%" },
-        metric2: { label: "Avg. Event Value", value: "+$8,500" },
-        metric3: { label: "Corporate Clients", value: "45 new" }
+        metric1: { label: "Type", value: "Luxury" },
+        metric2: { label: "Features", value: "Menu Builder" },
+        metric3: { label: "Focus", value: "Booking" }
       },
       challenge: "Saveur Elite was losing high-value corporate clients to competitors with better online presence. Their existing website didn't convey the premium quality of their service.",
       solution: "Created an elegant digital experience with stunning food photography, interactive menu building, and seamless booking. The site now attracts Fortune 500 companies for corporate events."
@@ -310,9 +310,9 @@ function App() {
       link: "#",
       size: "large",
       results: {
-        metric1: { label: "Events Managed", value: "+156%" },
-        metric2: { label: "Planning Time", value: "-45%" },
-        metric3: { label: "Client Satisfaction", value: "4.9/5" }
+        metric1: { label: "Platform", value: "Management" },
+        metric2: { label: "Features", value: "Automation" },
+        metric3: { label: "Focus", value: "Coordination" }
       },
       challenge: "Grandeur Events was struggling to scale their operations due to manual processes and poor vendor coordination. Client communication was scattered across emails and phone calls.",
       solution: "Built a comprehensive event management platform that centralizes all communications, automates vendor coordination, and provides clients with real-time project visibility."
@@ -339,9 +339,9 @@ function App() {
       link: "#",
       size: "small",
       results: {
-        metric1: { label: "Property Inquiries", value: "+312%" },
-        metric2: { label: "Virtual Tours", value: "8,500/mo" },
-        metric3: { label: "Days on Market", value: "-34%" }
+        metric1: { label: "Type", value: "Real Estate" },
+        metric2: { label: "Features", value: "360° Tours" },
+        metric3: { label: "Focus", value: "Listings" }
       },
       challenge: "Prestige Properties was losing luxury buyers to competitors with better online property showcases. Their outdated listing pages couldn't convey the quality of their premium properties.",
       solution: "Built an immersive real estate platform with 360° virtual tours, interactive neighborhood data, and agent matching that helped buyers find their dream homes faster."
@@ -368,9 +368,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "Application Volume", value: "+189%" },
-        metric2: { label: "Processing Time", value: "-67%" },
-        metric3: { label: "Approval Rate", value: "+23%" }
+        metric1: { label: "Platform", value: "Mortgage" },
+        metric2: { label: "Features", value: "Automation" },
+        metric3: { label: "Focus", value: "Applications" }
       },
       challenge: "Prime Mortgage was losing applicants due to a complex, paper-heavy application process. Loan officers spent too much time on manual tasks instead of closing deals.",
       solution: "Created an intelligent mortgage platform that automates underwriting, matches borrowers with optimal loan products, and provides real-time application tracking for transparency."
@@ -397,9 +397,9 @@ function App() {
       link: "#",
       size: "small",
       results: {
-        metric1: { label: "Quote Requests", value: "+267%" },
-        metric2: { label: "Policy Sales", value: "+145%" },
-        metric3: { label: "Customer LTV", value: "+$12K" }
+        metric1: { label: "Type", value: "Insurance" },
+        metric2: { label: "Features", value: "Instant Quotes" },
+        metric3: { label: "Focus", value: "Education" }
       },
       challenge: "Guardian Life was losing potential customers who found insurance confusing and overwhelming. Their quote process required phone calls and took days to complete.",
       solution: "Built an educational platform with instant quote generation and easy-to-understand policy comparisons. Customers can now research, compare, and purchase coverage in a single session."
@@ -426,9 +426,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "Venue Bookings", value: "+178%" },
-        metric2: { label: "Tour Engagement", value: "12 min avg" },
-        metric3: { label: "Avg. Event Value", value: "+$15K" }
+        metric1: { label: "Type", value: "Venue" },
+        metric2: { label: "Features", value: "3D Tours" },
+        metric3: { label: "Focus", value: "Planning" }
       },
       challenge: "Event Center was losing bookings to venues with better online presence. Couples and event planners couldn't visualize their events without multiple site visits.",
       solution: "Created an immersive digital experience with 3D venue tours and interactive event planning tools. Clients can now visualize table layouts, lighting, and decor before booking."
@@ -455,9 +455,9 @@ function App() {
       link: "https://money-team-law-firm.netlify.app/",
       size: "large",
       results: {
-        metric1: { label: "Lead Increase", value: "+127%" },
-        metric2: { label: "Monthly Inquiries", value: "450+" },
-        metric3: { label: "Page Load Time", value: "1.2s" }
+        metric1: { label: "Type", value: "Law Firm" },
+        metric2: { label: "Features", value: "Case Eval" },
+        metric3: { label: "Focus", value: "Conversions" }
       },
       challenge: "The Money Team Law Firm needed a modern, professional web presence to compete with larger firms and establish credibility with potential clients seeking personal injury representation.",
       solution: "Designed a conversion-focused website with strategic CTAs, compelling case results, and streamlined contact forms. Implemented bold branding that conveys confidence and expertise while maintaining approachability."
@@ -484,9 +484,9 @@ function App() {
       link: "https://atikiscatering.com/",
       size: "medium",
       results: {
-        metric1: { label: "Online Inquiries", value: "+45%" },
-        metric2: { label: "Avg. Order Value", value: "+32%" },
-        metric3: { label: "Mobile Traffic", value: "68%" }
+        metric1: { label: "Type", value: "Aviation" },
+        metric2: { label: "Features", value: "Menu System" },
+        metric3: { label: "Focus", value: "Mobile-First" }
       },
       challenge: "Atikis needed a sophisticated online presence that matched their premium aviation catering service and made it easy for flight crews to browse menus and place orders.",
       solution: "Created an elegant, user-friendly website with beautiful food photography, clear service area information, and streamlined inquiry forms. Implemented multi-language support for international clients."
@@ -513,9 +513,9 @@ function App() {
       link: "https://novalnoir.com/",
       size: "small",
       results: {
-        metric1: { label: "Commission Bookings", value: "+200%" },
-        metric2: { label: "Gallery Engagement", value: "+85%" },
-        metric3: { label: "Social Shares", value: "1,200+" }
+        metric1: { label: "Type", value: "Portfolio" },
+        metric2: { label: "Features", value: "Gallery" },
+        metric3: { label: "Focus", value: "Commissions" }
       },
       challenge: "Noval Noir needed a portfolio that authentically represented their multidisciplinary artistic practice and made it easy for potential clients to commission work.",
       solution: "Designed a visually striking portfolio with emphasis on high-quality imagery, intuitive navigation, and clear commission inquiry process. Integrated social proof and event calendar for community engagement.",
@@ -544,9 +544,9 @@ function App() {
       link: "https://flight-ready-consulting.netlify.app/",
       size: "medium",
       results: {
-        metric1: { label: "Consultation Requests", value: "+90%" },
-        metric2: { label: "Time on Site", value: "4.2 min" },
-        metric3: { label: "Bounce Rate", value: "-35%" }
+        metric1: { label: "Type", value: "Consulting" },
+        metric2: { label: "Features", value: "Booking" },
+        metric3: { label: "Focus", value: "Credibility" }
       },
       challenge: "Flight Ready Consulting needed to establish credibility in the competitive aviation consulting space and generate qualified leads from corporate clients.",
       solution: "Built a professional, trust-focused website highlighting team expertise, certifications, and client success stories. Implemented clear service descriptions and easy consultation booking.",
@@ -575,9 +575,9 @@ function App() {
       link: "#",
       size: "large",
       results: {
-        metric1: { label: "New Patients", value: "+89%" },
-        metric2: { label: "Online Bookings", value: "340/mo" },
-        metric3: { label: "No-Show Rate", value: "-45%" }
+        metric1: { label: "Type", value: "Healthcare" },
+        metric2: { label: "Features", value: "Booking" },
+        metric3: { label: "Focus", value: "Patient Portal" }
       },
       challenge: "Bright Smile was losing potential patients to competitors with better online booking systems and struggled with high no-show rates.",
       solution: "Built a comprehensive patient acquisition platform with automated reminders, easy rescheduling, and insurance pre-verification that reduced friction in the booking process."
@@ -604,9 +604,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "Service Calls", value: "+156%" },
-        metric2: { label: "Maintenance Plans", value: "89 new" },
-        metric3: { label: "Response Time", value: "< 2 hrs" }
+        metric1: { label: "Type", value: "HVAC" },
+        metric2: { label: "Features", value: "Quote Tool" },
+        metric3: { label: "Focus", value: "Emergency" }
       },
       challenge: "Summit HVAC was relying on outdated phone-only booking and losing emergency calls to competitors with better online presence.",
       solution: "Created an emergency-first website with prominent call-to-action buttons, instant quote tools, and automated dispatch notifications that captured leads 24/7."
@@ -633,9 +633,9 @@ function App() {
       link: "#",
       size: "large",
       results: {
-        metric1: { label: "Qualified Leads", value: "+234%" },
-        metric2: { label: "Avg. Project Value", value: "+$4,200" },
-        metric3: { label: "Close Rate", value: "38%" }
+        metric1: { label: "Type", value: "Roofing" },
+        metric2: { label: "Features", value: "Financing" },
+        metric3: { label: "Focus", value: "Lead Gen" }
       },
       challenge: "Ironclad needed to stand out in the competitive roofing market and capture homeowners searching for storm damage repairs.",
       solution: "Built a trust-focused website with extensive social proof, transparent pricing tools, and streamlined insurance claim support that positioned them as the go-to contractor."
@@ -662,9 +662,9 @@ function App() {
       link: "#",
       size: "small",
       results: {
-        metric1: { label: "Emergency Calls", value: "+178%" },
-        metric2: { label: "Avg. Ticket", value: "+$320" },
-        metric3: { label: "Repeat Customers", value: "67%" }
+        metric1: { label: "Type", value: "Plumbing" },
+        metric2: { label: "Features", value: "Instant Quote" },
+        metric3: { label: "Focus", value: "Emergency" }
       },
       challenge: "Precision Plumbing was losing emergency calls because customers couldn't get immediate pricing or dispatch confirmation online.",
       solution: "Developed a conversion-optimized platform with transparent pricing, instant booking confirmation, and live tracking that built trust and captured leads around the clock."
@@ -691,9 +691,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "Client Acquisition", value: "+92%" },
-        metric2: { label: "Document Processing", value: "-60% time" },
-        metric3: { label: "Client Retention", value: "94%" }
+        metric1: { label: "Type", value: "Accounting" },
+        metric2: { label: "Features", value: "Portal" },
+        metric3: { label: "Focus", value: "Business" }
       },
       challenge: "Sterling was struggling to attract business clients and differentiate from large franchise tax preparation services.",
       solution: "Created a sophisticated, trust-building website emphasizing their expertise with business clients, featuring case studies and a streamlined client onboarding process."
@@ -720,9 +720,9 @@ function App() {
       link: "#",
       size: "large",
       results: {
-        metric1: { label: "New Partnerships", value: "$2.4M" },
-        metric2: { label: "RFQ Submissions", value: "+340%" },
-        metric3: { label: "Catalog Downloads", value: "12K/mo" }
+        metric1: { label: "Type", value: "B2B" },
+        metric2: { label: "Features", value: "Catalog" },
+        metric3: { label: "Focus", value: "RFQ System" }
       },
       challenge: "Apex relied on trade shows and cold calling for leads, missing the growing segment of buyers who research online before making B2B purchases.",
       solution: "Built a comprehensive digital catalog with self-service tools that allowed prospects to configure products, check specs, and submit RFQs without waiting for sales calls."
@@ -749,9 +749,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "Service Calls", value: "-67%" },
-        metric2: { label: "Quote Speed", value: "< 30 sec" },
-        metric3: { label: "New Accounts", value: "+124%" }
+        metric1: { label: "Type", value: "Logistics" },
+        metric2: { label: "Features", value: "Tracking" },
+        metric3: { label: "Focus", value: "Automation" }
       },
       challenge: "Velocity was drowning in customer service calls for shipment updates and losing quotes because their manual process was too slow.",
       solution: "Created a self-service platform with real-time tracking and instant quoting that freed up staff while improving customer experience."
@@ -778,9 +778,9 @@ function App() {
       link: "#",
       size: "small",
       results: {
-        metric1: { label: "Consultations", value: "+145%" },
-        metric2: { label: "Spanish Inquiries", value: "+78%" },
-        metric3: { label: "Resource Downloads", value: "2.1K/mo" }
+        metric1: { label: "Type", value: "Law Firm" },
+        metric2: { label: "Features", value: "Bilingual" },
+        metric3: { label: "Focus", value: "Resources" }
       },
       challenge: "Heritage needed to reach underserved communities and build trust with potential clients going through difficult family situations.",
       solution: "Designed a warm, approachable website with multi-language support and extensive educational resources that positioned the firm as a trusted advocate."
@@ -807,9 +807,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "Commercial Leads", value: "+189%" },
-        metric2: { label: "Avg. Project Size", value: "+$8,400" },
-        metric3: { label: "Booking Rate", value: "43%" }
+        metric1: { label: "Type", value: "Electrical" },
+        metric2: { label: "Features", value: "Estimator" },
+        metric3: { label: "Focus", value: "Commercial" }
       },
       challenge: "ProElectric wanted to move beyond residential work and capture more lucrative commercial electrical projects.",
       solution: "Built a professional website highlighting commercial capabilities, certifications, and past project success that attracted property managers and general contractors."
@@ -836,9 +836,9 @@ function App() {
       link: "#",
       size: "large",
       results: {
-        metric1: { label: "Bookings", value: "+167%" },
-        metric2: { label: "Membership Signups", value: "89/mo" },
-        metric3: { label: "Avg. Ticket", value: "+$340" }
+        metric1: { label: "Type", value: "Med Spa" },
+        metric2: { label: "Features", value: "Booking" },
+        metric3: { label: "Focus", value: "Membership" }
       },
       challenge: "Radiance was losing clients to competitors with better online booking and struggled to communicate the value of their premium treatments.",
       solution: "Created an elegant, spa-like digital experience with seamless booking, membership benefits clearly displayed, and compelling before/after showcases."
@@ -865,9 +865,9 @@ function App() {
       link: "#",
       size: "large",
       results: {
-        metric1: { label: "Project Inquiries", value: "$12M" },
-        metric2: { label: "Bid Submissions", value: "+89%" },
-        metric3: { label: "Subcontractor Apps", value: "156" }
+        metric1: { label: "Type", value: "Construction" },
+        metric2: { label: "Features", value: "Portfolio" },
+        metric3: { label: "Focus", value: "Bidding" }
       },
       challenge: "Titan relied on word-of-mouth and struggled to showcase their capabilities to developers and property owners seeking commercial contractors.",
       solution: "Built a portfolio-driven website with stunning project photography, detailed case studies, and a streamlined bid request process that attracted larger projects."
@@ -894,9 +894,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "Policy Sales", value: "+134%" },
-        metric2: { label: "Quote Requests", value: "890/mo" },
-        metric3: { label: "Retention Rate", value: "91%" }
+        metric1: { label: "Type", value: "Insurance" },
+        metric2: { label: "Features", value: "Comparison" },
+        metric3: { label: "Focus", value: "Education" }
       },
       challenge: "Cornerstone was losing clients to online-only insurers and needed to demonstrate the value of working with an independent agent.",
       solution: "Created a hybrid platform combining the convenience of online quoting with personalized service, showing multiple carrier options while highlighting advisory benefits."
@@ -923,9 +923,9 @@ function App() {
       link: "#",
       size: "small",
       results: {
-        metric1: { label: "Online Donations", value: "+267%" },
-        metric2: { label: "Monthly Donors", value: "340+" },
-        metric3: { label: "Volunteer Signups", value: "+189%" }
+        metric1: { label: "Type", value: "Nonprofit" },
+        metric2: { label: "Features", value: "Donations" },
+        metric3: { label: "Focus", value: "Impact" }
       },
       challenge: "Hope Foundation's outdated website made donating difficult and failed to communicate the impact of their community programs.",
       solution: "Built an emotionally compelling website with streamlined donation flows, impact metrics, and powerful storytelling that connected donors with their mission."
@@ -952,9 +952,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "Scheduling Time", value: "-78%" },
-        metric2: { label: "New Clients", value: "+56%" },
-        metric3: { label: "AOG Response", value: "< 2 hrs" }
+        metric1: { label: "Type", value: "Aviation" },
+        metric2: { label: "Features", value: "Scheduling" },
+        metric3: { label: "Focus", value: "AOG Support" }
       },
       challenge: "SkyBridge relied on phone and email for service requests, causing delays and missed opportunities during peak maintenance seasons.",
       solution: "Developed a comprehensive service portal with self-scheduling, parts availability, and compliance document access that streamlined operations."
@@ -981,9 +981,9 @@ function App() {
       link: "#",
       size: "small",
       results: {
-        metric1: { label: "Admin Workload", value: "-45%" },
-        metric2: { label: "Online Payments", value: "89%" },
-        metric3: { label: "Maintenance Response", value: "< 24 hrs" }
+        metric1: { label: "Type", value: "Property" },
+        metric2: { label: "Features", value: "Portal" },
+        metric3: { label: "Focus", value: "Automation" }
       },
       challenge: "Clearview was spending too much time on administrative tasks and struggling to attract new property owners with their outdated processes.",
       solution: "Built an integrated management platform that automated routine tasks while providing transparency to both tenants and property owners."
@@ -1010,9 +1010,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "New Patients", value: "+123%" },
-        metric2: { label: "Same-Day Bookings", value: "67%" },
-        metric3: { label: "Parent Satisfaction", value: "4.9/5" }
+        metric1: { label: "Type", value: "Pediatric" },
+        metric2: { label: "Features", value: "Portal" },
+        metric3: { label: "Focus", value: "Family" }
       },
       challenge: "Pediatric Partners needed to attract young families and make it easy for busy parents to manage their children's healthcare.",
       solution: "Designed a warm, welcoming website with parent-focused features like quick sick visit booking, immunization tracking, and milestone reminders."
@@ -1039,9 +1039,9 @@ function App() {
       link: "#",
       size: "large",
       results: {
-        metric1: { label: "Charter Inquiries", value: "+89%" },
-        metric2: { label: "Avg. Trip Value", value: "$34K" },
-        metric3: { label: "Repeat Clients", value: "67%" }
+        metric1: { label: "Type", value: "Aviation" },
+        metric2: { label: "Features", value: "Fleet View" },
+        metric3: { label: "Focus", value: "Luxury" }
       },
       challenge: "Charter Executive needed to compete with larger charter brokers and showcase their fleet to high-net-worth travelers.",
       solution: "Created a luxury digital experience with stunning aircraft photography, transparent pricing tools, and VIP-level service presentation."
@@ -1068,9 +1068,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "New Contracts", value: "$4.7M" },
-        metric2: { label: "RFQ Submissions", value: "+234%" },
-        metric3: { label: "Avg. Project Size", value: "+$180K" }
+        metric1: { label: "Type", value: "Manufacturing" },
+        metric2: { label: "Features", value: "Capabilities" },
+        metric3: { label: "Focus", value: "RFQ System" }
       },
       challenge: "Midwest Steel was losing bids to competitors with better online presence and struggled to showcase their precision capabilities.",
       solution: "Built a technically detailed website with project case studies, precise capability specifications, and streamlined RFQ process for engineers."
@@ -1097,9 +1097,9 @@ function App() {
       link: "#",
       size: "small",
       results: {
-        metric1: { label: "Client Inquiries", value: "+178%" },
-        metric2: { label: "After-Hours Calls", value: "34%" },
-        metric3: { label: "Consultation Rate", value: "67%" }
+        metric1: { label: "Type", value: "Criminal Law" },
+        metric2: { label: "Features", value: "24/7 Access" },
+        metric3: { label: "Focus", value: "Urgent Cases" }
       },
       challenge: "The firm needed to reach people in crisis situations quickly and establish trust during stressful circumstances.",
       solution: "Designed a responsive, urgent-action website with prominent emergency contact, educational resources, and trust-building attorney profiles."
@@ -1126,9 +1126,9 @@ function App() {
       link: "#",
       size: "medium",
       results: {
-        metric1: { label: "Program Enrollment", value: "+234%" },
-        metric2: { label: "Corporate Partners", value: "23 new" },
-        metric3: { label: "Mentor Signups", value: "+156%" }
+        metric1: { label: "Type", value: "Nonprofit" },
+        metric2: { label: "Features", value: "Programs" },
+        metric3: { label: "Focus", value: "Mentorship" }
       },
       challenge: "The organization struggled to attract both youth participants and corporate sponsors with their outdated digital presence.",
       solution: "Created an inspiring website showcasing program impact, making it easy for youth to enroll, mentors to sign up, and corporations to partner."
@@ -1155,9 +1155,9 @@ function App() {
       link: "https://moonlit-frangipane-1b1b8f.netlify.app",
       size: "small",
       results: {
-        metric1: { label: "Book Sales", value: "+180%" },
-        metric2: { label: "Page Conversions", value: "12.5%" },
-        metric3: { label: "Email Signups", value: "850+" }
+        metric1: { label: "Type", value: "Author" },
+        metric2: { label: "Features", value: "Book Launch" },
+        metric3: { label: "Focus", value: "Conversions" }
       },
       challenge: "Coach Matt Santos needed a professional, high-converting landing page to launch his new book 'The Quiet Code' and establish his author brand online.",
       solution: "Designed a clean, elegant landing page that highlights the book's key benefits, showcases author credibility, and provides seamless purchase options across Amazon Kindle, Apple Books, and Barnes & Noble."
@@ -1182,9 +1182,9 @@ function App() {
       ],
       solution: "We created a sophisticated, modern website that positions Money Team Law Firm as industry leaders. The new design features clear service descriptions, attorney profiles with credentials, client testimonials, and an intuitive consultation booking system. We implemented a content strategy that addresses common legal questions and establishes the firm's expertise.",
       results: {
-        metric1: { label: "Increase in Consultations", value: "+156%" },
-        metric2: { label: "Faster Load Time", value: "3.2s" },
-        metric3: { label: "Mobile Traffic", value: "+89%" }
+        metric1: { label: "Platform", value: "Law Firm" },
+        metric2: { label: "Features", value: "Case Eval" },
+        metric3: { label: "Focus", value: "Mobile-First" }
       },
       testimonial: {
         quote: "Eldon transformed our online presence completely. We've seen a 156% increase in consultation requests, and clients consistently compliment our professional website. Best investment we've made in our practice.",
@@ -1211,9 +1211,9 @@ function App() {
       ],
       solution: "We built a complete brand identity and digital presence from the ground up. The website features stunning visuals, detailed service descriptions, and an easy-to-use inquiry system. We created a content strategy that highlights their unique value proposition: fresh, gourmet meals prepared specifically for each flight.",
       results: {
-        metric1: { label: "Increase in Inquiries", value: "+45%" },
-        metric2: { label: "Average Session", value: "4.2min" },
-        metric3: { label: "Conversion Rate", value: "8.3%" }
+        metric1: { label: "Platform", value: "Aviation" },
+        metric2: { label: "Features", value: "Menu System" },
+        metric3: { label: "Focus", value: "Branding" }
       },
       link: "https://atikiscatering.com",
       duration: "10 weeks",
@@ -1236,9 +1236,9 @@ function App() {
       ],
       solution: "We created a beautiful, minimalist portfolio that serves as a digital gallery for Noval's work. The design features large, high-quality images, intuitive navigation by medium and style, and a streamlined commission booking process. We implemented a blog section for sharing creative process insights, which has helped build a following and establish Noval as a thought leader in their field.",
       results: {
-        metric1: { label: "More Commissions", value: "3x" },
-        metric2: { label: "Social Shares", value: "+234%" },
-        metric3: { label: "Gallery Views", value: "+412%" }
+        metric1: { label: "Platform", value: "Portfolio" },
+        metric2: { label: "Features", value: "Gallery" },
+        metric3: { label: "Focus", value: "Commissions" }
       },
       testimonial: {
         quote: "As an artist, I needed someone who understood visual storytelling. Eldon created a portfolio that truly represents my work and has helped me book 3x more commissions.",
@@ -1620,8 +1620,8 @@ function App() {
             className="grid md:grid-cols-3 gap-phi-xl mb-phi-4xl max-w-phi-lg mx-auto"
           >
             {[
-              { icon: Zap, title: "127% More Leads", desc: "Average client increase in qualified inquiries within 90 days" },
-              { icon: Code, title: "3X Higher Conversions", desc: "Strategic design that turns 60% more visitors into paying clients" },
+              { icon: Zap, title: "More Qualified Leads", desc: "Strategic design focused on turning visitors into real inquiries" },
+              { icon: Code, title: "Higher Conversions", desc: "Psychology-driven layouts that guide visitors to take action" },
               { icon: Sparkles, title: "Done-For-You", desc: "Zero hassle. I handle everything from design to deployment." }
             ].map((usp, i) => (
               <motion.div
@@ -1720,12 +1720,12 @@ function App() {
                 paddingBottom: 'var(--space-phi-lg)'
               }}
             >
-              Download Free ROI Calculator
+              Download Free Website Guide
               <Sparkles className="w-4 h-4" />
             </motion.button>
           </motion.div>
           <p className="text-phi-xs text-gray-500 mt-phi-xl">
-            ⚡ Only 3 strategy sessions available this month • $2,500 value • Zero pressure sales
+            ⚡ Limited availability • Free consultation • No pressure
           </p>
         </motion.div>
       </section>
@@ -1771,13 +1771,13 @@ function App() {
                 <div className="lg:col-span-7 space-y-8">
                   <div className="space-y-6">
                     <p className="text-lg text-gray-700 leading-relaxed font-light">
-                      I'm Eldon Peterson, and I've spent the last 8+ years engineering websites that generate measurable ROI for premium service businesses. While most developers focus on making sites "look pretty," I architect conversion systems that transform your website into your #1 sales employee.
+                      I'm Eldon Peterson, a web designer and developer passionate about creating websites that actually work for your business. While most developers focus on making sites "look pretty," I focus on strategic design that helps turn visitors into clients.
                     </p>
                     <p className="text-lg text-gray-700 leading-relaxed font-light">
-                      My clients don't hire me for another generic website—they invest in a strategic asset that pays for itself within 90 days. From aviation companies closing $50K+ contracts to law firms booking 3X more consultations, I deliver results that matter to your bottom line, not just your ego.
+                      I've worked with law firms, aviation companies, artists, and service-based businesses to create professional web presences that reflect their brand and make it easy for potential clients to take action.
                     </p>
                     <p className="text-lg text-gray-900 font-medium leading-relaxed">
-                      If you're ready to stop wasting money on a website that doesn't work, let's talk.
+                      If you're looking for a website that represents your business professionally and helps you connect with more clients, let's talk.
                     </p>
                   </div>
                   
@@ -1803,24 +1803,24 @@ function App() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block px-4 py-2 bg-white/10 rounded-full mb-6">
             <p className="text-xs font-medium uppercase tracking-wider">
-              $2,500 Value • Yours Free
+              Free Resource
             </p>
           </div>
           <h2 className="text-3xl md:text-4xl font-light mb-6">
-            Calculate Your Website's True ROI Potential
+            Is Your Website Working For You?
           </h2>
           <p className="text-xl text-gray-300 font-light mb-8 max-w-2xl mx-auto">
-            Discover exactly how much revenue you're leaving on the table with my proprietary ROI calculator. Most businesses find they're losing $10K-$50K annually from poor website performance alone.
+            Download my free guide to discover common website issues that may be costing you potential clients—and learn how to fix them.
           </p>
           <button
             onClick={() => setShowLeadMagnet(true)}
             className="px-8 py-4 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium inline-flex items-center gap-2 shadow-red-glow hover:shadow-red-glow-lg"
           >
-            Get Your Free ROI Report
+            Get Your Free Guide
             <Sparkles className="w-5 h-5" />
           </button>
           <p className="text-sm text-gray-400 mt-4">
-            Join 847+ business owners who discovered their website's hidden revenue potential
+            Practical tips you can implement today
           </p>
         </div>
       </section>
@@ -1830,10 +1830,10 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl font-light mb-6 text-gray-900">
-              My Results-Driven Process
+              My Process
             </h2>
             <p className="text-gray-600 font-light max-w-2xl mx-auto">
-              A battle-tested system that's generated over $2.3M in client revenue
+              A structured approach to creating websites that work for your business
             </p>
           </div>
 
@@ -1842,9 +1842,9 @@ function App() {
               <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-light">
                 01
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-3">Revenue Audit</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-3">Discovery</h3>
               <p className="text-gray-600 font-light mb-4">
-                I analyze your current site's conversion gaps and identify $10K+ in hidden revenue opportunities
+                I learn about your business, goals, and target audience to create a strategic plan
               </p>
               <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
                 Week 1
@@ -1868,9 +1868,9 @@ function App() {
               <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-light">
                 03
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-3">Elite Development</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-3">Development</h3>
               <p className="text-gray-600 font-light mb-4">
-                Lightning-fast code optimized for conversions, SEO, and mobile—guaranteed sub-2s load times
+                Clean, fast code optimized for search engines and mobile devices
               </p>
               <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
                 Weeks 4-6
@@ -1881,9 +1881,9 @@ function App() {
               <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-light">
                 04
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-3">Launch & Optimize</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-3">Launch & Support</h3>
               <p className="text-gray-600 font-light mb-4">
-                90-day performance guarantee with ongoing optimization until you hit your lead targets
+                Smooth launch with training and ongoing support to help you succeed
               </p>
               <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
                 Week 7+
@@ -1903,9 +1903,9 @@ function App() {
       >
         <div className="max-w-phi-xl mx-auto">
           <SectionTitle
-            eyebrow="Services That Generate ROI"
-            title="Strategic web systems engineered for revenue growth"
-            subtitle="I don't build websites. I build conversion machines that pay for themselves in 90 days or less."
+            eyebrow="Services"
+            title="Professional web design and development"
+            subtitle="Custom websites built to represent your brand and help you connect with clients."
             centered
           />
 
@@ -1938,7 +1938,7 @@ function App() {
                 <div>
                   <h3 className="text-phi-base font-semibold text-gold-900 mb-phi-xs">Custom Development</h3>
                   <p className="text-phi-xs text-gray-600 leading-relaxed">
-                    Enterprise-grade web applications that handle 10,000+ daily visitors without breaking a sweat. Built for scale, speed, and serious ROI.
+                    Modern web applications built with clean code and best practices. Scalable, fast, and built to grow with your business.
                   </p>
                 </div>
               </div>
@@ -1970,7 +1970,7 @@ function App() {
                 <div>
                   <h3 className="text-phi-base font-semibold text-gold-900 mb-phi-xs">UI/UX Design</h3>
                   <p className="text-phi-xs text-gray-600 leading-relaxed">
-                    Psychology-driven designs that guide visitors to take action. Every pixel engineered to increase conversions by 60%+.
+                    User-centered designs that guide visitors naturally through your site. Intuitive layouts that make it easy to take action.
                   </p>
                 </div>
               </div>
@@ -1998,9 +1998,9 @@ function App() {
                   }}
                 />
               </div>
-              <h3 className="text-phi-sm font-semibold text-gray-900 mb-phi-md">Sub-2s Load Times</h3>
+              <h3 className="text-phi-sm font-semibold text-gray-900 mb-phi-md">Fast Load Times</h3>
               <p className="text-phi-xs text-gray-600 leading-relaxed">
-                Guaranteed lightning-fast performance. Every 1s delay costs you 7% in conversions—I won't let that happen.
+                Optimized performance for quick loading. Fast sites provide better user experience and rank higher in search results.
               </p>
             </BentoCard>
 
@@ -2062,9 +2062,9 @@ function App() {
       >
         <div className="max-w-phi-xl mx-auto">
           <SectionTitle
-            eyebrow="Investment That Pays For Itself"
-            title="Choose your revenue acceleration tier"
-            subtitle="Every package includes my 90-day performance guarantee: hit your lead targets or you don't pay the final invoice."
+            eyebrow="Investment"
+            title="Choose the right package for your needs"
+            subtitle="Transparent pricing with no hidden fees. Every project includes training and support."
             centered
           />
 
@@ -2244,7 +2244,7 @@ function App() {
                 }}
                 className="w-full py-3 bg-red-600 text-white hover:bg-red-700 transition-colors rounded-lg font-medium shadow-red-glow-lg"
               >
-                Accelerate My Revenue
+                Get Started
               </motion.button>
             </motion.div>
 
@@ -2713,10 +2713,10 @@ function App() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl font-light mb-6 text-gray-900">
-              Real Results. Real Revenue Growth.
+              Featured Work
             </h2>
             <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
-              See exactly how I've helped businesses like yours generate millions in additional revenue
+              A selection of projects I've completed for clients across various industries
             </p>
           </motion.div>
 
@@ -2787,10 +2787,10 @@ function App() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl font-light mb-6 text-gray-900">
-              What My Clients Say About Working With Me
+              Client Feedback
             </h2>
             <p className="text-gray-600 font-light max-w-2xl mx-auto mb-6">
-              Real business owners sharing the exact results they achieved—not vague testimonials, but specific revenue increases and lead growth
+              What clients have said about working together
             </p>
             {testimonials.some(t => t.videoUrl) && (
               <div className="flex justify-center gap-4 mt-8">
@@ -2885,20 +2885,20 @@ function App() {
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <motion.div variants={staggerItem} className="bg-gold-50 border border-gold-300 rounded-lg p-6 shadow-gold-glow">
-                <div className="text-4xl font-light text-gold-900 mb-2">8+</div>
-                <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Years Experience</div>
+                <div className="text-4xl font-light text-gold-900 mb-2">✓</div>
+                <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Experienced Developer</div>
               </motion.div>
               <motion.div variants={staggerItem} className="bg-gold-50 border border-gold-300 rounded-lg p-6 shadow-gold-glow">
-                <div className="text-4xl font-light text-gold-900 mb-2">100+</div>
-                <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Happy Clients</div>
+                <div className="text-4xl font-light text-gold-900 mb-2">✓</div>
+                <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Satisfied Clients</div>
               </motion.div>
               <motion.div variants={staggerItem} className="bg-gold-50 border border-gold-300 rounded-lg p-6 shadow-gold-glow">
-                <div className="text-4xl font-light text-gold-900 mb-2">100+</div>
+                <div className="text-4xl font-light text-gold-900 mb-2">✓</div>
                 <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Projects Delivered</div>
               </motion.div>
               <motion.div variants={staggerItem} className="bg-gold-50 border border-gold-300 rounded-lg p-6 shadow-gold-glow">
-                <div className="text-4xl font-light text-gold-900 mb-2">4.9/5</div>
-                <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Average Rating</div>
+                <div className="text-4xl font-light text-gold-900 mb-2">✓</div>
+                <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">Quality Focused</div>
               </motion.div>
             </div>
           </motion.div>
@@ -3093,7 +3093,7 @@ function App() {
               }}
               className="px-8 py-4 border-2 border-white text-white hover:bg-red-600 hover:border-red-600 transition-colors rounded-lg font-medium"
             >
-              Get Your Free ROI Report
+              Send a Message
             </motion.button>
           </motion.div>
           <motion.p
@@ -3103,7 +3103,7 @@ function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            ⚡ $2,500 value • Zero pressure • Only 3 spots left this month
+            Free consultation • No pressure • Quick response
           </motion.p>
         </div>
       </motion.section>
@@ -3141,23 +3141,23 @@ function App() {
                   Risk-Free Investment
                 </div>
                 <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-                  90-Day Performance Guarantee
+                  Satisfaction Guarantee
                 </h2>
                 <p className="text-lg text-gray-600 font-light leading-relaxed mb-6">
-                  I'm so confident in my work that I offer a <strong className="text-gray-900">full 90-day performance guarantee</strong>. If your new website doesn't measurably improve your leads, conversions, or key metrics within 90 days of launch, I'll continue optimizing it at <strong className="text-gray-900">no additional cost</strong> until it does.
+                  I stand behind my work. Every project includes <strong className="text-gray-900">post-launch support</strong> to ensure you're completely satisfied with your new website and know how to use it effectively.
                 </p>
                 <ul className="space-y-3 text-gray-600 mb-8">
                   <li className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-gold-600 flex-shrink-0" />
-                    <span>Free revisions and optimizations for 90 days post-launch</span>
+                    <span>Revisions included until you're happy with the result</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-gold-600 flex-shrink-0" />
-                    <span>Weekly performance reports during guarantee period</span>
+                    <span>Training on how to update and manage your site</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-gold-600 flex-shrink-0" />
-                    <span>A/B testing and conversion optimization included</span>
+                    <span>Ongoing support available after launch</span>
                   </li>
                 </ul>
                 <motion.button
@@ -3475,33 +3475,33 @@ function App() {
                     Free Download
                   </div>
                   <h2 className="text-3xl font-light mb-4 text-gray-900">
-                    10 Website Mistakes Costing You Clients
+                    Common Website Mistakes to Avoid
                   </h2>
                   <p className="text-gray-600 font-light leading-relaxed">
-                    Discover the critical errors that are driving potential customers away from your website—and how to fix them. This comprehensive guide reveals:
+                    A practical guide to common website issues that may be turning away potential clients—and how to fix them:
                   </p>
                 </div>
 
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start gap-3 text-gray-700 font-light">
                     <span className="text-gray-900 mt-1">✓</span>
-                    <span>The #1 mistake that kills conversions (and how to avoid it)</span>
+                    <span>Navigation issues that confuse visitors</span>
                   </li>
                   <li className="flex items-start gap-3 text-gray-700 font-light">
                     <span className="text-gray-900 mt-1">✓</span>
-                    <span>Why your contact form is losing 80% of potential leads</span>
+                    <span>Contact form best practices</span>
                   </li>
                   <li className="flex items-start gap-3 text-gray-700 font-light">
                     <span className="text-gray-900 mt-1">✓</span>
-                    <span>Simple design tweaks that increase trust by 200%</span>
+                    <span>Building trust through design</span>
                   </li>
                   <li className="flex items-start gap-3 text-gray-700 font-light">
                     <span className="text-gray-900 mt-1">✓</span>
-                    <span>The mobile optimization errors costing you thousands</span>
+                    <span>Mobile optimization essentials</span>
                   </li>
                   <li className="flex items-start gap-3 text-gray-700 font-light">
                     <span className="text-gray-900 mt-1">✓</span>
-                    <span>How to write copy that actually converts visitors</span>
+                    <span>Writing effective website copy</span>
                   </li>
                 </ul>
 

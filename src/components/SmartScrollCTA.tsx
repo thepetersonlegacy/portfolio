@@ -66,20 +66,15 @@ export const SmartScrollCTA = ({ onCtaClick }: SmartScrollCTAProps) => {
           className="fixed bottom-6 right-6 z-50 hidden md:block"
         >
           <div className="bg-gray-900 text-white rounded-2xl shadow-2xl overflow-hidden max-w-sm border border-gold-500/30">
-            {/* Urgency Banner */}
-            <div className="bg-red-600 px-4 py-2 flex items-center justify-between">
+            {/* Banner */}
+            <div className="bg-gold-600 px-4 py-2 flex items-center justify-between">
               <span className="text-sm font-medium flex items-center gap-2">
-                <motion.span
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ repeat: Infinity, duration: 1.5 }}
-                >
-                  🔥
-                </motion.span>
-                Only 3 strategy sessions left this month
+                <span>📅</span>
+                Free Strategy Session Available
               </span>
               <button
                 onClick={handleDismiss}
-                className="p-1 hover:bg-red-700 rounded transition-colors"
+                className="p-1 hover:bg-gold-700 rounded transition-colors"
                 aria-label="Close"
               >
                 <X className="w-4 h-4" />
@@ -92,16 +87,16 @@ export const SmartScrollCTA = ({ onCtaClick }: SmartScrollCTAProps) => {
                   <Calendar className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-lg mb-1">Ready to 3X Your Leads?</h4>
+                  <h4 className="font-semibold text-lg mb-1">Ready to Improve Your Website?</h4>
                   <p className="text-gray-400 text-sm mb-4">
-                    Book a free 30-min strategy session worth $500
+                    Book a free 30-min strategy session
                   </p>
-                  
+
                   <motion.button
                     onClick={handleClick}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full py-3 bg-red-600 hover:bg-red-700 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 shadow-red-glow"
+                    className="w-full py-3 bg-gold-600 hover:bg-gold-700 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 shadow-gold-glow"
                   >
                     Claim Your Free Session
                     <ArrowRight className="w-4 h-4" />

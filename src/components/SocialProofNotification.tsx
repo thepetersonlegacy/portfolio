@@ -18,73 +18,44 @@ export const SocialProofNotification = () => {
 
   const notifications: Notification[] = [
     {
-      name: "Michael H.",
-      action: "just booked a strategy session",
-      detail: "Law Firm Owner",
-      location: "Dallas, TX",
-      time: "2 minutes ago",
-      icon: 'calendar',
-      highlight: "$12K project"
+      name: "Tip",
+      action: "Free strategy sessions available",
+      detail: "Book yours today",
+      location: "Online",
+      time: "Now",
+      icon: 'calendar'
     },
     {
-      name: "Sarah M.",
-      action: "increased leads by",
-      detail: "156%",
-      location: "Atlanta, GA",
-      time: "Yesterday",
-      icon: 'trending',
-      highlight: "90 days"
-    },
-    {
-      name: "Jennifer K.",
-      action: "started her website project",
-      detail: "Aviation Company",
-      location: "Phoenix, AZ",
-      time: "5 minutes ago",
+      name: "Featured",
+      action: "View our latest project",
+      detail: "Money Team Law Firm",
+      location: "Portfolio",
+      time: "New",
       icon: 'check'
     },
     {
-      name: "Robert L.",
-      action: "downloaded the free audit",
-      detail: "Real Estate",
-      location: "Miami, FL",
-      time: "8 minutes ago",
+      name: "Resource",
+      action: "Download our free guide",
+      detail: "Website best practices",
+      location: "Free",
+      time: "Available",
       icon: 'file'
     },
     {
-      name: "David W.",
-      action: "left a 5-star review",
-      detail: '"Best decision for our firm"',
-      location: "Chicago, IL",
-      time: "1 hour ago",
+      name: "Services",
+      action: "Custom web design",
+      detail: "Tailored to your business",
+      location: "Learn more",
+      time: "Available",
       icon: 'star'
     },
     {
-      name: "Amanda P.",
-      action: "just signed up for",
-      detail: "Professional tier",
-      location: "Seattle, WA",
-      time: "12 minutes ago",
-      icon: 'check',
-      highlight: "$12K value"
-    },
-    {
-      name: "James T.",
-      action: "conversion rate increased",
-      detail: "3.2x",
-      location: "Austin, TX",
-      time: "This week",
-      icon: 'trending',
-      highlight: "60 days"
-    },
-    {
-      name: "Lisa R.",
-      action: "booked remaining spot",
-      detail: "2 of 3 left",
-      location: "Denver, CO",
-      time: "Just now",
-      icon: 'calendar',
-      highlight: "Limited availability"
+      name: "Contact",
+      action: "Questions? Let's talk",
+      detail: "Free consultation",
+      location: "No obligation",
+      time: "Anytime",
+      icon: 'calendar'
     },
   ];
 
@@ -135,11 +106,6 @@ export const SocialProofNotification = () => {
           className="fixed left-4 bg-white shadow-2xl rounded-xl p-4 max-w-xs border border-gray-100 bottom-36 md:bottom-24"
           style={{ zIndex: 99980 }}
         >
-          {/* Verified badge */}
-          <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
-            <CheckCircle2 className="w-3 h-3" /> Verified
-          </div>
-
           <div className="flex items-start gap-3">
             <motion.div
               initial={{ scale: 0 }}

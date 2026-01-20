@@ -75,14 +75,11 @@ export const ExitIntentPopup = ({ onDownloadClick }: ExitIntentPopupProps) => {
             onClick={(e) => e.stopPropagation()}
             className="bg-white rounded-2xl max-w-lg w-full shadow-2xl relative overflow-hidden"
           >
-            {/* Urgency Banner */}
-            <div className="bg-red-600 text-white py-2 px-4 text-center text-sm font-medium">
-              <motion.span
-                animate={{ opacity: [1, 0.7, 1] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-              >
-                ⚡ Only 3 FREE audits remaining this month
-              </motion.span>
+            {/* Banner */}
+            <div className="bg-gold-600 text-white py-2 px-4 text-center text-sm font-medium">
+              <span>
+                ⚡ Free Website Audit Available
+              </span>
             </div>
 
             <motion.button
@@ -107,10 +104,10 @@ export const ExitIntentPopup = ({ onDownloadClick }: ExitIntentPopupProps) => {
                 </motion.div>
 
                 <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                  Wait! Is Your Website Leaking Money?
+                  Before You Go...
                 </h3>
                 <p className="text-gray-600">
-                  Get a <span className="font-semibold text-red-600">FREE Website Audit</span> worth $497 and discover exactly what's costing you leads.
+                  Get a <span className="font-semibold text-gold-700">FREE Website Audit</span> and discover opportunities to improve your site.
                 </p>
               </div>
 
@@ -152,7 +149,7 @@ export const ExitIntentPopup = ({ onDownloadClick }: ExitIntentPopupProps) => {
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors shadow-red-glow disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden"
+                  className="w-full py-4 bg-gold-600 text-white rounded-lg font-semibold hover:bg-gold-700 transition-colors shadow-gold-glow disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden"
                 >
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
