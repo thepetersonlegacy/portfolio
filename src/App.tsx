@@ -9,6 +9,8 @@ import { SmartScrollCTA } from './components/SmartScrollCTA';
 import { IntakeForm } from './components/IntakeForm';
 import { FastQuoteForm } from './components/FastQuoteForm';
 import { StickyMobileBar } from './components/StickyMobileBar';
+import { ROICalculator } from './components/ROICalculator';
+import { ServiceCTABlock } from './components/ServiceCTABlock';
 import { trackEvent, trackCTAClick, trackFormSubmit, trackDownload, trackBookClick, trackFormClick } from './utils/analytics';
 import { Pill, SectionTitle, Card, BentoCard, FeatureBadge, StatCard } from './components/FramerComponents';
 
@@ -2094,6 +2096,17 @@ function App() {
         </div>
       </motion.section>
 
+      {/* ROI Calculator Section */}
+      <ROICalculator
+        mode="leadgen"
+        onBookClick={() => {
+          setShowIntakeForm(true);
+        }}
+        onQuoteClick={() => {
+          setShowFastQuote(true);
+        }}
+      />
+
       {/* Services & Pricing Section - Golden Ratio Layout */}
       <motion.section
         id="services"
@@ -2432,6 +2445,19 @@ function App() {
               </p>
             </div>
           </motion.div>
+
+          {/* Service CTA Block */}
+          <div className="mt-16">
+            <ServiceCTABlock
+              headline="Ready to Discuss Your Project?"
+              subheadline="Get a custom quote or book a quick call to explore how we can help grow your business."
+              onBookClick={() => setShowIntakeForm(true)}
+              onQuoteClick={() => setShowFastQuote(true)}
+              variant="full"
+              location="services_section"
+              phoneNumber={PHONE_NUMBER}
+            />
+          </div>
         </div>
       </motion.section>
 

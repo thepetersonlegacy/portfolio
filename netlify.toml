@@ -7,3 +7,16 @@
   to = "/index.html"
   status = 200
 
+# Form notifications - configure in Netlify dashboard
+# Forms > Settings > Form notifications
+# Add email notifications for each form:
+# - intake-form: eldon@petersonproservices.com
+# - fast-quote: eldon@petersonproservices.com
+# - exit-intent-leads: eldon@petersonproservices.com
+# - newsletter: eldon@petersonproservices.com
+
+# Auto-reply emails require Netlify Functions or third-party service
+# See /netlify/emails/ for email templates to use with:
+# - Zapier (Forms → Email)
+# - Make.com (Forms → Email)
+# - Netlify Functions with SendGrid/Resend
