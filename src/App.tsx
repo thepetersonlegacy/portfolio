@@ -1313,7 +1313,22 @@ function App() {
     }
   ];
 
+  // Projects that should open directly to their live sites
+  const directLinkProjects = [
+    'https://money-team-law-firm.netlify.app/',
+    'https://atikiscatering.com/',
+    'https://novalnoir.com/',
+    'https://flight-ready-consulting.netlify.app/',
+    'https://moonlit-frangipane-1b1b8f.netlify.app'
+  ];
+
   const handleProjectView = (project) => {
+    // If project is in the direct link list, open it directly
+    if (project.link && directLinkProjects.includes(project.link)) {
+      window.open(project.link, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    // Otherwise show the project page
     setSelectedProject(project);
     setShowProjectPage(true);
   };
@@ -3624,7 +3639,7 @@ function App() {
                     )}
                   </div>
                   
-                  <button 
+                  <button
                     onClick={() => handleProjectView(selectedProject)}
                     className="mt-8 text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors flex items-center gap-2"
                   >

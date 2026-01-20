@@ -125,14 +125,17 @@ export const ProjectPages: React.FC<ProjectPagesProps> = ({ project, onClose }) 
               <ArrowLeft className="w-5 h-5" />
               Back to Portfolio
             </button>
-            <div className="flex items-center gap-4">
-              <button className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
-                <Github className="w-5 h-5" />
-              </button>
-              <button className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
-                <ExternalLink className="w-5 h-5" />
-              </button>
-            </div>
+            {project.link && project.link !== '#' && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-cyan-500 text-slate-900 font-medium rounded-lg hover:bg-cyan-400 transition-colors"
+              >
+                Visit Live Site
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
           </div>
         </div>
       </div>
