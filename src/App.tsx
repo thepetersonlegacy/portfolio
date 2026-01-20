@@ -1348,7 +1348,7 @@ function App() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
   // Phone number for Call/Text CTAs
-  const PHONE_NUMBER = '+18005551234'; // Replace with actual phone number
+  const PHONE_NUMBER = '+14096567142';
 
   // FAQ Data
   const faqs = [
@@ -1542,7 +1542,7 @@ function App() {
                 className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1 transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                <span className="hidden lg:inline">(800) 555-1234</span>
+                <span className="hidden lg:inline">(409) 656-7142</span>
               </a>
 
               {/* Secondary CTA - Fast Quote */}
